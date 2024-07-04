@@ -10,6 +10,13 @@ public class DialogueManager : MonoBehaviour
     private Dictionary<EDialogueID, Dialogue> dialogueIdsToDialogueMap;
     private Dictionary<RelationshipLevel, List<EDialogueID>> rshipLevelToDialogueIdsMap;
 
+    protected GameController gameController;
+
+    protected void Awake()
+    {
+        gameController = FindObjectOfType<GameController>();
+    }
+
     // Start is called before the first frame update
     protected void Start()
     {

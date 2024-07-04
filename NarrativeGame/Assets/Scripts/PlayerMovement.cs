@@ -14,6 +14,12 @@ public class PlayerMovement : MonoBehaviour
 
     private IInteractable currentInteractable;
     private Rigidbody2D rb;
+    private GameController gameController;
+
+    private void Awake()
+    {
+        gameController = FindObjectOfType<GameController>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -30,12 +36,14 @@ public class PlayerMovement : MonoBehaviour
         {
             currentInteractable.Interact();
         }
-
-        
     }
 
     private void FixedUpdate()
     {
+        if (!gameController.CanPlayerMove())
+        {
+            return;
+        }
         rb.velocity = movementAction.action.ReadValue<Vector2>() * movementSpeed * Time.fixedDeltaTime;
     }
 

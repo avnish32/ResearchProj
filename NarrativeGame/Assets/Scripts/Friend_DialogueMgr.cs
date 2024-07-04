@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Friend_DialogueMgr : DialogueManager
 {
-    private void Awake()
+    new void Awake()
     {
-        
+        base.Awake();
     }
 
     // Start is called before the first frame update
@@ -25,6 +25,7 @@ public class Friend_DialogueMgr : DialogueManager
         frndHeyRespMap[RelationshipLevel.ACQUAINTANCE] = "Hi.";
         frndHeyRespMap[RelationshipLevel.FRIEND] = "Hi, how are you?";
         frndHey.rshipToResponseMap = frndHeyRespMap;
+        frndHey.dialogueAction = FrndHeyAction;
         dialogueList.Add(frndHey);
 
         Dialogue frndHelp = new Dialogue();
@@ -37,14 +38,22 @@ public class Friend_DialogueMgr : DialogueManager
         frndHelpRespMap[RelationshipLevel.ACQUAINTANCE] = "Sure, what do you need?";
         frndHelpRespMap[RelationshipLevel.FRIEND] = "Definitely, what is it?";
         frndHelp.rshipToResponseMap = frndHelpRespMap;
+        frndHelp.dialogueAction = FrndHelpAction;
         dialogueList.Add(frndHelp);
 
         base.Start();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FrndHeyAction()
     {
-        
+        Debug.Log("Frnd hey action performed.");
+        gameController.EnablePlayerMovement();
     }
+
+    private void FrndHelpAction()
+    {
+        Debug.Log("Frnd help action performed.");
+        gameController.EnablePlayerMovement();
+    }
+
 }

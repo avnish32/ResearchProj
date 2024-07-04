@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour, IInteractable
 {
-    
+    private UIController uiController;
+
+    private void Awake()
+    {
+        uiController = FindObjectOfType<UIController>();
+    }
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -32,5 +37,8 @@ public class NPC : MonoBehaviour, IInteractable
     {
         List<Dialogue> dialogues = GetComponent<DialogueManager>().GetDialogueList();
         PrintDialogues(dialogues);
+
+        uiController.DisplayPlayerDialoguePanel(dialogues);
+
     }
 }
