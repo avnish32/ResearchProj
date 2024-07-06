@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System;
 
 [System.Serializable]
-public struct Dialogue
+public struct SDialogue
 {
     public EDialogueID dialogueId;
     public List<RelationshipLevel> relationshipLevels;

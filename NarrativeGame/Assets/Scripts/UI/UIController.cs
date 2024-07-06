@@ -12,11 +12,9 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private NPCDialoguePanel npcDialoguePanel;
 
-    [SerializeField]
-    InputActionReference npcDialogueAdvanceAction;
-
     private GameController gameController;
     private GameObject instantiatedPlayerDialogueInnerPanel;
+    private bool npcDialogueAdvanced = false;
 
     private void Awake()
     {
@@ -36,11 +34,11 @@ public class UIController : MonoBehaviour
         
     }
 
-    public void DisplayPlayerDialoguePanel(List<Dialogue> dialogues)
+    public void DisplayPlayerDialoguePanel(List<SDialogue> dialogues)
     {
         instantiatedPlayerDialogueInnerPanel = Instantiate(playerDialogueInnerPanelPrefab);
         instantiatedPlayerDialogueInnerPanel.transform.SetParent(playerDialogueOuterPanel.transform, false);
-        foreach (Dialogue dialogue in dialogues)
+        foreach (SDialogue dialogue in dialogues)
         {
             GameObject newDialogueButton = Instantiate(dialogueButtonPrefab);
             newDialogueButton.GetComponent<PlayerDialogueButton>().Init(dialogue, this);
@@ -56,6 +54,11 @@ public class UIController : MonoBehaviour
         Destroy(instantiatedPlayerDialogueInnerPanel);
         instantiatedPlayerDialogueInnerPanel = null;
         playerDialogueOuterPanel.SetActive(false);
+    }
+
+    public void OnPlayerDialoguePanelClosed()
+    {
+        HidePlayerDialoguePanel();
         gameController.EnablePlayerMovement();
     }
 
@@ -69,26 +72,29 @@ public class UIController : MonoBehaviour
         npcDialoguePanel.gameObject.SetActive(false);
     }
 
-    private IEnumerator WaitForActionPerformed(InputAction action)
-    {
-        while (!action.WasReleasedThisFrame())
-        {
-            yield return null;
-        }
-    }
-
     private IEnumerator RunThroughNPCDialogues(string[] npcDialogues, Action dialogueEndAction)
     {
         for (int i = 0; i < npcDialogues.Length; i++)
         {
+            Debug.Log("i= " + i+" Frame: "+Time.frameCount);
             npcDialoguePanel.SetNPCDialogueText(npcDialogues[i]);
-            yield return StartCoroutine(WaitForActionPerformed(npcDialogueAdvanceAction.action));
+            npcDialogueAdvanced = false;
+
+            yield return new WaitUntil(() =>
+            {
+                return npcDialogueAdvanced;
+            });
         }
         HideNPCDialoguePanel();
         if (dialogueEndAction != null)
         {
             dialogueEndAction.Invoke();
         }
+    }
+
+    public void AdvanceNPCDialogue()
+    {
+        npcDialogueAdvanced = true;
     }
 
     /*

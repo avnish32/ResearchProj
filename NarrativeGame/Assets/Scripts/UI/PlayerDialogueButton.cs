@@ -9,7 +9,7 @@ public class PlayerDialogueButton : MonoBehaviour
     private TextMeshProUGUI buttonText;
 
     //private DialogueManager dialogueManager;
-    private Dialogue dialogue;
+    private SDialogue dialogue;
     private UIController uiController;
 
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class PlayerDialogueButton : MonoBehaviour
         
     }
 
-    public void Init(Dialogue dialogue, UIController uiController)
+    public void Init(SDialogue dialogue, UIController uiController)
     {
         this.dialogue = dialogue;
         this.uiController = uiController;

@@ -8,13 +8,18 @@ public class NPCDialoguePanel : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI npcDialogueText;
 
-    [SerializeField]
-    Animation spawnAnim;
+    private Animator animator;
+
+    private void Awake()
+    {
+        //Debug.Log("npc dialogue panel awake");
+        animator = GetComponent<Animator>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Debug.Log("npc dialogue panel start");
     }
 
     // Update is called once per frame
@@ -25,10 +30,9 @@ public class NPCDialoguePanel : MonoBehaviour
 
     private void OnEnable()
     {
-        if (spawnAnim != null)
-        {
-            spawnAnim.Play();
-        }
+        //Debug.Log("npc dialogue panel enabled");
+        //juice
+        //animator.Play("Spawn");
     }
 
     public void SetNPCDialogueText(string dialogueText)

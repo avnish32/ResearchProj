@@ -1,1 +1,1 @@
-public enum EDialogueID { FRHEY, FRHELP };
+public enum EDialogueID { FRHEY, FRHELP, FRRUDE, FRCANKNOWME };

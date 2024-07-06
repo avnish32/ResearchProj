@@ -23,10 +23,10 @@ public class NPC : MonoBehaviour, IInteractable
         
     }
 
-    private void PrintDialogues(List<Dialogue> dialogues)
+    private void PrintDialogues(List<SDialogue> dialogues)
     {
         string dialogueString = "";
-        foreach (Dialogue dialogue in dialogues)
+        foreach (SDialogue dialogue in dialogues)
         {
             dialogueString += dialogue.dialogueText + "\n";
         }
@@ -35,7 +35,7 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        List<Dialogue> dialogues = GetComponent<DialogueManager>().GetDialogueList();
+        List<SDialogue> dialogues = GetComponent<DialogueManager>().GetDialogueListBasedOnRship();
         //PrintDialogues(dialogues);
 
         uiController.DisplayPlayerDialoguePanel(dialogues);

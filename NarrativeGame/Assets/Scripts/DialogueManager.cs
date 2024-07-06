@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
-    protected List<Dialogue> dialogueList;
+    protected List<SDialogue> dialogueList;
     private RelationshipLevel rshipWLead;
-    private Dictionary<EDialogueID, Dialogue> dialogueIdsToDialogueMap;
+    private Dictionary<EDialogueID, SDialogue> dialogueIdsToDialogueMap;
     private Dictionary<RelationshipLevel, List<EDialogueID>> rshipLevelToDialogueIdsMap;
 
     protected GameController gameController;
@@ -22,13 +22,17 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
-        rshipWLead = RelationshipLevel.ACQUAINTANCE;
-        dialogueIdsToDialogueMap = new Dictionary<EDialogueID, Dialogue>();
+        rshipWLead = RelationshipLevel.NEUTRAL;
+        dialogueIdsToDialogueMap = new Dictionary<EDialogueID, SDialogue>();
         rshipLevelToDialogueIdsMap = new Dictionary<RelationshipLevel, List<EDialogueID>>();
 
         foreach (var dialogue in dialogueList)
         {
             dialogueIdsToDialogueMap[dialogue.dialogueId] = dialogue;
+            if (dialogue.relationshipLevels == null)
+            {
+                continue;
+            }
 
             foreach (var rshipLevel in dialogue.relationshipLevels)
             {
@@ -38,7 +42,6 @@ public class DialogueManager : MonoBehaviour
                 }
                 rshipLevelToDialogueIdsMap[rshipLevel].Add(dialogue.dialogueId);
             }
-            
         }
     }
 
@@ -58,9 +61,19 @@ public class DialogueManager : MonoBehaviour
         rshipToActionMap[rshipWLead].Invoke();
     }
 
-    public List<Dialogue> GetDialogueList()
+    protected List<SDialogue> GetDialogueListFromId(List<EDialogueID> dialogueIds)
     {
-        List<Dialogue> dialogueList = new List<Dialogue>();
+        List<SDialogue> dialogueList = new List<SDialogue>();
+        foreach (var dialogueId in dialogueIds)
+        {
+            dialogueList.Add(dialogueIdsToDialogueMap[dialogueId]);
+        }
+        return dialogueList;
+    }
+
+    public List<SDialogue> GetDialogueListBasedOnRship()
+    {
+        List<SDialogue> dialogueList = new List<SDialogue>();
         List<EDialogueID> dialogueIds = rshipLevelToDialogueIdsMap[rshipWLead];
 
         foreach (var dialogueId in dialogueIds)
