@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DialogueButton : MonoBehaviour
+public class PlayerDialogueButton : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI buttonText;

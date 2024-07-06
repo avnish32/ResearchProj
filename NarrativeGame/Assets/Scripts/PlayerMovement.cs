@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    private InputActionReference movementAction;
+    private InputActionReference movementAction, objectInteractAction;
 
 
     [SerializeField]
@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
+        if (objectInteractAction.action.WasReleasedThisFrame() && currentInteractable != null)
         {
             currentInteractable.Interact();
         }

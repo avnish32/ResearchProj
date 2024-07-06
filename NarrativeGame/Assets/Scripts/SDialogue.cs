@@ -7,7 +7,7 @@ public struct Dialogue
     public EDialogueID dialogueId;
     public List<RelationshipLevel> relationshipLevels;
     public string dialogueText;
-    public Dictionary<RelationshipLevel, string> rshipToResponseMap;
+    public Dictionary<RelationshipLevel, Action> rshipToResponseMap;
     public List<EDialogueID> nextDialogueIds;
     public Action dialogueAction;
 };

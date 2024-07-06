@@ -36,7 +36,7 @@ public class NPC : MonoBehaviour, IInteractable
     public void Interact()
     {
         List<Dialogue> dialogues = GetComponent<DialogueManager>().GetDialogueList();
-        PrintDialogues(dialogues);
+        //PrintDialogues(dialogues);
 
         uiController.DisplayPlayerDialoguePanel(dialogues);
 

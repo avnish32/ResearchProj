@@ -11,16 +11,18 @@ public class DialogueManager : MonoBehaviour
     private Dictionary<RelationshipLevel, List<EDialogueID>> rshipLevelToDialogueIdsMap;
 
     protected GameController gameController;
+    protected UIController uiController;
 
     protected void Awake()
     {
         gameController = FindObjectOfType<GameController>();
+        uiController = FindObjectOfType<UIController>();
     }
 
     // Start is called before the first frame update
     protected void Start()
     {
-        rshipWLead = RelationshipLevel.NEUTRAL;
+        rshipWLead = RelationshipLevel.ACQUAINTANCE;
         dialogueIdsToDialogueMap = new Dictionary<EDialogueID, Dialogue>();
         rshipLevelToDialogueIdsMap = new Dictionary<RelationshipLevel, List<EDialogueID>>();
 
@@ -44,6 +46,16 @@ public class DialogueManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    protected void InvokePlayerDialogueAction(Dictionary<RelationshipLevel, Action> rshipToActionMap)
+    {
+        if (!rshipToActionMap.ContainsKey(rshipWLead))
+        {
+            Debug.LogError("ERROR: No action defined for this dialogue at " + rshipWLead + " rship.");
+            return;
+        }
+        rshipToActionMap[rshipWLead].Invoke();
     }
 
     public List<Dialogue> GetDialogueList()
