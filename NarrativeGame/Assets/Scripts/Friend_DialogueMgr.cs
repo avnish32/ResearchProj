@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+using static Unity.Burst.Intrinsics.X86;
 
 public class Friend_DialogueMgr : DialogueManager
 {
@@ -71,19 +74,76 @@ public class Friend_DialogueMgr : DialogueManager
 
     private void FrndHeyAcqAction()
     {
+        //This is when they are acquaintances i.e. bully has not been mentioned by Frnd.
         string[] dialogueList = {
-            "Hi Jared, how are you?",
-            "I hope things are good with you.",
-            "How's your job hunt going?"
+            "Hi Jared, nice to run into you again."
         };
 
-        Action frndHeyAcqEndAction = () =>
+        uiController.StartNPCDialogues(dialogueList, () =>
         {
-            Debug.Log("Action at the end of friend hey acquaintance NPC Dialogue.");
-            gameController.EnablePlayerMovement();
+            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.FRCANTWAITTONAP, EDialogueID.FRNOWTHATWEKNOW });
+            uiController.DisplayPlayerDialoguePanel(playerDialogueList);
+        });
+    }
+
+    private void FrndCantBelieveUFellAcqAction()
+    {
+        string[] dialogueList = {
+            "*Almost* fell off my chair.",
+            "You know what, I’m not telling you anything else if you can't stop making fun of it."
         };
 
-        uiController.StartNPCDialogues(dialogueList, frndHeyAcqEndAction);
+        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+    }
+
+    private void FrndIHandledITBullyMentionedAction()
+    {
+        if (stateWPlayer == PlayerStates.BULLYDEFEATED)
+        {
+            string[] dialogueList = { 
+                "Oh, thank you so much! I can rest easy now.",
+                "Don’t worry about your application, I’ll make sure to talk to the manager. See ya!"
+            };
+
+            uiController.StartNPCDialogues(dialogueList, () =>
+            {
+                //TODO next level
+            });
+        } else
+        {
+            string[] dialogueList = { "Really?"};
+
+            uiController.StartNPCDialogues(dialogueList, () =>
+            {
+                var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.FRLYINGABTBULLY, EDialogueID.FRYESREALLYHANDLEDBULLY });
+                uiController.DisplayPlayerDialoguePanel(playerDialogueList);
+            });
+        }
+    }
+
+    private void FrndStupidBullyMentionedAction()
+    {
+
+        if (stateWPlayer == PlayerStates.BULLYDEFEATED)
+        {
+            string[] dialogueList = {
+                "Wow, I didn’t know you were so full of yourself.",
+                "I don’t think I’ll be recommending someone like you to my manager.",
+                "Good luck with your application, Jared."
+            };
+
+            uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        }
+        else
+        {
+            string[] dialogueList = { "Really?" };
+
+            uiController.StartNPCDialogues(dialogueList, () =>
+            {
+                var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.FRLYINGABTBULLY, EDialogueID.FRYESREALLYHANDLEDBULLY });
+                uiController.DisplayPlayerDialoguePanel(playerDialogueList);
+            });
+        }
     }
 
     private void FrndNeedUrHelpNeutralAction()
@@ -150,7 +210,12 @@ public class Friend_DialogueMgr : DialogueManager
             "I know, right?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartNPCDialogues(dialogueList, () =>
+        {
+            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> 
+            { EDialogueID.FRIMJARED, EDialogueID.FRWHAT2SAYNEXT});
+            uiController.DisplayPlayerDialoguePanel(playerDialogueList);
+        });
     }
 
     private void FrndImJaredAction()
@@ -163,7 +228,8 @@ public class Friend_DialogueMgr : DialogueManager
         {
             stateWPlayer = PlayerStates.ACQUAINTANCE;
             //TODO state change effects
-            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.FRCANUNDERSTAND, EDialogueID.FRBITMUCH });
+            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> 
+            { EDialogueID.FRCANTWAITTONAP, EDialogueID.FRNOWTHATWEKNOW });
             uiController.DisplayPlayerDialoguePanel(playerDialogueList);
 
         });
@@ -184,7 +250,13 @@ public class Friend_DialogueMgr : DialogueManager
             "Lucky you. I couldn’t even if I wanted. I’ve got work after this."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartNPCDialogues(dialogueList, () =>
+        {
+            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
+            { EDialogueID.FRWHEREDOUWORK, EDialogueID.FRATLETTINGSRIGHT });
+
+            uiController.DisplayPlayerDialoguePanel(playerDialogueList);
+        });
     }
 
     private void FrndNowThatWeKnowAction()
@@ -203,7 +275,13 @@ public class Friend_DialogueMgr : DialogueManager
             "AB&C Lettings. Have you heard of them?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartNPCDialogues(dialogueList, () =>
+        {
+            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
+            { EDialogueID.FRTHEYBEHINDMYDAD, EDialogueID.FRAPPLIEDMYSELF });
+
+            uiController.DisplayPlayerDialoguePanel(playerDialogueList);
+        });
     }
 
     private void FrndAtLettingsRightAction()
@@ -222,7 +300,13 @@ public class Friend_DialogueMgr : DialogueManager
             "Really? Have you heard back?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartNPCDialogues(dialogueList, () =>
+        {
+            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
+            { EDialogueID.FRITSBEENAWEEK, EDialogueID.FRWUDITALK2U });
+
+            uiController.DisplayPlayerDialoguePanel(playerDialogueList);
+        });
     }
 
     private void FrndTheyBehindMyDadAction()
@@ -242,6 +326,22 @@ public class Friend_DialogueMgr : DialogueManager
             "Unless they have multiple candidates and are having a hard time deciding."
         };
 
+        uiController.StartNPCDialogues(dialogueList, () =>
+        {
+            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
+            { EDialogueID.FRUKNOWALOT, EDialogueID.FRAPPHIGHLIGHT });
+
+            uiController.DisplayPlayerDialoguePanel(playerDialogueList);
+        });
+    }
+
+    private void FrndWudITalk2UAction()
+    {
+        string[] dialogueList = {
+            "Woah, easy. I was just trying to be friendly, jeez.",
+            "Guess I hit a nerve there."
+        };
+
         uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
     }
 
@@ -252,7 +352,13 @@ public class Friend_DialogueMgr : DialogueManager
             "I can put in a good word for you with the manager."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartNPCDialogues(dialogueList, () =>
+        {
+            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
+            { EDialogueID.FRWUDBHELP, EDialogueID.FRTOOKULONGENUF });
+
+            uiController.DisplayPlayerDialoguePanel(playerDialogueList);
+        });
     }
 
     private void FrndUKnowALotAction()
@@ -271,7 +377,13 @@ public class Friend_DialogueMgr : DialogueManager
             "There’s something bothering me, and I might forget to speak with the manager because of that."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartNPCDialogues(dialogueList, () =>
+        {
+            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
+            { EDialogueID.FRONETRACKMIND, EDialogueID.FRMAYBEICANHELP });
+
+            uiController.DisplayPlayerDialoguePanel(playerDialogueList);
+        });
     }
 
     private void FrndTookULongEnufAction()
@@ -290,24 +402,63 @@ public class Friend_DialogueMgr : DialogueManager
         string[] dialogueList = {
             "There’s this big bully who’s always picking on my sister.",
             "We’ve complained to the teachers about him but it’s no use.",
-            "Do you think you could get him to stop harassing my sis? "
+            "Do you think you could get him to stop harassing my sis?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartNPCDialogues(dialogueList, () =>
+        {
+            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
+            { EDialogueID.FRWILLTALK2BULLY, EDialogueID.FRWONTTALK2BULLY });
+
+            uiController.DisplayPlayerDialoguePanel(playerDialogueList);
+        });
     }
 
-    private void FrndWudITalk2UAction()
+    private void FrndOneTrackMindAction()
     {
         string[] dialogueList = {
-            "Woah, easy. I was just trying to be friendly, jeez.",
-            "Guess I hit a nerve there."
+            "*gapes in surprise* Did you just say that?",
+            "If you’re such a hotshot multi-tasker, why not just go and brag about it at AB&C yourself, huh?"
         };
 
         uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
     }
+
+    private void FrndWillTalk2BullyAction()
+    {
+        stateWPlayer = PlayerStates.FRNDBULLYMENTIONED;
+        gameController.EnablePlayerMovement();
+    }
+
+    private void FrndWontTalk2BullyAction()
+    {
+        string[] dialogueList = {
+            "Suit yourself."
+        };
+
+        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+    }
+
+    private void FrndLyingAbtBullyAction()
+    {
+        gameController.EnablePlayerMovement();
+    }
+
+    private void FrndYesReallyHandledBullyAction()
+    {
+        string[] dialogueList = {
+            "I know you’re lying; I can tell what you're trying to do.",
+            "I cannot recommend a fraud like you to my manager."
+        };
+
+        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+    }
+
+
 
     private void PopulateDialogueList()
     {
+        //######## LEAF DIALOGUES ############
         {
             SDialogue frndHey = new SDialogue();
             frndHey.dialogueText = "Hey";
@@ -342,6 +493,41 @@ public class Friend_DialogueMgr : DialogueManager
             frndDontUWorkAtLettings.rshipToResponseMap = frndDontUWorkAtLettingsRespMap;
             dialogueList.Add(frndDontUWorkAtLettings);
         }
+
+        {
+            SDialogue frndCantBelieveUFell = new SDialogue();
+            frndCantBelieveUFell.dialogueText = "Still can’t believe you fell off your chair!";
+            frndCantBelieveUFell.dialogueId = EDialogueID.FRCANTBELIEVEUFELL;
+            frndCantBelieveUFell.playerStates = new List<PlayerStates> { PlayerStates.ACQUAINTANCE };
+            Dictionary<PlayerStates, Action> frndCantBelieveUFellRespMap = new Dictionary<PlayerStates, Action>();
+            frndCantBelieveUFellRespMap[PlayerStates.ACQUAINTANCE] = FrndCantBelieveUFellAcqAction;
+            frndCantBelieveUFell.rshipToResponseMap = frndCantBelieveUFellRespMap;
+            dialogueList.Add(frndCantBelieveUFell);
+        }
+
+        {
+            SDialogue frndIHandledIt = new SDialogue();
+            frndIHandledIt.dialogueText = "I handled it; he won’t bother your sister anymore.";
+            frndIHandledIt.dialogueId = EDialogueID.FRIHANDLEDIT;
+            frndIHandledIt.playerStates = new List<PlayerStates> { PlayerStates.FRNDBULLYMENTIONED };
+            Dictionary<PlayerStates, Action> frndIHandledItRespMap = new Dictionary<PlayerStates, Action>();
+            frndIHandledItRespMap[PlayerStates.FRNDBULLYMENTIONED] = FrndIHandledITBullyMentionedAction;
+            frndIHandledIt.rshipToResponseMap = frndIHandledItRespMap;
+            dialogueList.Add(frndIHandledIt);
+        }
+
+        {
+            SDialogue frndStupidBully = new SDialogue();
+            frndStupidBully.dialogueText = "That stupid bully was no match for me, ha! I made mincemeat out of him!";
+            frndStupidBully.dialogueId = EDialogueID.FRSTUPIDBULLY;
+            frndStupidBully.playerStates = new List<PlayerStates> { PlayerStates.FRNDBULLYMENTIONED };
+            Dictionary<PlayerStates, Action> frndIHandledItRespMap = new Dictionary<PlayerStates, Action>();
+            frndIHandledItRespMap[PlayerStates.FRNDBULLYMENTIONED] = FrndStupidBullyMentionedAction;
+            frndStupidBully.rshipToResponseMap = frndIHandledItRespMap;
+            dialogueList.Add(frndStupidBully);
+        }
+
+        //######## LEAF DIALOGUES END ############
 
         {
             SDialogue frndNeedUrHelp = new SDialogue();
@@ -551,6 +737,56 @@ public class Friend_DialogueMgr : DialogueManager
             frndMaybICanHelpRespMap[PlayerStates.ACQUAINTANCE] = FrndMaybeICanHelpAction;
             frndMaybICanHelp.rshipToResponseMap = frndMaybICanHelpRespMap;
             dialogueList.Add(frndMaybICanHelp);
+        }
+
+        {
+            SDialogue frndOneTrackMind = new SDialogue();
+            Dictionary<PlayerStates, Action> frndOneTrackMindRespMap = new Dictionary<PlayerStates, Action>();
+            frndOneTrackMind.dialogueText = "Seriously? How one-track is your mind?";
+            frndOneTrackMind.dialogueId = EDialogueID.FRONETRACKMIND;
+            frndOneTrackMindRespMap[PlayerStates.ACQUAINTANCE] = FrndOneTrackMindAction;
+            frndOneTrackMind.rshipToResponseMap = frndOneTrackMindRespMap;
+            dialogueList.Add(frndOneTrackMind);
+        }
+
+        {
+            SDialogue frndWillTalkToBully = new SDialogue();
+            Dictionary<PlayerStates, Action> frndWillTalkToBullyRespMap = new Dictionary<PlayerStates, Action>();
+            frndWillTalkToBully.dialogueText = "Yeah, yeah, definitely. Just wait for me here, I’ll go talk to him.";
+            frndWillTalkToBully.dialogueId = EDialogueID.FRWILLTALK2BULLY;
+            frndWillTalkToBullyRespMap[PlayerStates.ACQUAINTANCE] = FrndWillTalk2BullyAction;
+            frndWillTalkToBully.rshipToResponseMap = frndWillTalkToBullyRespMap;
+            dialogueList.Add(frndWillTalkToBully);
+        }
+
+        {
+            SDialogue frndWontTalkToBully = new SDialogue();
+            Dictionary<PlayerStates, Action> frndWontTalkToBullyRespMap = new Dictionary<PlayerStates, Action>();
+            frndWontTalkToBully.dialogueText = "Oh, uh...no, I think I’ll prioritise my physical well-being and stay away from such risky engagements.";
+            frndWontTalkToBully.dialogueId = EDialogueID.FRWONTTALK2BULLY;
+            frndWontTalkToBullyRespMap[PlayerStates.ACQUAINTANCE] = FrndWontTalk2BullyAction;
+            frndWontTalkToBully.rshipToResponseMap = frndWontTalkToBullyRespMap;
+            dialogueList.Add(frndWontTalkToBully);
+        }
+
+        {
+            SDialogue frndLyingAbtBully = new SDialogue();
+            Dictionary<PlayerStates, Action> frndLyingAbtBullyRespMap = new Dictionary<PlayerStates, Action>();
+            frndLyingAbtBully.dialogueText = "No, I’m lying, I’m sorry. I’ll go talk to him right away.";
+            frndLyingAbtBully.dialogueId = EDialogueID.FRLYINGABTBULLY;
+            frndLyingAbtBullyRespMap[PlayerStates.FRNDBULLYMENTIONED] = FrndLyingAbtBullyAction;
+            frndLyingAbtBully.rshipToResponseMap = frndLyingAbtBullyRespMap;
+            dialogueList.Add(frndLyingAbtBully);
+        }
+
+        {
+            SDialogue frndYesReallyHandledBully = new SDialogue();
+            Dictionary<PlayerStates, Action> frndYesReallyHandledBullyRespMap = new Dictionary<PlayerStates, Action>();
+            frndYesReallyHandledBully.dialogueText = "Yes.";
+            frndYesReallyHandledBully.dialogueId = EDialogueID.FRYESREALLYHANDLEDBULLY;
+            frndYesReallyHandledBullyRespMap[PlayerStates.FRNDBULLYMENTIONED] = FrndYesReallyHandledBullyAction;
+            frndYesReallyHandledBully.rshipToResponseMap = frndYesReallyHandledBullyRespMap;
+            dialogueList.Add(frndYesReallyHandledBully);
         }
 
 
