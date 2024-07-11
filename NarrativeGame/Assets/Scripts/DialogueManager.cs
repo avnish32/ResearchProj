@@ -6,9 +6,9 @@ using UnityEngine;
 public class DialogueManager : MonoBehaviour
 {
     protected List<SDialogue> dialogueList;
-    private RelationshipLevel rshipWLead;
+    protected PlayerStates stateWPlayer;
     private Dictionary<EDialogueID, SDialogue> dialogueIdsToDialogueMap;
-    private Dictionary<RelationshipLevel, List<EDialogueID>> rshipLevelToDialogueIdsMap;
+    private Dictionary<PlayerStates, List<EDialogueID>> rshipLevelToDialogueIdsMap;
 
     protected GameController gameController;
     protected UIController uiController;
@@ -22,19 +22,19 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
-        rshipWLead = RelationshipLevel.NEUTRAL;
+        stateWPlayer = PlayerStates.NEUTRAL;
         dialogueIdsToDialogueMap = new Dictionary<EDialogueID, SDialogue>();
-        rshipLevelToDialogueIdsMap = new Dictionary<RelationshipLevel, List<EDialogueID>>();
+        rshipLevelToDialogueIdsMap = new Dictionary<PlayerStates, List<EDialogueID>>();
 
         foreach (var dialogue in dialogueList)
         {
             dialogueIdsToDialogueMap[dialogue.dialogueId] = dialogue;
-            if (dialogue.relationshipLevels == null)
+            if (dialogue.playerStates == null)
             {
                 continue;
             }
 
-            foreach (var rshipLevel in dialogue.relationshipLevels)
+            foreach (var rshipLevel in dialogue.playerStates)
             {
                 if (!rshipLevelToDialogueIdsMap.ContainsKey(rshipLevel))
                 {
@@ -51,14 +51,14 @@ public class DialogueManager : MonoBehaviour
         
     }
 
-    protected void InvokePlayerDialogueAction(Dictionary<RelationshipLevel, Action> rshipToActionMap)
+    protected void InvokePlayerDialogueAction(Dictionary<PlayerStates, Action> rshipToActionMap)
     {
-        if (!rshipToActionMap.ContainsKey(rshipWLead))
+        if (!rshipToActionMap.ContainsKey(stateWPlayer))
         {
-            Debug.LogError("ERROR: No action defined for this dialogue at " + rshipWLead + " rship.");
+            Debug.LogError("ERROR: No action defined for this dialogue at " + stateWPlayer + " rship.");
             return;
         }
-        rshipToActionMap[rshipWLead].Invoke();
+        rshipToActionMap[stateWPlayer].Invoke();
     }
 
     protected List<SDialogue> GetDialogueListFromId(List<EDialogueID> dialogueIds)
@@ -74,7 +74,7 @@ public class DialogueManager : MonoBehaviour
     public List<SDialogue> GetDialogueListBasedOnRship()
     {
         List<SDialogue> dialogueList = new List<SDialogue>();
-        List<EDialogueID> dialogueIds = rshipLevelToDialogueIdsMap[rshipWLead];
+        List<EDialogueID> dialogueIds = rshipLevelToDialogueIdsMap[stateWPlayer];
 
         foreach (var dialogueId in dialogueIds)
         {

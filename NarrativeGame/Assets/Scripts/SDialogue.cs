@@ -5,9 +5,9 @@ using System;
 public struct SDialogue
 {
     public EDialogueID dialogueId;
-    public List<RelationshipLevel> relationshipLevels;
+    public List<PlayerStates> playerStates;
     public string dialogueText;
-    public Dictionary<RelationshipLevel, Action> rshipToResponseMap;
+    public Dictionary<PlayerStates, Action> rshipToResponseMap;
     public List<EDialogueID> nextDialogueIds;
     public Action dialogueAction;
 };

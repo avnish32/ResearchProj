@@ -1,4 +1,4 @@
-public enum RelationshipLevel
+public enum PlayerStates
 {
     NEUTRAL, ACQUAINTANCE, FRIEND
 };
