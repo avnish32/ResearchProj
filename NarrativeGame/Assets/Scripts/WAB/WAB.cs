@@ -14,12 +14,12 @@ public class WAB : MonoBehaviour
     BullyFaceButton bullyFaceButtonPrefab;
 
     [SerializeField]
-    TextMeshProUGUI scoreText, livesText;
+    TextMeshProUGUI scoreText, livesText, startButtonText;
 
     [SerializeField]
     RectTransform slotParentBehind, slotParentFront, slot;
 
-    //minSpawnWait >= maxLifetime
+    //minSpawnWait >= maxLifetime?
     [SerializeField]
     private float minSpawnWait, maxSpawnWait, minBullyFaceLifetime, maxBullyFaceLifetime;
 
@@ -33,28 +33,27 @@ public class WAB : MonoBehaviour
         livesText.text = string.Format("Lives left: {0}", MAX_MISSES - miss);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private IEnumerator SpawnBullyFace()
     {
         while (shouldSpawn)
         {
+            yield return new WaitForSeconds(UnityEngine.Random.Range(minSpawnWait, maxSpawnWait));
+
             RectTransform randomSpawnPt = spawnPts[UnityEngine.Random.Range(0, spawnPts.Length)];
             BullyFaceButton instantiatedBullyFace = Instantiate(bullyFaceButtonPrefab, randomSpawnPt, false);
             instantiatedBullyFace.Init(UnityEngine.Random.Range(minBullyFaceLifetime, maxBullyFaceLifetime), this,
                 slotParentBehind, slotParentFront, slot);
-            maxBullyFaceLifetime = Mathf.Clamp(maxBullyFaceLifetime-0.2f, 0.5f, maxBullyFaceLifetime);
-
-            yield return new WaitForSeconds(UnityEngine.Random.Range(minSpawnWait, maxSpawnWait));
+            maxBullyFaceLifetime = Mathf.Clamp(maxBullyFaceLifetime-0.1f, 0.35f, maxBullyFaceLifetime);
         }
     }
 
     public void StartSpawning()
     {
+        if (shouldSpawn)
+        {
+            return;
+        }
+        startButtonText.text = "...";
         shouldSpawn = true;
         StartCoroutine(SpawnBullyFace());
     }
@@ -70,6 +69,7 @@ public class WAB : MonoBehaviour
         {
             StopSpawning();
             Debug.Log("WAB won.");
+            FindObjectOfType<Bully_DialogueMgr>().OnBullyDefeated();
             Destroy(gameObject);
         }
         scoreText.text = string.Format("Score: {0}", score);
@@ -82,8 +82,10 @@ public class WAB : MonoBehaviour
         {
             StopSpawning();
             Debug.Log("WAB lost.");
-            Destroy(gameObject);
+            FindObjectOfType<Bully_DialogueMgr>().OnBullyWon();
+            Destroy(gameObject, 2f);
         }
-        livesText.text = string.Format("Lives left: {0}", MAX_MISSES - miss);
+        livesText.text = string.Format("Lives left: {0}", 
+            Mathf.Clamp(MAX_MISSES - miss, 0, MAX_MISSES));
     }
 }

@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using UnityEngine;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
-using static Unity.Burst.Intrinsics.X86;
 
 public class Friend_DialogueMgr : DialogueManager
 {
+    [SerializeField]
+    Bully_DialogueMgr bully;
+
     new void Awake()
     {
         base.Awake();
@@ -98,7 +98,7 @@ public class Friend_DialogueMgr : DialogueManager
 
     private void FrndIHandledITBullyMentionedAction()
     {
-        if (stateWPlayer == PlayerStates.BULLYDEFEATED)
+        if (bully.GetStateWPlayer() == PlayerStates.BULLYDEFEATED)
         {
             string[] dialogueList = { 
                 "Oh, thank you so much! I can rest easy now.",
@@ -124,7 +124,7 @@ public class Friend_DialogueMgr : DialogueManager
     private void FrndStupidBullyMentionedAction()
     {
 
-        if (stateWPlayer == PlayerStates.BULLYDEFEATED)
+        if (bully.GetStateWPlayer() == PlayerStates.BULLYDEFEATED)
         {
             string[] dialogueList = {
                 "Wow, I didn’t know you were so full of yourself.",
@@ -154,7 +154,8 @@ public class Friend_DialogueMgr : DialogueManager
 
         uiController.StartNPCDialogues(dialogueList, () =>
         {
-            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.FRCANUREFERME, EDialogueID.FRYRUHOSTILE});
+            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> 
+            { EDialogueID.FRCANUREFERME, EDialogueID.FRYRUHOSTILE});
             uiController.DisplayPlayerDialoguePanel(playerDialogueList);
         });
     }
@@ -190,7 +191,8 @@ public class Friend_DialogueMgr : DialogueManager
 
         uiController.StartNPCDialogues(dialogueList, () =>
         {
-            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.FRCANUNDERSTAND, EDialogueID.FRBITMUCH});
+            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> 
+            { EDialogueID.FRCANUNDERSTAND, EDialogueID.FRBITMUCH});
             uiController.DisplayPlayerDialoguePanel(playerDialogueList);
         });
     }
@@ -253,7 +255,7 @@ public class Friend_DialogueMgr : DialogueManager
         uiController.StartNPCDialogues(dialogueList, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
-            { EDialogueID.FRWHEREDOUWORK, EDialogueID.FRATLETTINGSRIGHT });
+            { EDialogueID.FRATLETTINGSRIGHT, EDialogueID.FRWHEREDOUWORK });
 
             uiController.DisplayPlayerDialoguePanel(playerDialogueList);
         });
@@ -427,6 +429,7 @@ public class Friend_DialogueMgr : DialogueManager
     private void FrndWillTalk2BullyAction()
     {
         stateWPlayer = PlayerStates.FRNDBULLYMENTIONED;
+        bully.SetStateWPlayer(PlayerStates.FRNDBULLYMENTIONED);
         gameController.EnablePlayerMovement();
     }
 

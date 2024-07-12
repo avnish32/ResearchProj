@@ -47,6 +47,31 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = movementAction.action.ReadValue<Vector2>() * movementSpeed * Time.fixedDeltaTime;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision != null)
+        {
+            IInteractable interactable = collision.gameObject.GetComponent<IInteractable>();
+            if (interactable != null)
+            {
+                currentInteractable = interactable;
+            }
+
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision != null)
+        {
+            IInteractable interactable = collision.gameObject.GetComponent<IInteractable>();
+            if (interactable != null)
+            {
+                currentInteractable = null;
+            }
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision != null)

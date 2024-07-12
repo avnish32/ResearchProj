@@ -491,13 +491,14 @@ MonoBehaviour:
   bullyFaceButtonPrefab: {fileID: 8977574090012913331, guid: 316967846cbf405439024c57e427f379, type: 3}
   scoreText: {fileID: 1142443994652962920}
   livesText: {fileID: 7094055208369786287}
+  startButtonText: {fileID: 7913360009494656876}
   slotParentBehind: {fileID: 2822744667720964974}
   slotParentFront: {fileID: 2396987476601684542}
   slot: {fileID: 5515308530073994423}
-  minSpawnWait: 2
+  minSpawnWait: 1
   maxSpawnWait: 3
-  minBullyFaceLifetime: 1
-  maxBullyFaceLifetime: 1
+  minBullyFaceLifetime: 0.5
+  maxBullyFaceLifetime: 0.75
 --- !u!1 &2116221511570559708
 GameObject:
   m_ObjectHideFlags: 0
