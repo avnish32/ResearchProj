@@ -86,7 +86,7 @@ public class Friend_DialogueMgr : DialogueManager
         });
     }
 
-    private void FrndCantBelieveUFellAcqAction()
+    private void FrndCantBelieveUFellAction()
     {
         string[] dialogueList = {
             "*Almost* fell off my chair.",
@@ -94,6 +94,21 @@ public class Friend_DialogueMgr : DialogueManager
         };
 
         uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+    }
+
+    private void FrndWantMe2Talk2RogerAction()
+    {
+        string[] dialogueList = {
+            "Yep, think you can manage?"
+        };
+
+        uiController.StartNPCDialogues(dialogueList, () =>
+        {
+            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
+            { EDialogueID.FRWILLTALK2BULLY, EDialogueID.FRWONTTALK2BULLY });
+
+            uiController.DisplayPlayerDialoguePanel(playerDialogueList);
+        });
     }
 
     private void FrndIHandledITBullyMentionedAction()
@@ -402,10 +417,11 @@ public class Friend_DialogueMgr : DialogueManager
     private void FrndMaybeICanHelpAction()
     {
         string[] dialogueList = {
-            "There’s this big bully who’s always picking on my sister.",
+            "There’s this big bully, Roger, who’s always picking on my sister.",
             "We’ve complained to the teachers about him but it’s no use.",
             "Do you think you could get him to stop harassing my sis?"
         };
+        stateWPlayer = PlayerStates.FRNDBULLYMENTIONED;
 
         uiController.StartNPCDialogues(dialogueList, () =>
         {
@@ -428,8 +444,8 @@ public class Friend_DialogueMgr : DialogueManager
 
     private void FrndWillTalk2BullyAction()
     {
-        stateWPlayer = PlayerStates.FRNDBULLYMENTIONED;
-        bully.SetStateWPlayer(PlayerStates.FRNDBULLYMENTIONED);
+        stateWPlayer = PlayerStates.WILLTALK2BULLY;
+        bully.SetStateWPlayer(PlayerStates.WILLTALK2BULLY);
         gameController.EnablePlayerMovement();
     }
 
@@ -499,22 +515,35 @@ public class Friend_DialogueMgr : DialogueManager
 
         {
             SDialogue frndCantBelieveUFell = new SDialogue();
-            frndCantBelieveUFell.dialogueText = "Still can’t believe you fell off your chair!";
+            frndCantBelieveUFell.dialogueText = "Can’t believe you fell off your chair!";
             frndCantBelieveUFell.dialogueId = EDialogueID.FRCANTBELIEVEUFELL;
-            frndCantBelieveUFell.playerStates = new List<PlayerStates> { PlayerStates.ACQUAINTANCE };
+            frndCantBelieveUFell.playerStates = new List<PlayerStates> 
+            { PlayerStates.ACQUAINTANCE, PlayerStates.FRNDBULLYMENTIONED };
             Dictionary<PlayerStates, Action> frndCantBelieveUFellRespMap = new Dictionary<PlayerStates, Action>();
-            frndCantBelieveUFellRespMap[PlayerStates.ACQUAINTANCE] = FrndCantBelieveUFellAcqAction;
+            frndCantBelieveUFellRespMap[PlayerStates.ACQUAINTANCE] = FrndCantBelieveUFellAction;
+            frndCantBelieveUFellRespMap[PlayerStates.FRNDBULLYMENTIONED] = FrndCantBelieveUFellAction;
             frndCantBelieveUFell.rshipToResponseMap = frndCantBelieveUFellRespMap;
             dialogueList.Add(frndCantBelieveUFell);
+        }
+
+        {
+            SDialogue frndStillTalk2Bully = new SDialogue();
+            frndStillTalk2Bully.dialogueText = "Still want me to talk to Roger?";
+            frndStillTalk2Bully.dialogueId = EDialogueID.FRSTILLTALK2ROGER;
+            frndStillTalk2Bully.playerStates = new List<PlayerStates> { PlayerStates.FRNDBULLYMENTIONED };
+            Dictionary<PlayerStates, Action> frndStillTalk2BullyRespMap = new Dictionary<PlayerStates, Action>();
+            frndStillTalk2BullyRespMap[PlayerStates.FRNDBULLYMENTIONED] = FrndWantMe2Talk2RogerAction;
+            frndStillTalk2Bully.rshipToResponseMap = frndStillTalk2BullyRespMap;
+            dialogueList.Add(frndStillTalk2Bully);
         }
 
         {
             SDialogue frndIHandledIt = new SDialogue();
             frndIHandledIt.dialogueText = "I handled it; he won’t bother your sister anymore.";
             frndIHandledIt.dialogueId = EDialogueID.FRIHANDLEDIT;
-            frndIHandledIt.playerStates = new List<PlayerStates> { PlayerStates.FRNDBULLYMENTIONED };
+            frndIHandledIt.playerStates = new List<PlayerStates> { PlayerStates.WILLTALK2BULLY };
             Dictionary<PlayerStates, Action> frndIHandledItRespMap = new Dictionary<PlayerStates, Action>();
-            frndIHandledItRespMap[PlayerStates.FRNDBULLYMENTIONED] = FrndIHandledITBullyMentionedAction;
+            frndIHandledItRespMap[PlayerStates.WILLTALK2BULLY] = FrndIHandledITBullyMentionedAction;
             frndIHandledIt.rshipToResponseMap = frndIHandledItRespMap;
             dialogueList.Add(frndIHandledIt);
         }
@@ -523,9 +552,9 @@ public class Friend_DialogueMgr : DialogueManager
             SDialogue frndStupidBully = new SDialogue();
             frndStupidBully.dialogueText = "That stupid bully was no match for me, ha! I made mincemeat out of him!";
             frndStupidBully.dialogueId = EDialogueID.FRSTUPIDBULLY;
-            frndStupidBully.playerStates = new List<PlayerStates> { PlayerStates.FRNDBULLYMENTIONED };
+            frndStupidBully.playerStates = new List<PlayerStates> { PlayerStates.WILLTALK2BULLY };
             Dictionary<PlayerStates, Action> frndIHandledItRespMap = new Dictionary<PlayerStates, Action>();
-            frndIHandledItRespMap[PlayerStates.FRNDBULLYMENTIONED] = FrndStupidBullyMentionedAction;
+            frndIHandledItRespMap[PlayerStates.WILLTALK2BULLY] = FrndStupidBullyMentionedAction;
             frndStupidBully.rshipToResponseMap = frndIHandledItRespMap;
             dialogueList.Add(frndStupidBully);
         }
@@ -757,7 +786,7 @@ public class Friend_DialogueMgr : DialogueManager
             Dictionary<PlayerStates, Action> frndWillTalkToBullyRespMap = new Dictionary<PlayerStates, Action>();
             frndWillTalkToBully.dialogueText = "Yeah, yeah, definitely. Just wait for me here, I’ll go talk to him.";
             frndWillTalkToBully.dialogueId = EDialogueID.FRWILLTALK2BULLY;
-            frndWillTalkToBullyRespMap[PlayerStates.ACQUAINTANCE] = FrndWillTalk2BullyAction;
+            frndWillTalkToBullyRespMap[PlayerStates.FRNDBULLYMENTIONED] = FrndWillTalk2BullyAction;
             frndWillTalkToBully.rshipToResponseMap = frndWillTalkToBullyRespMap;
             dialogueList.Add(frndWillTalkToBully);
         }
@@ -767,7 +796,7 @@ public class Friend_DialogueMgr : DialogueManager
             Dictionary<PlayerStates, Action> frndWontTalkToBullyRespMap = new Dictionary<PlayerStates, Action>();
             frndWontTalkToBully.dialogueText = "Oh, uh...no, I think I’ll prioritise my physical well-being and stay away from such risky engagements.";
             frndWontTalkToBully.dialogueId = EDialogueID.FRWONTTALK2BULLY;
-            frndWontTalkToBullyRespMap[PlayerStates.ACQUAINTANCE] = FrndWontTalk2BullyAction;
+            frndWontTalkToBullyRespMap[PlayerStates.FRNDBULLYMENTIONED] = FrndWontTalk2BullyAction;
             frndWontTalkToBully.rshipToResponseMap = frndWontTalkToBullyRespMap;
             dialogueList.Add(frndWontTalkToBully);
         }
@@ -777,7 +806,7 @@ public class Friend_DialogueMgr : DialogueManager
             Dictionary<PlayerStates, Action> frndLyingAbtBullyRespMap = new Dictionary<PlayerStates, Action>();
             frndLyingAbtBully.dialogueText = "No, I’m lying, I’m sorry. I’ll go talk to him right away.";
             frndLyingAbtBully.dialogueId = EDialogueID.FRLYINGABTBULLY;
-            frndLyingAbtBullyRespMap[PlayerStates.FRNDBULLYMENTIONED] = FrndLyingAbtBullyAction;
+            frndLyingAbtBullyRespMap[PlayerStates.WILLTALK2BULLY] = FrndLyingAbtBullyAction;
             frndLyingAbtBully.rshipToResponseMap = frndLyingAbtBullyRespMap;
             dialogueList.Add(frndLyingAbtBully);
         }
@@ -787,7 +816,7 @@ public class Friend_DialogueMgr : DialogueManager
             Dictionary<PlayerStates, Action> frndYesReallyHandledBullyRespMap = new Dictionary<PlayerStates, Action>();
             frndYesReallyHandledBully.dialogueText = "Yes.";
             frndYesReallyHandledBully.dialogueId = EDialogueID.FRYESREALLYHANDLEDBULLY;
-            frndYesReallyHandledBullyRespMap[PlayerStates.FRNDBULLYMENTIONED] = FrndYesReallyHandledBullyAction;
+            frndYesReallyHandledBullyRespMap[PlayerStates.WILLTALK2BULLY] = FrndYesReallyHandledBullyAction;
             frndYesReallyHandledBully.rshipToResponseMap = frndYesReallyHandledBullyRespMap;
             dialogueList.Add(frndYesReallyHandledBully);
         }

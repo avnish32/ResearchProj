@@ -6,7 +6,7 @@ using UnityEngine;
 public class DialogueManager : MonoBehaviour
 {
     protected List<SDialogue> dialogueList;
-    public PlayerStates stateWPlayer;
+    protected PlayerStates stateWPlayer;
     private Dictionary<EDialogueID, SDialogue> dialogueIdsToDialogueMap;
     private Dictionary<PlayerStates, List<EDialogueID>> rshipLevelToDialogueIdsMap;
 

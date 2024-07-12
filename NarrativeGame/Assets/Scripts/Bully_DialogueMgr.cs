@@ -217,10 +217,10 @@ public class Bully_DialogueMgr : DialogueManager
             bullyHey.dialogueText = "Hey!";
             bullyHey.dialogueId = EDialogueID.BULLYHEY;
             bullyHey.playerStates = new List<PlayerStates>
-            {PlayerStates.NEUTRAL, PlayerStates.FRNDBULLYMENTIONED, PlayerStates.BULLYFOUGHT};
+            {PlayerStates.NEUTRAL, PlayerStates.WILLTALK2BULLY, PlayerStates.BULLYFOUGHT};
             Dictionary<PlayerStates, Action> bullyHeyRespMap = new Dictionary<PlayerStates, Action>();
             bullyHeyRespMap[PlayerStates.NEUTRAL] = BullyHeyNeutralAction;
-            bullyHeyRespMap[PlayerStates.FRNDBULLYMENTIONED] = BullyHeyMentionedAction;
+            bullyHeyRespMap[PlayerStates.WILLTALK2BULLY] = BullyHeyMentionedAction;
             bullyHeyRespMap[PlayerStates.BULLYFOUGHT] = BullyHeyFoughtAction;
             bullyHey.rshipToResponseMap = bullyHeyRespMap;
             dialogueList.Add(bullyHey);
@@ -244,7 +244,7 @@ public class Bully_DialogueMgr : DialogueManager
             bullyWhyBothering.dialogueText = "What's with you and Anya's sister?";
             bullyWhyBothering.dialogueId = EDialogueID.BULLYWHATSWITHSIS;
             Dictionary<PlayerStates, Action> bullyWhyBotheringRespMap = new Dictionary<PlayerStates, Action>();
-            bullyWhyBotheringRespMap[PlayerStates.FRNDBULLYMENTIONED] = BullyWhatsWithSisAction;
+            bullyWhyBotheringRespMap[PlayerStates.WILLTALK2BULLY] = BullyWhatsWithSisAction;
             bullyWhyBothering.rshipToResponseMap = bullyWhyBotheringRespMap;
             dialogueList.Add(bullyWhyBothering);
         }
@@ -254,7 +254,7 @@ public class Bully_DialogueMgr : DialogueManager
             bullyPlsTellIfKnow.dialogueText = "Could you please tell me if you know Anya’s sister?";
             bullyPlsTellIfKnow.dialogueId = EDialogueID.BULLYPLSTELLIFKNOW;
             Dictionary<PlayerStates, Action> bullyPlsTellIfKnowRespMap = new Dictionary<PlayerStates, Action>();
-            bullyPlsTellIfKnowRespMap[PlayerStates.FRNDBULLYMENTIONED] = BullyPlsTellIfKnowAction;
+            bullyPlsTellIfKnowRespMap[PlayerStates.WILLTALK2BULLY] = BullyPlsTellIfKnowAction;
             bullyPlsTellIfKnow.rshipToResponseMap = bullyPlsTellIfKnowRespMap;
             dialogueList.Add(bullyPlsTellIfKnow);
         }
@@ -264,7 +264,7 @@ public class Bully_DialogueMgr : DialogueManager
             bullyWhyBullying.dialogueText = "Why are you bullying her?";
             bullyWhyBullying.dialogueId = EDialogueID.BULLYWHYBULLYING;
             Dictionary<PlayerStates, Action> bullyWhyBullyingRespMap = new Dictionary<PlayerStates, Action>();
-            bullyWhyBullyingRespMap[PlayerStates.FRNDBULLYMENTIONED] = BullyWhyBullyingAction;
+            bullyWhyBullyingRespMap[PlayerStates.WILLTALK2BULLY] = BullyWhyBullyingAction;
             bullyWhyBullying.rshipToResponseMap = bullyWhyBullyingRespMap;
             dialogueList.Add(bullyWhyBullying);
         }
@@ -274,7 +274,7 @@ public class Bully_DialogueMgr : DialogueManager
             bullySisUpsetWidU.dialogueText = "You know, Anya’s sis...she’s just...a bit upset with you, that’s all.";
             bullySisUpsetWidU.dialogueId = EDialogueID.BULLYSISUPSETWIDU;
             Dictionary<PlayerStates, Action> bullySisUpsetWidURespMap = new Dictionary<PlayerStates, Action>();
-            bullySisUpsetWidURespMap[PlayerStates.FRNDBULLYMENTIONED] = BullySisUpsetWidUAction;
+            bullySisUpsetWidURespMap[PlayerStates.WILLTALK2BULLY] = BullySisUpsetWidUAction;
             bullySisUpsetWidU.rshipToResponseMap = bullySisUpsetWidURespMap;
             dialogueList.Add(bullySisUpsetWidU);
         }
@@ -284,7 +284,7 @@ public class Bully_DialogueMgr : DialogueManager
             bullyStopBotheringHer.dialogueText = "Whatever, dude. Just stop bothering her, will you?";
             bullyStopBotheringHer.dialogueId = EDialogueID.BULLYSTOPBOTHERINGHER;
             Dictionary<PlayerStates, Action> bullyStopBotheringHerRespMap = new Dictionary<PlayerStates, Action>();
-            bullyStopBotheringHerRespMap[PlayerStates.FRNDBULLYMENTIONED] = BullyStopBotheringHerAction;
+            bullyStopBotheringHerRespMap[PlayerStates.WILLTALK2BULLY] = BullyStopBotheringHerAction;
             bullyStopBotheringHer.rshipToResponseMap = bullyStopBotheringHerRespMap;
             dialogueList.Add(bullyStopBotheringHer);
         }
@@ -294,7 +294,7 @@ public class Bully_DialogueMgr : DialogueManager
             bullyGoodIfUStop.dialogueText = "Uh, no...just...it would be good if you could stop messing with her, you know.";
             bullyGoodIfUStop.dialogueId = EDialogueID.BULLYGOODIFUSTOP;
             Dictionary<PlayerStates, Action> bullyGoodIfUStopRespMap = new Dictionary<PlayerStates, Action>();
-            bullyGoodIfUStopRespMap[PlayerStates.FRNDBULLYMENTIONED] = BullyGoodIfUStopAction;
+            bullyGoodIfUStopRespMap[PlayerStates.WILLTALK2BULLY] = BullyGoodIfUStopAction;
             bullyGoodIfUStop.rshipToResponseMap = bullyGoodIfUStopRespMap;
             dialogueList.Add(bullyGoodIfUStop);
         }
@@ -304,7 +304,7 @@ public class Bully_DialogueMgr : DialogueManager
             bullyUAskedForIt.dialogueText = "Okay, big man, you asked for it. *gets ready to fight*";
             bullyUAskedForIt.dialogueId = EDialogueID.BULLYUASKEDFORIT;
             Dictionary<PlayerStates, Action> bullyUAskedForItRespMap = new Dictionary<PlayerStates, Action>();
-            bullyUAskedForItRespMap[PlayerStates.FRNDBULLYMENTIONED] = StartWABMinigame;
+            bullyUAskedForItRespMap[PlayerStates.WILLTALK2BULLY] = StartWABMinigame;
             bullyUAskedForIt.rshipToResponseMap = bullyUAskedForItRespMap;
             dialogueList.Add(bullyUAskedForIt);
         }
@@ -314,7 +314,7 @@ public class Bully_DialogueMgr : DialogueManager
             bullySorryImLeaving.dialogueText = "Woah, sorry mate. Jeez, no need for all that, I’m leaving.";
             bullySorryImLeaving.dialogueId = EDialogueID.BULLYSORRYIMLEAVING;
             Dictionary<PlayerStates, Action> bullySorryImLeavingRespMap = new Dictionary<PlayerStates, Action>();
-            bullySorryImLeavingRespMap[PlayerStates.FRNDBULLYMENTIONED] = BullySorryImLeavingAction;
+            bullySorryImLeavingRespMap[PlayerStates.WILLTALK2BULLY] = BullySorryImLeavingAction;
             bullySorryImLeaving.rshipToResponseMap = bullySorryImLeavingRespMap;
             dialogueList.Add(bullySorryImLeaving);
         }
