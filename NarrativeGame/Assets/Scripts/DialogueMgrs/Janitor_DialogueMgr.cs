@@ -102,6 +102,11 @@ public class Janitor_DialogueMgr : DialogueManager
             if (isSafeCracked)
             {
                 playerDialogueList = GetDialogueListFromId(new List<EDialogueID>{EDialogueID.JANITORTHECODEIS});
+                SDialogue theCodeIsDialogue = playerDialogueList[0];
+                theCodeIsDialogue.dialogueText = string.Format
+                ("It’s {0}. There was a lot of stuff inside, I couldn’t tell which file was yours.", safeCode);
+                playerDialogueList.Clear();
+                playerDialogueList.Add(theCodeIsDialogue);
             } else
             {
                 playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.JANITORJOGMEMORY });
@@ -580,8 +585,7 @@ public class Janitor_DialogueMgr : DialogueManager
 
         {
             SDialogue janitorTheCodeIs = new SDialogue();
-            janitorTheCodeIs.dialogueText = string.Format
-                ("It’s {0}. There was a lot of stuff inside, I couldn’t tell which file was yours.", safeCode);
+            janitorTheCodeIs.dialogueText = "Here you go. There was a lot of stuff inside, I couldn’t tell which file was yours.";
             janitorTheCodeIs.dialogueId = EDialogueID.JANITORTHECODEIS;
             Dictionary<PlayerStates, Action> janitorTheCodeIsRespMap = new Dictionary<PlayerStates, Action>();
             janitorTheCodeIsRespMap[PlayerStates.SAFECRACKACCEPTED] = JanitorTheCodeIsAction;
@@ -593,9 +597,9 @@ public class Janitor_DialogueMgr : DialogueManager
             SDialogue janitorJogMyMemory = new SDialogue();
             janitorJogMyMemory.dialogueText = "It’s uh...oh no, I forgot, let me jog my memory for a bit.";
             janitorJogMyMemory.dialogueId = EDialogueID.JANITORJOGMEMORY;
-            Dictionary<PlayerStates, Action> janitorTheCodeIsRespMap = new Dictionary<PlayerStates, Action>();
-            janitorTheCodeIsRespMap[PlayerStates.SAFECRACKACCEPTED] = JanitorJogMemoryAction;
-            janitorJogMyMemory.rshipToResponseMap = janitorTheCodeIsRespMap;
+            Dictionary<PlayerStates, Action> janitorJogMyMemoryRespMap = new Dictionary<PlayerStates, Action>();
+            janitorJogMyMemoryRespMap[PlayerStates.SAFECRACKACCEPTED] = JanitorJogMemoryAction;
+            janitorJogMyMemory.rshipToResponseMap = janitorJogMyMemoryRespMap;
             dialogueList.Add(janitorJogMyMemory);
         }
     }
