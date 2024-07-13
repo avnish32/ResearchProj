@@ -24,6 +24,7 @@ public class SafeCodePuzzle : MonoBehaviour
     private int[] codeEntered = new int[3];
     private List<int> numsAvailableForCode = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     private bool isCodeCracked = false;
+    string codeString = "";
 
     // Start is called before the first frame update
     void Start()
@@ -35,9 +36,10 @@ public class SafeCodePuzzle : MonoBehaviour
             numsAvailableForCode.RemoveAt(randomIndex);
 
             inputDigits[i].text = string.Empty;
+            codeString += code[i];
         }
         guessesRemaining = 5;
-
+        inputDigits[0].Select();
         //inputDigit2.Select();
     }
 
@@ -77,6 +79,7 @@ public class SafeCodePuzzle : MonoBehaviour
         {
             Debug.Log("Successfully cracked the code.");
             isCodeCracked = true;
+            FindObjectOfType<Janitor_DialogueMgr>().OnSafeCracked(codeString);
             return;
         }
 
@@ -94,6 +97,7 @@ public class SafeCodePuzzle : MonoBehaviour
 
     public void SelectNextInputDigit(int currentlySelectedInput)
     {
+        Debug.Log("Input field after " + currentlySelectedInput + " is selcted.");
         inputDigits[(currentlySelectedInput + 1) % inputDigits.Length].Select();
     }
 

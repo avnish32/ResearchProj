@@ -161,6 +161,12 @@ public class Friend_DialogueMgr : DialogueManager
         }
     }
 
+    private void FrndTrynaFigureOutAction()
+    {
+        string[] dialogueList = { "I’m sure you’ll figure something out." };
+        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+    }
+
     private void FrndNeedUrHelpNeutralAction()
     {
         string[] dialogueList = {
@@ -557,6 +563,17 @@ public class Friend_DialogueMgr : DialogueManager
             frndIHandledItRespMap[PlayerStates.WILLTALK2BULLY] = FrndStupidBullyMentionedAction;
             frndStupidBully.rshipToResponseMap = frndIHandledItRespMap;
             dialogueList.Add(frndStupidBully);
+        }
+
+        {
+            SDialogue frndTrynaFigureOut = new SDialogue();
+            frndTrynaFigureOut.dialogueText = "Trying to figure out how to deal with this Roger guy.";
+            frndTrynaFigureOut.dialogueId = EDialogueID.FRTRYNAFIGUREOUT;
+            frndTrynaFigureOut.playerStates = new List<PlayerStates> { PlayerStates.WILLTALK2BULLY };
+            Dictionary<PlayerStates, Action> frndTrynaFigureOutRespMap = new Dictionary<PlayerStates, Action>();
+            frndTrynaFigureOutRespMap[PlayerStates.WILLTALK2BULLY] = FrndTrynaFigureOutAction;
+            frndTrynaFigureOut.rshipToResponseMap = frndTrynaFigureOutRespMap;
+            dialogueList.Add(frndTrynaFigureOut);
         }
 
         //######## LEAF DIALOGUES END ############
