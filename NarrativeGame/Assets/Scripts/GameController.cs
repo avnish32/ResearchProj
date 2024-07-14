@@ -32,4 +32,10 @@ public class GameController : MonoBehaviour
     {
         return canPlayerMove;
     }
+
+    public void OnConfessionObtained()
+    {
+        EnablePlayerMovement();
+        //TODO monologue and epilogue
+    }
 }

@@ -119,7 +119,7 @@ public class Janitor_DialogueMgr : DialogueManager
     private void JanitorStillWorkingAction()
     {
         string[] dialogueList = {
-            "Good luck."
+            "Good luck. Just so you know, I think all the digits are different. Hope that helps."
         };
 
         uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
