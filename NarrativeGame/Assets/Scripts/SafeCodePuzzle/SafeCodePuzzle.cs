@@ -44,10 +44,7 @@ public class SafeCodePuzzle : MonoBehaviour
             codeString += code[i].ToString();
         }
 
-        codeEnterInputAction.action.performed += (ctx) =>
-        {
-            OnCodeEntered();
-        };
+        codeEnterInputAction.action.performed += OnCodeEnteredUsingInputAction;
 
         inputDigits[0].ActivateInputField();
         guessesRemaining = 5;
@@ -75,8 +72,14 @@ public class SafeCodePuzzle : MonoBehaviour
         return true;
     }
 
+    private void OnCodeEnteredUsingInputAction(InputAction.CallbackContext ctx)
+    {
+        OnCodeEntered();
+    }
+
     private void OnDestroy()
     {
+        codeEnterInputAction.action.performed -= OnCodeEnteredUsingInputAction;
         instantiatingSafe.OnSafeMinigameClosed();
     }
 
@@ -88,7 +91,7 @@ public class SafeCodePuzzle : MonoBehaviour
     public void OnCodeEntered()
     {
         Debug.Log("Inside on code entered.");
-        if (isCodeCracked || !IsEnteredCodeValid())
+        if (isCodeCracked || guessesRemaining <= 0 || !IsEnteredCodeValid())
         {
             inputDigits[0].ActivateInputField();
             return;

@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5195472783672353046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1896451967997110799}
+  - component: {fileID: 5096679431506594720}
+  - component: {fileID: 2220853056980242769}
+  m_Layer: 0
+  m_Name: Controllers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1896451967997110799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5195472783672353046}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5096679431506594720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5195472783672353046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d9cbc99d713f04aa4949b04c48e18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2220853056980242769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5195472783672353046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b74eacb3ff8414fb72bff89a8aa846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDialogueOuterPanel: {fileID: 0}
+  playerDialogueInnerPanelPrefab: {fileID: 5586633065647657746, guid: 7e89a706cce037c488c3b6686daf89c7, type: 3}
+  dialogueButtonPrefab: {fileID: 6939046663380771860, guid: 68b4a3a37ce49064899f2e203650fda2, type: 3}
+  npcDialoguePanel: {fileID: 0}
+  speakersInfo:
+  - speaker: 1
+    speakerName: Jared
+    speakerImg: {fileID: 0}
+  - speaker: 2
+    speakerName: Anya
+    speakerImg: {fileID: 0}
+  - speaker: 3
+    speakerName: Roger
+    speakerImg: {fileID: 0}
+  - speaker: 4
+    speakerName: Janitor
+    speakerImg: {fileID: 0}
+  - speaker: 5
+    speakerName: Mr. Bridges
+    speakerImg: {fileID: 0}

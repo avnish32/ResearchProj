@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Friend_DialogueMgr : DialogueManager
 {
     [SerializeField]
     Bully_DialogueMgr bully;
+
+    private const ECharacters FRIEND_CHAR = ECharacters.FRIEND;
 
     new void Awake()
     {
@@ -32,22 +35,13 @@ public class Friend_DialogueMgr : DialogueManager
         base.Start();
     }
 
-    
-
-    private void FrndHeyMasterAction()
-    {
-        //Debug.Log("Frnd hey action performed.");
-
-        gameController.EnablePlayerMovement();
-    }
-
     private void FrndHeyNeutralAction()
     {
         string[] dialogueList = {
             "Um...hi?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR , () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.FRNEEDURHELP, EDialogueID.FRBORING2DAY });
             uiController.DisplayPlayerDialoguePanel(playerDialogueList);
@@ -60,7 +54,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Do I know you?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void FrndDontUWorkAtLettingsNeutralAction()
@@ -69,7 +63,7 @@ public class Friend_DialogueMgr : DialogueManager
             "How do you know that? Have you been stalking me?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void FrndHeyAcqAction()
@@ -79,7 +73,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Hi Jared, nice to run into you again."
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.FRCANTWAITTONAP, EDialogueID.FRNOWTHATWEKNOW });
             uiController.DisplayPlayerDialoguePanel(playerDialogueList);
@@ -93,7 +87,7 @@ public class Friend_DialogueMgr : DialogueManager
             "You know what, I’m not telling you anything else if you can't stop making fun of it."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void FrndWantMe2Talk2RogerAction()
@@ -102,7 +96,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Yep, think you can manage?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.FRWILLTALK2BULLY, EDialogueID.FRWONTTALK2BULLY });
@@ -120,15 +114,15 @@ public class Friend_DialogueMgr : DialogueManager
                 "Don’t worry about your application, I’ll make sure to talk to the manager. See ya!"
             };
 
-            uiController.StartNPCDialogues(dialogueList, () =>
+            uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
             {
-                //TODO next level
+                SceneManager.LoadScene("L2_Office");
             });
         } else
         {
             string[] dialogueList = { "Really?"};
 
-            uiController.StartNPCDialogues(dialogueList, () =>
+            uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
             {
                 var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.FRLYINGABTBULLY, EDialogueID.FRYESREALLYHANDLEDBULLY });
                 uiController.DisplayPlayerDialoguePanel(playerDialogueList);
@@ -147,13 +141,13 @@ public class Friend_DialogueMgr : DialogueManager
                 "Good luck with your application, Jared."
             };
 
-            uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+            uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
         }
         else
         {
             string[] dialogueList = { "Really?" };
 
-            uiController.StartNPCDialogues(dialogueList, () =>
+            uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
             {
                 var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.FRLYINGABTBULLY, EDialogueID.FRYESREALLYHANDLEDBULLY });
                 uiController.DisplayPlayerDialoguePanel(playerDialogueList);
@@ -163,8 +157,11 @@ public class Friend_DialogueMgr : DialogueManager
 
     private void FrndTrynaFigureOutAction()
     {
-        string[] dialogueList = { "I’m sure you’ll figure something out." };
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        string[] dialogueList = { 
+            "I’m sure you’ll figure something out.",
+            "Just remember to be confident and assertive with him. There's no use being polite."
+        };
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void FrndNeedUrHelpNeutralAction()
@@ -173,7 +170,7 @@ public class Friend_DialogueMgr : DialogueManager
             "O...kay?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> 
             { EDialogueID.FRCANUREFERME, EDialogueID.FRYRUHOSTILE});
@@ -190,7 +187,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Gosh, I have so many questions. You look like bad news, dude."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void FrndYRUHostileNeutralAction()
@@ -201,7 +198,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Get a grip on yourself."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void FrndBoring2DayAction()
@@ -210,7 +207,7 @@ public class Friend_DialogueMgr : DialogueManager
             "*rolls eyes* Ohmygod, tell me about it. I almost fell off my chair snoozing in the class."
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> 
             { EDialogueID.FRCANUNDERSTAND, EDialogueID.FRBITMUCH});
@@ -224,7 +221,7 @@ public class Friend_DialogueMgr : DialogueManager
             "*narrows eyes* Excuse me, who are you to judge?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void FrndCanUnderstandAction()
@@ -233,7 +230,7 @@ public class Friend_DialogueMgr : DialogueManager
             "I know, right?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> 
             { EDialogueID.FRIMJARED, EDialogueID.FRWHAT2SAYNEXT});
@@ -247,7 +244,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Hi Jared, I’m Anya. Nice to meet you."
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             stateWPlayer = PlayerStates.ACQUAINTANCE;
             //TODO state change effects
@@ -264,7 +261,7 @@ public class Friend_DialogueMgr : DialogueManager
             "It’s all right, don’t sweat it. See you later!"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void FrndCantWaitToNapAction()
@@ -273,7 +270,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Lucky you. I couldn’t even if I wanted. I’ve got work after this."
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.FRATLETTINGSRIGHT, EDialogueID.FRWHEREDOUWORK });
@@ -289,7 +286,7 @@ public class Friend_DialogueMgr : DialogueManager
             "How selfish can you be?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void FrndWhereDoUWorkAction()
@@ -298,7 +295,7 @@ public class Friend_DialogueMgr : DialogueManager
             "AB&C Lettings. Have you heard of them?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.FRTHEYBEHINDMYDAD, EDialogueID.FRAPPLIEDMYSELF });
@@ -314,7 +311,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Jeez, what a creep."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void FrndAppliedMyselfAction()
@@ -323,7 +320,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Really? Have you heard back?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.FRITSBEENAWEEK, EDialogueID.FRWUDITALK2U });
@@ -339,7 +336,7 @@ public class Friend_DialogueMgr : DialogueManager
             "I guess I should get going now. *turns away thinking you’re weird*"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void FrndItsBeenAWeekAction()
@@ -349,7 +346,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Unless they have multiple candidates and are having a hard time deciding."
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.FRUKNOWALOT, EDialogueID.FRAPPHIGHLIGHT });
@@ -365,7 +362,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Guess I hit a nerve there."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void FrndIfOnlyAppHighlightedAction()
@@ -375,7 +372,7 @@ public class Friend_DialogueMgr : DialogueManager
             "I can put in a good word for you with the manager."
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.FRWUDBHELP, EDialogueID.FRTOOKULONGENUF });
@@ -390,7 +387,7 @@ public class Friend_DialogueMgr : DialogueManager
             "*shrugs* If you’re so cynical then I don’t know what to say to you."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void FrndWudBHelpAction()
@@ -400,7 +397,7 @@ public class Friend_DialogueMgr : DialogueManager
             "There’s something bothering me, and I might forget to speak with the manager because of that."
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.FRONETRACKMIND, EDialogueID.FRMAYBEICANHELP });
@@ -417,7 +414,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Forgect about it, Jared, I’m not talking to the manager for you."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void FrndMaybeICanHelpAction()
@@ -429,7 +426,7 @@ public class Friend_DialogueMgr : DialogueManager
         };
         stateWPlayer = PlayerStates.FRNDBULLYMENTIONED;
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.FRWILLTALK2BULLY, EDialogueID.FRWONTTALK2BULLY });
@@ -445,7 +442,7 @@ public class Friend_DialogueMgr : DialogueManager
             "If you’re such a hotshot multi-tasker, why not just go and brag about it at AB&C yourself, huh?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void FrndWillTalk2BullyAction()
@@ -461,7 +458,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Suit yourself."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void FrndLyingAbtBullyAction()
@@ -476,7 +473,7 @@ public class Friend_DialogueMgr : DialogueManager
             "I cannot recommend a fraud like you to my manager."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
     }
 
 

@@ -1,13 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
+using UnityEngine.InputSystem.HID;
+using UnityEngine.Rendering.Universal;
 
 public class Janitor_DialogueMgr : DialogueManager
 {
     private string safeCode;
     private bool isSafeCracked = false;
-
+    private const ECharacters JANITOR_CHAR = ECharacters.JANITOR;
     new void Awake()
     {
         base.Awake();
@@ -38,7 +43,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "What? What are you talking about?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> 
             { EDialogueID.JANITORDONTPRETEND, EDialogueID.JANITORIWANTEDTOKNW });
@@ -54,7 +59,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "Next thing you know, you’ll ask me to wave my hand at some hidden camera."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void JanitorRUCloseWidMgrAction()
@@ -63,7 +68,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "None of your business, kid."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void JanitorStillWantMe2CrackAction()
@@ -72,7 +77,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "Yuh-uh! Finally decided to give it a shot?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.JANITORITHINKSO, EDialogueID.JANITORDANGEROUSMISSION });
@@ -86,7 +91,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "Listen, kid, you scratch my back, I scratch yours. Simple as that."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void JanitorIGotCodeAction()
@@ -96,7 +101,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "Well, spit it out then."
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, () =>
         {
             List<SDialogue> playerDialogueList;
             if (isSafeCracked)
@@ -122,7 +127,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "Good luck. Just so you know, I think all the digits are different. Hope that helps."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void JanitorRepeatSecretAction()
@@ -139,7 +144,21 @@ public class Janitor_DialogueMgr : DialogueManager
             "Got all that?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
+    }
+
+    private void JanitorThanksAction()
+    {
+        string[] dialogueList = {
+            "Don’t worry about it, kid. I’m glad Bridges was finally brought to justice."
+        };
+
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, () =>
+        {
+            var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
+            { EDialogueID.JANITORWHATWEREURDEEDS });
+            uiController.DisplayPlayerDialoguePanel(playerDialogueList);
+        });
     }
 
     private void JanitorDontPretendAction()
@@ -149,7 +168,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "What’s it to you?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.JANITORJUSTCURIOUS, EDialogueID.JANITORMGRBMAILINGU });
@@ -163,7 +182,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "Quit poking your nose around, kid."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void JanitorJustCuriousAction()
@@ -173,7 +192,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "I’ve got other things to do than satisfy your desire for knowledge."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void JanitorMgrBMailingUAction()
@@ -182,7 +201,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "*sighs* Ain’t nothing anyone can do about it."
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.JANITORHOPELESSGUY, EDialogueID.JANITORIWANNATAKEHIMDOWN });
@@ -196,7 +215,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "Why?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.JANITORMGRINVOLVEDININCIDENT, EDialogueID.JANITORGOTMYREASONS });
@@ -210,7 +229,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "I heard that."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void JanitorMgrInvolvedAction()
@@ -222,7 +241,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "But what’s your deal? Why do you want to meddle in all this?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.JANITORCANTTELLU, EDialogueID.JANITORTURNINURFAVOR });
@@ -236,7 +255,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "Well, if you’re keeping your mouth shut, so am I."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void JanitorTurnInUrFavorAction()
@@ -245,7 +264,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "My favour? How?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.JANITORIFMGRJAILED, EDialogueID.JANITORTELLMEABTDIRT });
@@ -259,7 +278,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "Fine, then. You keep your secrets, I’ll keep mine."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void JanitorTellMeAbtDirtAction()
@@ -277,7 +296,7 @@ public class Janitor_DialogueMgr : DialogueManager
         };
         stateWPlayer = PlayerStates.SAFECRACKOFFERED;
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.JANITORITHINKSO, EDialogueID.JANITORDANGEROUSMISSION });
@@ -291,7 +310,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "Hmm...I don’t think it’s that simple."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void JanitorIThinkSoAction()
@@ -304,7 +323,7 @@ public class Janitor_DialogueMgr : DialogueManager
         };
         stateWPlayer = PlayerStates.SAFECRACKACCEPTED;
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void JanitorDangerousMissionAction()
@@ -333,7 +352,7 @@ public class Janitor_DialogueMgr : DialogueManager
             };
 
             stateWPlayer = PlayerStates.MGRSECRETFOUND;
-            uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+            uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
         }
         else
         {
@@ -347,7 +366,37 @@ public class Janitor_DialogueMgr : DialogueManager
             "*eyes you suspiciously* Okay."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
+    }
+
+    private void JanitorWhatWereDeedsAction()
+    {
+        string[] dialogueList = {
+            "Hmm...It was only this one job that I did for him.",
+            "I know I told you that he made me do a lot of things. Maybe because I was too desperate for your help.",
+            "But in any case, I guess I can tell you what I did.",
+            "I owe you this; after all, you helped me get my file back from Bridges’ safe."
+        };
+
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, EpilogueEndAction);
+    }
+
+    private void EpilogueEndAction()
+    {
+        // play scribbling noise
+        // play janitor exit animation
+
+        string[] dialogueList = {
+            "He wrote something on a piece of paper, handed it to me and left.",
+            "Maybe he suspected that I was recording him, too.",
+            "I wasn’t, but when I read what he’d written, I wished I had.",
+            "The paper said: \"I took care of the reporter that broke the Bridges-Katherine story.\"",
+            "...",
+            "It was him...that bloody janitor was the one who was actually behind dad’s disappearance...",
+            "...and I don’t even know his name."
+        };
+
+        uiController.StartDialogues(dialogueList, ECharacters.NARRATOR, gameController.OnGameEnd);
     }
 
     private void PopulateDialogueList()
@@ -439,6 +488,17 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorRepeatSecretRespMap[PlayerStates.MGRSECRETFOUND] = JanitorRepeatSecretAction;
             janitorRepeatSecret.rshipToResponseMap = janitorRepeatSecretRespMap;
             dialogueList.Add(janitorRepeatSecret);
+        }
+
+        {
+            SDialogue janitorThanks = new SDialogue();
+            janitorThanks.dialogueText = "Hey, we finally did it. Thanks for all your help.";
+            janitorThanks.dialogueId = EDialogueID.JANITORTHANKS;
+            janitorThanks.playerStates = new List<PlayerStates> { PlayerStates.MGRARRESTED };
+            Dictionary<PlayerStates, Action> janitorThanksRespMap = new Dictionary<PlayerStates, Action>();
+            janitorThanksRespMap[PlayerStates.MGRARRESTED] = JanitorThanksAction;
+            janitorThanks.rshipToResponseMap = janitorThanksRespMap;
+            dialogueList.Add(janitorThanks);
         }
 
         //######## LEAF DIALOGUES END ############
@@ -601,6 +661,16 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorJogMyMemoryRespMap[PlayerStates.SAFECRACKACCEPTED] = JanitorJogMemoryAction;
             janitorJogMyMemory.rshipToResponseMap = janitorJogMyMemoryRespMap;
             dialogueList.Add(janitorJogMyMemory);
+        }
+
+        {
+            SDialogue janitorWhatWereUrDeeds = new SDialogue();
+            janitorWhatWereUrDeeds.dialogueText = "Now that it’s all behind us, can I ask you what dirty deeds Mr. Bridges made you do?";
+            janitorWhatWereUrDeeds.dialogueId = EDialogueID.JANITORWHATWEREURDEEDS;
+            Dictionary<PlayerStates, Action> janitorWhatWereUrDeedsRespMap = new Dictionary<PlayerStates, Action>();
+            janitorWhatWereUrDeedsRespMap[PlayerStates.MGRARRESTED] = JanitorWhatWereDeedsAction;
+            janitorWhatWereUrDeeds.rshipToResponseMap = janitorWhatWereUrDeedsRespMap;
+            dialogueList.Add(janitorWhatWereUrDeeds);
         }
     }
 

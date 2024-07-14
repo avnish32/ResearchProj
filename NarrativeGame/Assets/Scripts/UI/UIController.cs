@@ -12,9 +12,13 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private NPCDialoguePanel npcDialoguePanel;
 
+    [SerializeField]
+    SSPeakerInfo[] speakersInfo;
+
     private GameController gameController;
     private GameObject instantiatedPlayerDialogueInnerPanel;
     private bool npcDialogueAdvanced = false;
+    private Dictionary<ECharacters, SSPeakerInfo> speakerToInfoMap;
 
     private void Awake()
     {
@@ -24,6 +28,12 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        speakerToInfoMap = new Dictionary<ECharacters, SSPeakerInfo>();
+        foreach (var speakerInfo in speakersInfo)
+        {
+            speakerToInfoMap[speakerInfo.speaker] = speakerInfo;
+        }
+
         playerDialogueOuterPanel.SetActive(false);
         npcDialoguePanel.gameObject.SetActive(false);
     }
@@ -62,14 +72,28 @@ public class UIController : MonoBehaviour
         gameController.EnablePlayerMovement();
     }
 
-    private void DisplayNPCDialoguePanel()
+    private void DisplayNPCDialoguePanel(ECharacters speaker)
     {
+        if (speaker == ECharacters.NARRATOR)
+        {
+            npcDialoguePanel.HideNPCSpeakerNamePanel();
+        } else
+        {
+            npcDialoguePanel.SetNPCSpeakerName(speakerToInfoMap[speaker].speakerName);
+            npcDialoguePanel.ShowNPCSpeakerNamePanel();
+        }        
+        
         npcDialoguePanel.gameObject.SetActive(true);
     }
 
     private void HideNPCDialoguePanel()
     {
         npcDialoguePanel.gameObject.SetActive(false);
+    }
+
+    public bool IsAnyDialogueGoingOn()
+    {
+        return npcDialoguePanel.gameObject.activeInHierarchy || playerDialogueOuterPanel.activeInHierarchy;
     }
 
     private IEnumerator RunThroughNPCDialogues(string[] npcDialogues, Action dialogueEndAction)
@@ -101,10 +125,10 @@ public class UIController : MonoBehaviour
      Displays panel only for first dialogue.
     Thereafter only changes the text.
      */
-    public void StartNPCDialogues(string[] npcDialogues, Action dialogueEndAction)
+    public void StartDialogues(string[] npcDialogues, ECharacters speaker, Action dialogueEndAction)
     {
         gameController.DisablePlayerMovement();
-        DisplayNPCDialoguePanel();
+        DisplayNPCDialoguePanel(speaker);
         StartCoroutine(RunThroughNPCDialogues(npcDialogues, dialogueEndAction));
     }
 }

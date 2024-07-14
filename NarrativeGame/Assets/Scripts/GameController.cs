@@ -33,9 +33,10 @@ public class GameController : MonoBehaviour
         return canPlayerMove;
     }
 
-    public void OnConfessionObtained()
+    public void OnGameEnd()
     {
-        EnablePlayerMovement();
-        //TODO monologue and epilogue
+        //credits
+        //load main menu
+        Debug.Log("End of game.");
     }
 }

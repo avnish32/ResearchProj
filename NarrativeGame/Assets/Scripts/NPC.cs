@@ -35,6 +35,11 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if (uiController.IsAnyDialogueGoingOn())
+        {
+            return;
+        }
+
         List<SDialogue> dialogues = GetComponent<DialogueManager>().GetDialogueListBasedOnRship();
         //PrintDialogues(dialogues);
 

@@ -8,6 +8,8 @@ public class Bully_DialogueMgr : DialogueManager
     [SerializeField]
     GameObject wabMinigame;
 
+    private const ECharacters BULLY_CHAR = ECharacters.BULLY;
+
     new void Awake()
     {
         base.Awake();
@@ -40,7 +42,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Kindergarten is that way."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void BullyHeyMentionedAction()
@@ -50,7 +52,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Hey, kiddo. Are you lost? Can't find your parents?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.BULLYWHATSWITHSIS, EDialogueID.BULLYPLSTELLIFKNOW });
@@ -66,7 +68,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Wassup tiny fellow, back for more?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.BULLYBRINGITON, EDialogueID.BULLYPASSINGBY });
@@ -83,7 +85,7 @@ public class Bully_DialogueMgr : DialogueManager
             "I won’t bother her again."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void BullyWhatsWithSisAction()
@@ -93,7 +95,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Huh? What do you mean?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.BULLYSISUPSETWIDU, EDialogueID.BULLYWHYBULLYING });
@@ -110,7 +112,7 @@ public class Bully_DialogueMgr : DialogueManager
             "I ain’t telling you anything!"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void BullyWhyBullyingAction()
@@ -120,7 +122,7 @@ public class Bully_DialogueMgr : DialogueManager
             "I do what I please. Who are you, my dad?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.BULLYSTOPBOTHERINGHER, EDialogueID.BULLYGOODIFUSTOP });
@@ -137,7 +139,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Go away before you get crushed under my feet."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void BullyStopBotheringHerAction()
@@ -148,7 +150,7 @@ public class Bully_DialogueMgr : DialogueManager
             "*shoves you aside forcefully, almost knocking you over*"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.BULLYUASKEDFORIT, EDialogueID.BULLYSORRYIMLEAVING });
@@ -165,7 +167,7 @@ public class Bully_DialogueMgr : DialogueManager
             "If you take your sorry face away before I smash it to a pulp."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void StartWABMinigame()
@@ -194,7 +196,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Leave me alone, for god's sake."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 
     public void OnBullyWon()
@@ -206,7 +208,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Run along now, and stay away, you hear?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void PopulateDialogueList()

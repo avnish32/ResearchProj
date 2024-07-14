@@ -8,6 +8,11 @@ public class Mgr_DialogueMgr : DialogueManager
     [SerializeField]
     Janitor_DialogueMgr janitor;
 
+    [SerializeField]
+    L2Controller l2Controller;
+
+    private ECharacters MANAGER_CHAR = ECharacters.MANAGER;
+
     new void Awake()
     {
         base.Awake();
@@ -38,7 +43,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "Make it quick, I have things to do."
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, MANAGER_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.MGRABTAYRAGO });
@@ -52,7 +57,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "You’ll need to be more specific than that."
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, MANAGER_CHAR, () =>
         {
             List<SDialogue> playerDialogueList;
 
@@ -77,7 +82,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "Leave me alone."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, MANAGER_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void MgrAbtStorageUnitAction()
@@ -86,7 +91,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "What storage unit?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, MANAGER_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.MGRONGROVEST, EDialogueID.MGRONTROVEST });
@@ -100,7 +105,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "I’m not aware of any storage unit there."
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, MANAGER_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.MGRDONTPRETEND, EDialogueID.MGRDONTLIE });
@@ -114,7 +119,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "Stop spouting nonsense and get back to work!"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, MANAGER_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void MgrDontPretendAction()
@@ -123,7 +128,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "She? Who is she?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, () =>
+        uiController.StartDialogues(dialogueList, MANAGER_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
             { EDialogueID.MGRKATARINA, EDialogueID.MGRKATHERINE });
@@ -138,7 +143,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "Better do what I pay you for, young man, or I’ll show you out myself!"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, MANAGER_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void MgrKatarinaAction()
@@ -148,7 +153,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "Why don’t you give up this job and write a book instead?"
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, MANAGER_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void MgrKatherineAction()
@@ -165,7 +170,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "Tell her to lay low for a while; I thought she had better sense than this."
         };
 
-        uiController.StartNPCDialogues(dialogueList, gameController.OnConfessionObtained);
+        uiController.StartDialogues(dialogueList, MANAGER_CHAR, l2Controller.OnConfessionObtained);
     }
 
     private void PopulateDialogueList()

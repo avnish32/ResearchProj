@@ -6,7 +6,13 @@ using UnityEngine;
 public class NPCDialoguePanel : MonoBehaviour
 {
     [SerializeField]
-    TextMeshProUGUI npcDialogueText;
+    private TextMeshProUGUI npcDialogueText;
+
+    [SerializeField]
+    private TextMeshProUGUI npcSpeakerNameText;
+
+    [SerializeField]
+    private GameObject npcSpeakerNamePanel;
 
     private Animator animator;
 
@@ -38,5 +44,20 @@ public class NPCDialoguePanel : MonoBehaviour
     public void SetNPCDialogueText(string dialogueText)
     {
         this.npcDialogueText.text = dialogueText;
+    }
+
+    public void SetNPCSpeakerName(string speakerText)
+    {
+        npcSpeakerNameText.text = speakerText;
+    }
+
+    public void HideNPCSpeakerNamePanel()
+    {
+        npcSpeakerNamePanel.SetActive(false);
+    }
+
+    public void ShowNPCSpeakerNamePanel()
+    {
+        npcSpeakerNamePanel.SetActive(true);
     }
 }

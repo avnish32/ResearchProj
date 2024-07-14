@@ -39,6 +39,11 @@ public class WAB : MonoBehaviour
         {
             yield return new WaitForSeconds(UnityEngine.Random.Range(minSpawnWait, maxSpawnWait));
 
+            if (!shouldSpawn)
+            {
+                continue;
+            }
+
             RectTransform randomSpawnPt = spawnPts[UnityEngine.Random.Range(0, spawnPts.Length)];
             BullyFaceButton instantiatedBullyFace = Instantiate(bullyFaceButtonPrefab, randomSpawnPt, false);
             instantiatedBullyFace.Init(UnityEngine.Random.Range(minBullyFaceLifetime, maxBullyFaceLifetime), this,
