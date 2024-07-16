@@ -34,7 +34,6 @@ public class NPCMovement : MonoBehaviour
         }
     }
 
-
     private IEnumerator Walk()
     {
         while (shouldWalk)
@@ -77,12 +76,35 @@ public class NPCMovement : MonoBehaviour
 
     public void StopWalking()
     {
+        rb.velocity = Vector2.zero;
         shouldWalk = false;
     }
 
-    public void StartWalkking()
+    public void StartWalking()
     {
         shouldWalk = true;
         StartCoroutine(Walk());
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Debug.Log(collision.gameObject.name+ " collided with NPC: "+this.gameObject.name);
+
+        // NPC will stop walking if it collides with player.
+        // It is not made to stop when colliding with NPC as both NPCs will then stop and remain still,
+        // even if StartWalking() is called in OnCollisionExit2D(), because neither will exit the
+        // other"s collision.
+        if (collision.gameObject.GetComponent<PlayerMovement>() != null) 
+        {
+            StopWalking();
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerMovement>() != null)
+        {
+            StartWalking();
+        }
     }
 }

@@ -54,7 +54,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Do I know you?"
         };
 
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
     private void FrndDontUWorkAtLettingsNeutralAction()
@@ -63,7 +63,7 @@ public class Friend_DialogueMgr : DialogueManager
             "How do you know that? Have you been stalking me?"
         };
 
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
     private void FrndHeyAcqAction()
@@ -87,7 +87,7 @@ public class Friend_DialogueMgr : DialogueManager
             "You know what, I’m not telling you anything else if you can't stop making fun of it."
         };
 
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
     private void FrndWantMe2Talk2RogerAction()
@@ -141,7 +141,7 @@ public class Friend_DialogueMgr : DialogueManager
                 "Good luck with your application, Jared."
             };
 
-            uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+            uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
         }
         else
         {
@@ -161,7 +161,7 @@ public class Friend_DialogueMgr : DialogueManager
             "I’m sure you’ll figure something out.",
             "Just remember to be confident and assertive with him. There's no use being polite."
         };
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
     private void FrndNeedUrHelpNeutralAction()
@@ -187,7 +187,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Gosh, I have so many questions. You look like bad news, dude."
         };
 
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
     private void FrndYRUHostileNeutralAction()
@@ -198,7 +198,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Get a grip on yourself."
         };
 
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
     private void FrndBoring2DayAction()
@@ -221,7 +221,7 @@ public class Friend_DialogueMgr : DialogueManager
             "*narrows eyes* Excuse me, who are you to judge?"
         };
 
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
     private void FrndCanUnderstandAction()
@@ -261,7 +261,7 @@ public class Friend_DialogueMgr : DialogueManager
             "It’s all right, don’t sweat it. See you later!"
         };
 
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
     private void FrndCantWaitToNapAction()
@@ -286,7 +286,7 @@ public class Friend_DialogueMgr : DialogueManager
             "How selfish can you be?"
         };
 
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
     private void FrndWhereDoUWorkAction()
@@ -311,7 +311,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Jeez, what a creep."
         };
 
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
     private void FrndAppliedMyselfAction()
@@ -336,7 +336,7 @@ public class Friend_DialogueMgr : DialogueManager
             "I guess I should get going now. *turns away thinking you’re weird*"
         };
 
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
     private void FrndItsBeenAWeekAction()
@@ -362,7 +362,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Guess I hit a nerve there."
         };
 
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
     private void FrndIfOnlyAppHighlightedAction()
@@ -387,7 +387,7 @@ public class Friend_DialogueMgr : DialogueManager
             "*shrugs* If you’re so cynical then I don’t know what to say to you."
         };
 
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
     private void FrndWudBHelpAction()
@@ -414,7 +414,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Forgect about it, Jared, I’m not talking to the manager for you."
         };
 
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
     private void FrndMaybeICanHelpAction()
@@ -442,14 +442,14 @@ public class Friend_DialogueMgr : DialogueManager
             "If you’re such a hotshot multi-tasker, why not just go and brag about it at AB&C yourself, huh?"
         };
 
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
     private void FrndWillTalk2BullyAction()
     {
         stateWPlayer = PlayerStates.WILLTALK2BULLY;
         bully.SetStateWPlayer(PlayerStates.WILLTALK2BULLY);
-        gameController.EnablePlayerMovement();
+        OnDialogueEnd();
     }
 
     private void FrndWontTalk2BullyAction()
@@ -458,12 +458,12 @@ public class Friend_DialogueMgr : DialogueManager
             "Suit yourself."
         };
 
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
     private void FrndLyingAbtBullyAction()
     {
-        gameController.EnablePlayerMovement();
+        OnDialogueEnd();
     }
 
     private void FrndYesReallyHandledBullyAction()
@@ -473,10 +473,18 @@ public class Friend_DialogueMgr : DialogueManager
             "I cannot recommend a fraud like you to my manager."
         };
 
-        uiController.StartDialogues(dialogueList, FRIEND_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
-
+    private void OnDialogueEnd()
+    {
+        gameController.EnablePlayerMovement();
+        /*if (npcMovement != null)
+        {
+            npcMovement.StartWalking();
+        }*/
+        //Above commented; NPC will resume walking only when player exits collider.
+    }
 
     private void PopulateDialogueList()
     {

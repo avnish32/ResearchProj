@@ -12,11 +12,13 @@ public class DialogueManager : MonoBehaviour
 
     protected GameController gameController;
     protected UIController uiController;
+    protected NPCMovement npcMovement;
 
     protected void Awake()
     {
         gameController = FindObjectOfType<GameController>();
         uiController = FindObjectOfType<UIController>();
+        npcMovement = GetComponent<NPCMovement>();
     }
 
     // Start is called before the first frame update

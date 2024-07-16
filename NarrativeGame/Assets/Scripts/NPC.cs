@@ -40,7 +40,19 @@ public class NPC : MonoBehaviour, IInteractable
             return;
         }
 
-        List<SDialogue> dialogues = GetComponent<DialogueManager>().GetDialogueListBasedOnRship();
+        DialogueManager myDialogueMgr = GetComponent<DialogueManager>();
+        if (myDialogueMgr == null)
+        {
+            return;
+        }
+
+        NPCMovement myNpcMovement = GetComponent<NPCMovement>();
+        if (myNpcMovement != null)
+        {
+            myNpcMovement.StopWalking();
+        }
+        
+        List<SDialogue> dialogues = myDialogueMgr.GetDialogueListBasedOnRship();
         //PrintDialogues(dialogues);
 
         uiController.DisplayPlayerDialoguePanel(dialogues);
