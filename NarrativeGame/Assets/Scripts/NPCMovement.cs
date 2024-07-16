@@ -86,7 +86,7 @@ public class NPCMovement : MonoBehaviour
         StartCoroutine(Walk());
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log(collision.gameObject.name+ " collided with NPC: "+this.gameObject.name);
 
@@ -94,17 +94,27 @@ public class NPCMovement : MonoBehaviour
         // It is not made to stop when colliding with NPC as both NPCs will then stop and remain still,
         // even if StartWalking() is called in OnCollisionExit2D(), because neither will exit the
         // other"s collision.
-        if (collision.gameObject.GetComponent<PlayerMovement>() != null) 
+        if (collision.gameObject.GetComponent<PlayerMovement>() != null)
         {
             StopWalking();
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<PlayerMovement>() != null)
         {
             StartWalking();
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        
     }
 }

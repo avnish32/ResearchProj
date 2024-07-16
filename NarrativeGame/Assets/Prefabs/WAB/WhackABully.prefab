@@ -498,7 +498,7 @@ MonoBehaviour:
   minSpawnWait: 1
   maxSpawnWait: 3
   minBullyFaceLifetime: 0.5
-  maxBullyFaceLifetime: 0.75
+  maxBullyFaceLifetime: 1
 --- !u!1 &2116221511570559708
 GameObject:
   m_ObjectHideFlags: 0

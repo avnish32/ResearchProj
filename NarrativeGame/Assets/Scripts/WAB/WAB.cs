@@ -48,7 +48,7 @@ public class WAB : MonoBehaviour
             BullyFaceButton instantiatedBullyFace = Instantiate(bullyFaceButtonPrefab, randomSpawnPt, false);
             instantiatedBullyFace.Init(UnityEngine.Random.Range(minBullyFaceLifetime, maxBullyFaceLifetime), this,
                 slotParentBehind, slotParentFront, slot);
-            maxBullyFaceLifetime = Mathf.Clamp(maxBullyFaceLifetime-0.1f, 0.35f, maxBullyFaceLifetime);
+            maxBullyFaceLifetime = Mathf.Clamp(maxBullyFaceLifetime-0.05f, 0.35f, maxBullyFaceLifetime);
         }
     }
 

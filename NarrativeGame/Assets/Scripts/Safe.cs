@@ -13,12 +13,20 @@ public class Safe : MonoBehaviour, IInteractable
     [SerializeField]
     private Janitor_DialogueMgr janitor;
 
+    [SerializeField]
+    Canvas interactTxtCanvas;
+
     private GameObject instantiatedMinigame;
     private bool isSafeCracked = false;
 
+    private void Start()
+    {
+        interactTxtCanvas.gameObject.SetActive(false);
+    }
+
     public void Interact()
     {
-        if (janitor.GetStateWPlayer() != PlayerStates.SAFECRACKACCEPTED || isSafeCracked)
+        if (!CanPlayerInteract())
         {
             //Dont let player interact with safe until player accepts safe crack mission
             //or if player has already cracked the safe
@@ -32,6 +40,24 @@ public class Safe : MonoBehaviour, IInteractable
         instantiatedMinigame = Instantiate(safeCodeMinigame);
         instantiatedMinigame.GetComponent<SafeCodePuzzle>().Init(this);
         gameController.DisablePlayerMovement();
+    }
+
+    private bool CanPlayerInteract()
+    {
+        return janitor.GetStateWPlayer() == PlayerStates.SAFECRACKACCEPTED && !isSafeCracked;
+    }
+
+    public void OnPlayerEnteredToInteract() 
+    {
+        if (CanPlayerInteract())
+        {
+            interactTxtCanvas.gameObject.SetActive(true);
+        }
+    }
+
+    public void OnPlayerExited() 
+    {
+        interactTxtCanvas.gameObject.SetActive(false);
     }
 
     public void OnSafeMinigameClosed()

@@ -55,8 +55,8 @@ public class PlayerMovement : MonoBehaviour
             if (interactable != null)
             {
                 currentInteractable = interactable;
+                currentInteractable.OnPlayerEnteredToInteract();
             }
-
         }
     }
 
@@ -67,31 +67,7 @@ public class PlayerMovement : MonoBehaviour
             IInteractable interactable = collision.gameObject.GetComponent<IInteractable>();
             if (interactable != null)
             {
-                currentInteractable = null;
-            }
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision != null)
-        {
-            IInteractable interactable = collision.gameObject.GetComponent<IInteractable>();
-            if (interactable != null)
-            {
-                currentInteractable = interactable;
-            }
-
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision != null)
-        {
-            IInteractable interactable = collision.gameObject.GetComponent<IInteractable>();
-            if (interactable != null)
-            {
+                interactable.OnPlayerExited();
                 currentInteractable = null;
             }
         }
