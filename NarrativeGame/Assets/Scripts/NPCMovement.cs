@@ -13,7 +13,7 @@ public class NPCMovement : MonoBehaviour
     [SerializeField]
     private float movementSpeed;
 
-    private float timeToWaitAtCurrentWaypt, minTimeToWait, maxTimeToWait;
+    private float minTimeToWait = 1f, maxTimeToWait = 3f;
     private int currentWaypointIndex;
     private bool isGoingFwd;
     private Rigidbody2D rb;
@@ -41,6 +41,7 @@ public class NPCMovement : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex]) <= 0.1f)
             {
+                rb.velocity = Vector2.zero;
                 yield return new WaitForSeconds(UnityEngine.Random.Range(minTimeToWait, maxTimeToWait));
                 if (!shouldWalk)
                 {
