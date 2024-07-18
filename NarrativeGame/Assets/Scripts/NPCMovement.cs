@@ -102,7 +102,8 @@ public class NPCMovement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerMovement>() != null)
+        if (collision.gameObject.GetComponent<PlayerMovement>() != null
+            && gameObject.activeInHierarchy)
         {
             StartWalking();
         }
