@@ -11,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - NPC
+  - Player
   - 
   - 
   - 
@@ -44,8 +44,11 @@ TagManager:
   - name: Tilemap_Ground
     uniqueID: 3207646795
     locked: 0
-  - name: CharSprite
+  - name: NPCCharSprite
     uniqueID: 3956373185
+    locked: 0
+  - name: PlayerSprite
+    uniqueID: 1492446373
     locked: 0
   - name: Tilemap_Walls
     uniqueID: 2475521167

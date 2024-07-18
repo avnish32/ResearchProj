@@ -67,13 +67,13 @@ MonoBehaviour:
     speakerImg: {fileID: 0}
   - speaker: 2
     speakerName: Anya
-    speakerImg: {fileID: 0}
+    speakerImg: {fileID: 21300000, guid: d4a2360be8c807a47bd790d701b3d7d8, type: 3}
   - speaker: 3
     speakerName: Roger
-    speakerImg: {fileID: 0}
+    speakerImg: {fileID: 21300000, guid: cefde1b4e8b17b241abb358eeab00ff7, type: 3}
   - speaker: 4
     speakerName: Janitor
-    speakerImg: {fileID: 0}
+    speakerImg: {fileID: 21300000, guid: 41f91b607f174f247a07a764730cd767, type: 3}
   - speaker: 5
     speakerName: Mr. Bridges
-    speakerImg: {fileID: 0}
+    speakerImg: {fileID: 21300000, guid: 469893e525ed1bb49b4ad2c82f86383b, type: 3}

@@ -76,11 +76,12 @@ public class UIController : MonoBehaviour
     {
         if (speaker == ECharacters.NARRATOR)
         {
-            npcDialoguePanel.HideNPCSpeakerNamePanel();
+            npcDialoguePanel.HideNPCSpeakerDetails();
         } else
         {
-            npcDialoguePanel.SetNPCSpeakerName(speakerToInfoMap[speaker].speakerName);
-            npcDialoguePanel.ShowNPCSpeakerNamePanel();
+            SSPeakerInfo speakerInfo = speakerToInfoMap[speaker];
+            npcDialoguePanel.SetNPCSpeakerDetails(speakerInfo.speakerName, speakerInfo.speakerImg);
+            npcDialoguePanel.ShowNPCSpeakerDetails();
         }        
         
         npcDialoguePanel.gameObject.SetActive(true);

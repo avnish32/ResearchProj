@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPCDialoguePanel : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class NPCDialoguePanel : MonoBehaviour
 
     [SerializeField]
     private GameObject npcSpeakerNamePanel;
+
+    [SerializeField]
+    private GameObject npcSpeakerImgPanel;
+
+    [SerializeField]
+    private Image npcSpeakerImg;
 
     private Animator animator;
 
@@ -46,18 +53,21 @@ public class NPCDialoguePanel : MonoBehaviour
         this.npcDialogueText.text = dialogueText;
     }
 
-    public void SetNPCSpeakerName(string speakerText)
+    public void SetNPCSpeakerDetails(string speakerText, Sprite npcImg)
     {
         npcSpeakerNameText.text = speakerText;
+        npcSpeakerImg.sprite = npcImg;
     }
 
-    public void HideNPCSpeakerNamePanel()
+    public void HideNPCSpeakerDetails()
     {
         npcSpeakerNamePanel.SetActive(false);
+        npcSpeakerImgPanel.SetActive(false);
     }
 
-    public void ShowNPCSpeakerNamePanel()
+    public void ShowNPCSpeakerDetails()
     {
         npcSpeakerNamePanel.SetActive(true);
+        npcSpeakerImgPanel.SetActive(true);
     }
 }

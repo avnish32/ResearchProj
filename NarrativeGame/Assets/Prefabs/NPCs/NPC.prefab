@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2486492305346834350}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Outfit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1112653872130278791}
   - component: {fileID: 8004838454833243455}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4818653192851128789}
   - component: {fileID: 7619736515919184846}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,13 +210,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6437501711156101779}
-  - component: {fileID: 2404777858067904769}
   - component: {fileID: 7253674479389447645}
   - component: {fileID: 4173689728643713823}
   - component: {fileID: 4931605471457239978}
   - component: {fileID: 2594569949219841566}
   - component: {fileID: 6493641976977475880}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,18 +242,6 @@ Transform:
   - {fileID: 7683617615633723338}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2404777858067904769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3426146645769468648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde5dc65d96234c4686adbf1c84f6476, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &7253674479389447645
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -374,7 +361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7683617615633723338}
   - component: {fileID: 68666426950152334}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 583126361828155447}
   - component: {fileID: 5537892411085746083}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -543,13 +530,13 @@ GameObject:
   - component: {fileID: 4462709525216205366}
   - component: {fileID: 5943996909324631421}
   - component: {fileID: 2245633440213696881}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4462709525216205366
 Transform:
   m_ObjectHideFlags: 0
@@ -662,7 +649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2579810533822475889}
   - component: {fileID: 4775320401048258923}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
