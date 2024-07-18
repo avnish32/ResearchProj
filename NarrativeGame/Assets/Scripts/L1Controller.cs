@@ -31,6 +31,9 @@ public class L1Controller : MonoBehaviour
             "I just need to find her and persuade her to refer me."
         };
 
-        uiController.StartDialogues(prologueDialogues, ECharacters.NARRATOR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(prologueDialogues, ECharacters.NARRATOR, () => {
+            uiController.FadeFromBlack(null);
+            gameController.EnablePlayerMovement();
+        });
     }
 }

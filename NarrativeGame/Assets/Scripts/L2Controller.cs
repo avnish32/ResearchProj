@@ -16,6 +16,9 @@ public class L2Controller : MonoBehaviour
     private Janitor_DialogueMgr janitor;
 
     [SerializeField]
+    private Mgr_DialogueMgr manager;
+
+    [SerializeField]
     private CinemachineVirtualCamera mainCam, opCutsceneCam;
 
     [SerializeField]
@@ -142,14 +145,23 @@ public class L2Controller : MonoBehaviour
 
         janitor.SetStateWPlayer(PlayerStates.MGRARRESTED);
 
-        uiController.StartDialogues(epilogueDialogue, ECharacters.NARRATOR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(epilogueDialogue, ECharacters.NARRATOR, () => {
+            uiController.FadeFromBlack(null);
+            gameController.EnablePlayerMovement();
+
+        });
     }
 
 
     public void OnConfessionObtained()
     {
         //TODO fade to black
+        uiController.FadeToBlack(() =>
+        {
+            Destroy(manager.gameObject);
+        });
         //TODO remove manager from level
+
         StartEpilogueDialogues();
     }
 }

@@ -13,6 +13,9 @@ public class UIController : MonoBehaviour
     private NPCDialoguePanel npcDialoguePanel;
 
     [SerializeField]
+    private BlackPanel blackPanel;
+
+    [SerializeField]
     SSPeakerInfo[] speakersInfo;
 
     private GameController gameController;
@@ -36,12 +39,6 @@ public class UIController : MonoBehaviour
 
         playerDialogueOuterPanel.SetActive(false);
         npcDialoguePanel.gameObject.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void DisplayPlayerDialoguePanel(List<SDialogue> dialogues)
@@ -131,5 +128,15 @@ public class UIController : MonoBehaviour
         gameController.DisablePlayerMovement();
         DisplayNPCDialoguePanel(speaker);
         StartCoroutine(RunThroughNPCDialogues(npcDialogues, dialogueEndAction));
+    }
+
+    public void FadeToBlack(Action fadeEndAction)
+    {
+        blackPanel.FadeIn(fadeEndAction);
+    }
+
+    public void FadeFromBlack(Action fadeEndAction)
+    {
+        blackPanel.FadeOut(fadeEndAction);
     }
 }

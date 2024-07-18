@@ -22,6 +22,9 @@ public class SafeCodePuzzle : MonoBehaviour
 
     [SerializeField]
     private InputActionReference codeEnterInputAction;
+
+    [SerializeField]
+    private TextMeshProUGUI endMsgText;
     
     private int guessesRemaining;
     private int[] code = new int[3];
@@ -48,6 +51,7 @@ public class SafeCodePuzzle : MonoBehaviour
 
         inputDigits[0].ActivateInputField();
         guessesRemaining = 5;
+        endMsgText.text = string.Empty;
     }
 
     private void ResetInputField(int i)
@@ -111,6 +115,7 @@ public class SafeCodePuzzle : MonoBehaviour
         if (instantiatedHistoryItem.IsEnteredCodeCorrect())
         {
             Debug.Log("Successfully cracked the code. Codestring: "+codeString);
+            endMsgText.text = "Success! Press 'Exit' to leave.";
             isCodeCracked = true;
             instantiatingSafe.OnSafeCracked(codeString);
             return;
@@ -119,6 +124,7 @@ public class SafeCodePuzzle : MonoBehaviour
         if (guessesRemaining <= 0)
         {
             Debug.Log("Couldn't guess code. Code was: "+codeString);
+            endMsgText.text = "Failed.";
             Destroy(gameObject, 2f);
         }
     }

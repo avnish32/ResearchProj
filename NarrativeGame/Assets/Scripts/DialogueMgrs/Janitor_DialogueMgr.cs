@@ -384,7 +384,7 @@ public class Janitor_DialogueMgr : DialogueManager
     private void EpilogueEndAction()
     {
         // play scribbling noise
-        // play janitor exit animation
+        uiController.FadeToBlack(null);
 
         string[] dialogueList = {
             "He wrote something on a piece of paper, handed it to me and left.",
