@@ -1,8 +1,8 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using static Unity.Burst.Intrinsics.X86;
 
 public class L2Controller : MonoBehaviour
 {
@@ -15,13 +15,22 @@ public class L2Controller : MonoBehaviour
     [SerializeField]
     private Janitor_DialogueMgr janitor;
 
+    [SerializeField]
+    private CinemachineVirtualCamera mainCam, opCutsceneCam;
+
+    [SerializeField]
+    private GameObject mgrAndJanitor;
+
     private const ECharacters JANITOR_CHAR = ECharacters.JANITOR;
     private const ECharacters MANAGER_CHAR = ECharacters.MANAGER;
+    private const int MAIN_CAM_PRIORITY = 10, SECONDARY_CAM_PRIORITY = 5;
 
     // Start is called before the first frame update
     void Start()
     {
-        //TODO put manager and janitor together
+        opCutsceneCam.Priority = SECONDARY_CAM_PRIORITY;
+        mainCam.Priority = MAIN_CAM_PRIORITY;
+
         string[] l2IntroDialogue =
         {
             "Thanks to Anya, I managed to secure a part-time gig at AB&C Lettings.",
@@ -39,6 +48,9 @@ public class L2Controller : MonoBehaviour
 
     private void StartJanitorLetMeGoDialogue()
     {
+        opCutsceneCam.Priority = MAIN_CAM_PRIORITY;
+        mainCam.Priority = SECONDARY_CAM_PRIORITY;
+
         string[] janitorLetMeGoDialogue =
         {
             "...That’s just absurd, I can’t keep on working here forever. You gotta let me go!"
@@ -99,14 +111,20 @@ public class L2Controller : MonoBehaviour
 
     private void StartNarratorIntroEndDialogue() 
     {
-        //TODO put manager and janitor apart
+        opCutsceneCam.Priority = SECONDARY_CAM_PRIORITY;
+        mainCam.Priority = MAIN_CAM_PRIORITY;
+
         string[] narratorIntroEndDialogue =
         {
             "They were talking about something that happened one year ago.",
             "It has to be that incident with dad.",
             "The janitor clearly knows something about it. I should talk to him tactfully and try to get info out of him."
         };
-        uiController.StartDialogues(narratorIntroEndDialogue, ECharacters.NARRATOR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(narratorIntroEndDialogue, ECharacters.NARRATOR, () => {
+
+            Destroy(mgrAndJanitor);
+            gameController.EnablePlayerMovement();
+        });
     }
 
     private void StartEpilogueDialogues()

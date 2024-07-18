@@ -36,7 +36,7 @@ public class NPCMovement : MonoBehaviour
 
     private IEnumerator Walk()
     {
-        while (shouldWalk)
+        while (shouldWalk && waypoints.Length > 0)
         {
             if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex]) <= 0.1f)
             {

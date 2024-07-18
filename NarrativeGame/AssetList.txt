@@ -9,3 +9,5 @@ https://limezu.itch.io/moderninteriors/devlog/244045/free-version-overview-18042
 
 Strongbox icons collection by bakar015
 http://www.freepik.com
+
+Character face sprites generated using https://aipixelartgenerator.com/

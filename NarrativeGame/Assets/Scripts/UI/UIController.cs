@@ -100,7 +100,7 @@ public class UIController : MonoBehaviour
     {
         for (int i = 0; i < npcDialogues.Length; i++)
         {
-            Debug.Log("i= " + i+" Frame: "+Time.frameCount);
+            //Debug.Log("i= " + i+" Frame: "+Time.frameCount);
             npcDialoguePanel.SetNPCDialogueText(npcDialogues[i]);
             npcDialogueAdvanced = false;
 
