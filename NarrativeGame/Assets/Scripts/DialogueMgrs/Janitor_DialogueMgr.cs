@@ -13,6 +13,30 @@ public class Janitor_DialogueMgr : DialogueManager
     private string safeCode;
     private bool isSafeCracked = false;
     private const ECharacters JANITOR_CHAR = ECharacters.JANITOR;
+
+    // ### voices
+    [SerializeField]
+    AudioClip whatVoice;
+
+    [SerializeField]
+    AudioClip noneBusinessVoice;
+
+    [SerializeField]
+    AudioClip yeahVoice;
+
+    [SerializeField]
+    AudioClip reallyVoice;
+
+    [SerializeField]
+    AudioClip goodLuckVoice;
+
+    [SerializeField]
+    AudioClip dontWorryVoice;
+    // ### voices end
+
+    [SerializeField]
+    AudioClip climaxBGM;
+
     new void Awake()
     {
         base.Awake();
@@ -43,6 +67,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "What? What are you talking about?"
         };
 
+        audioController.PlaySound(whatVoice);
         uiController.StartDialogues(dialogueList, JANITOR_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> 
@@ -59,6 +84,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "Next thing you know, you’ll ask me to wave my hand at some hidden camera."
         };
 
+        audioController.PlaySound(whatVoice);
         uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
     }
 
@@ -68,6 +94,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "None of your business, kid."
         };
 
+        audioController.PlaySound(noneBusinessVoice);
         uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
     }
 
@@ -77,6 +104,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "Yuh-uh! Finally decided to give it a shot?"
         };
 
+        audioController.PlaySound(yeahVoice);
         uiController.StartDialogues(dialogueList, JANITOR_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -101,6 +129,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "Well, spit it out then."
         };
 
+        audioController.PlaySound(reallyVoice);
         uiController.StartDialogues(dialogueList, JANITOR_CHAR, () =>
         {
             List<SDialogue> playerDialogueList;
@@ -127,6 +156,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "Good luck. Just so you know, I think all the digits are different. Hope that helps."
         };
 
+        audioController.PlaySound(goodLuckVoice);
         uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
     }
 
@@ -153,6 +183,7 @@ public class Janitor_DialogueMgr : DialogueManager
             "Don’t worry about it, kid. I’m glad Bridges was finally brought to justice."
         };
 
+        audioController.PlaySound(dontWorryVoice);
         uiController.StartDialogues(dialogueList, JANITOR_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -385,6 +416,7 @@ public class Janitor_DialogueMgr : DialogueManager
     {
         // play scribbling noise
         uiController.FadeToBlack(null);
+        audioController.PlayMusic(climaxBGM);
 
         string[] dialogueList = {
             "He wrote something on a piece of paper, handed it to me and left.",

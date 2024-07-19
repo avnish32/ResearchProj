@@ -19,16 +19,21 @@ public class WAB : MonoBehaviour
     [SerializeField]
     RectTransform slotParentBehind, slotParentFront, slot;
 
+    [SerializeField]
+    AudioClip onMissSfx, onHitSfx;
+
     //minSpawnWait >= maxLifetime?
     [SerializeField]
     private float minSpawnWait, maxSpawnWait, minBullyFaceLifetime, maxBullyFaceLifetime;
 
     private bool shouldSpawn = false;
     private int score = 0, miss = 0;
+    private AudioController audioController;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioController = FindObjectOfType<AudioController>();
         scoreText.text = string.Format("Score: {0}", score);
         livesText.text = string.Format("Lives left: {0}", MAX_MISSES - miss);
     }
@@ -70,6 +75,7 @@ public class WAB : MonoBehaviour
 
     public void IncrementScore()
     {
+        audioController.PlaySound(onHitSfx);
         if (++score >= WIN_SCORE)
         {
             StopSpawning();
@@ -82,7 +88,8 @@ public class WAB : MonoBehaviour
 
     public void IncrementMiss()
     {
-        Debug.Log("Bully missed.");
+        audioController.PlaySound(onMissSfx);
+        //Debug.Log("Bully missed.");
         if (++miss >= MAX_MISSES)
         {
             StopSpawning();

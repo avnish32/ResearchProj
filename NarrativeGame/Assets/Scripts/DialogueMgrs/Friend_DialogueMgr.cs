@@ -9,6 +9,29 @@ public class Friend_DialogueMgr : DialogueManager
     [SerializeField]
     Bully_DialogueMgr bully;
 
+    // ### voices
+    [SerializeField]
+    private AudioClip uhHiVoice;
+
+    [SerializeField]
+    private AudioClip huhVoice;
+
+    [SerializeField]
+    private AudioClip hiFriendlyVoice;
+
+    [SerializeField]
+    private AudioClip yepVoice;
+
+    [SerializeField]
+    private AudioClip tyVoice;
+
+    [SerializeField]
+    private AudioClip wowVoice;
+
+    [SerializeField]
+    private AudioClip hmmVoice;
+    // #### voices end
+
     private const ECharacters FRIEND_CHAR = ECharacters.FRIEND;
 
     new void Awake()
@@ -38,9 +61,10 @@ public class Friend_DialogueMgr : DialogueManager
     private void FrndHeyNeutralAction()
     {
         string[] dialogueList = {
-            "Um...hi?"
+            "Uh...hi?"
         };
 
+        audioController.PlaySound(uhHiVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR , () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.FRNEEDURHELP, EDialogueID.FRBORING2DAY });
@@ -54,6 +78,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Do I know you?"
         };
 
+        audioController.PlaySound(huhVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -63,6 +88,7 @@ public class Friend_DialogueMgr : DialogueManager
             "How do you know that? Have you been stalking me?"
         };
 
+        audioController.PlaySound(huhVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -73,6 +99,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Hi Jared, nice to run into you again."
         };
 
+        audioController.PlaySound(hiFriendlyVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.FRCANTWAITTONAP, EDialogueID.FRNOWTHATWEKNOW });
@@ -96,6 +123,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Yep, think you can manage?"
         };
 
+        audioController.PlaySound(yepVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -114,6 +142,7 @@ public class Friend_DialogueMgr : DialogueManager
                 "Don’t worry about your application, I’ll make sure to talk to the manager. See ya!"
             };
 
+            audioController.PlaySound(tyVoice);
             uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
             {
                 SceneManager.LoadScene("L2_Office");
@@ -141,6 +170,7 @@ public class Friend_DialogueMgr : DialogueManager
                 "Good luck with your application, Jared."
             };
 
+            audioController.PlaySound(wowVoice);
             uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
         }
         else
@@ -161,6 +191,7 @@ public class Friend_DialogueMgr : DialogueManager
             "I’m sure you’ll figure something out.",
             "Just remember to be confident and assertive with him. There's no use being polite."
         };
+        audioController.PlaySound(hmmVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -372,6 +403,7 @@ public class Friend_DialogueMgr : DialogueManager
             "I can put in a good word for you with the manager."
         };
 
+        audioController.PlaySound(hmmVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>

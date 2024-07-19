@@ -495,6 +495,8 @@ MonoBehaviour:
   slotParentBehind: {fileID: 2822744667720964974}
   slotParentFront: {fileID: 2396987476601684542}
   slot: {fileID: 5515308530073994423}
+  onMissSfx: {fileID: 8300000, guid: ff9834cd22b300140b8597fa57fa4625, type: 3}
+  onHitSfx: {fileID: 8300000, guid: b1e3ef952180011409f1eec2795fb86d, type: 3}
   minSpawnWait: 1
   maxSpawnWait: 3
   minBullyFaceLifetime: 0.5

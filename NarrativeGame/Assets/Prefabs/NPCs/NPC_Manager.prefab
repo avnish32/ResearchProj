@@ -326,6 +326,7 @@ MonoBehaviour:
   stateWPlayer: 0
   janitor: {fileID: 0}
   l2Controller: {fileID: 0}
+  whatIsItVoice: {fileID: 8300000, guid: 00a8f1602437df944a2df3d0f5a7735f, type: 3}
 --- !u!114 &2430247168243362984
 MonoBehaviour:
   m_ObjectHideFlags: 0

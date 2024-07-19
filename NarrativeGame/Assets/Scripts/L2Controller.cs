@@ -13,6 +13,12 @@ public class L2Controller : MonoBehaviour
     private UIController uiController;
 
     [SerializeField]
+    private AudioController audioController;
+
+    [SerializeField]
+    private AudioClip levelBGM;
+
+    [SerializeField]
     private Janitor_DialogueMgr janitor;
 
     [SerializeField]
@@ -31,6 +37,7 @@ public class L2Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioController.PlayMusic(levelBGM);
         opCutsceneCam.Priority = SECONDARY_CAM_PRIORITY;
         mainCam.Priority = MAIN_CAM_PRIORITY;
 

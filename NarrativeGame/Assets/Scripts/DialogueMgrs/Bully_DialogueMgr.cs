@@ -8,6 +8,21 @@ public class Bully_DialogueMgr : DialogueManager
     [SerializeField]
     GameObject wabMinigame;
 
+    // ### voices
+    [SerializeField]
+    AudioClip whatVoice;
+
+    [SerializeField]
+    AudioClip hahVoice;
+
+    [SerializeField]
+    AudioClip yeahYeahVoice;
+
+    [SerializeField]
+    AudioClip owwVoice;
+
+    // ### voices end
+
     private const ECharacters BULLY_CHAR = ECharacters.BULLY;
 
     new void Awake()
@@ -42,6 +57,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Kindergarten is that way."
         };
 
+        audioController.PlaySound(whatVoice);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 
@@ -52,6 +68,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Hey, kiddo. Are you lost? Can't find your parents?"
         };
 
+        audioController.PlaySound(whatVoice);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -68,6 +85,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Wassup tiny fellow, back for more?"
         };
 
+        audioController.PlaySound(whatVoice);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -85,6 +103,7 @@ public class Bully_DialogueMgr : DialogueManager
             "I won’t bother her again."
         };
 
+        audioController.PlaySound(yeahYeahVoice);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 
@@ -196,6 +215,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Leave me alone, for god's sake."
         };
 
+        audioController.PlaySound(owwVoice);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 
@@ -208,6 +228,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Run along now, and stay away, you hear?"
         };
 
+        audioController.PlaySound(hahVoice);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 

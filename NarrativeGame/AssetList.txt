@@ -11,3 +11,7 @@ Strongbox icons collection by bakar015
 http://www.freepik.com
 
 Character face sprites generated using https://aipixelartgenerator.com/
+
+BGM generated using media.io remusic.ai
+
+Voices generated using elevenlabs.io

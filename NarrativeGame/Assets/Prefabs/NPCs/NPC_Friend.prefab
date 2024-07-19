@@ -349,6 +349,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateWPlayer: 0
   bully: {fileID: 0}
+  uhHiVoice: {fileID: 8300000, guid: 50031b88b41bad64caa5dc0274ff3404, type: 3}
+  huhVoice: {fileID: 8300000, guid: 0fa5e1e866880ad419b62fddfae94028, type: 3}
+  hiFriendlyVoice: {fileID: 8300000, guid: 25084dbaad4ad904e8260202bf814d00, type: 3}
+  yepVoice: {fileID: 8300000, guid: ff1a4f6b27223514cacde37edf73f9ca, type: 3}
+  tyVoice: {fileID: 8300000, guid: ee2b9eddef467e8449093b09ee02379a, type: 3}
+  wowVoice: {fileID: 8300000, guid: 873e4380b2fe4d44f9a3e02b45d18846, type: 3}
+  hmmVoice: {fileID: 8300000, guid: bfcc97850cfe184499bb6d6710df7324, type: 3}
 --- !u!114 &1107009640254415029
 MonoBehaviour:
   m_ObjectHideFlags: 0

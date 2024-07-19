@@ -11,6 +11,9 @@ public class Mgr_DialogueMgr : DialogueManager
     [SerializeField]
     L2Controller l2Controller;
 
+    [SerializeField]
+    private AudioClip whatIsItVoice;
+
     private ECharacters MANAGER_CHAR = ECharacters.MANAGER;
 
     new void Awake()
@@ -43,6 +46,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "Make it quick, I have things to do."
         };
 
+        audioController.PlaySound(whatIsItVoice);
         uiController.StartDialogues(dialogueList, MANAGER_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>

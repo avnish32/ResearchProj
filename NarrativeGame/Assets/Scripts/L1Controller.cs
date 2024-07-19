@@ -10,9 +10,17 @@ public class L1Controller : MonoBehaviour
     [SerializeField]
     private UIController uiController;
 
+    [SerializeField]
+    private AudioController audioController;
+
+    [SerializeField]
+    private AudioClip levelBGM;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioController.PlayMusic(levelBGM);
+
         string[] prologueDialogues =
         {
             "A year ago, a small article appeared in the local newspaper.",

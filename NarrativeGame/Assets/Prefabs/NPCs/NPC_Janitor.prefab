@@ -337,6 +337,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateWPlayer: 0
+  whatVoice: {fileID: 8300000, guid: bd7ae0f7a1fed114f9dc13e559a99d6e, type: 3}
+  noneBusinessVoice: {fileID: 8300000, guid: b92fe2903c3bbcb4e8286e3b58e7ce8d, type: 3}
+  yeahVoice: {fileID: 8300000, guid: 19161d2b08e64624594c4f6f610fbb31, type: 3}
+  reallyVoice: {fileID: 8300000, guid: b130332e2f3df944f9b21a2ff267c2ca, type: 3}
+  goodLuckVoice: {fileID: 8300000, guid: 8d973096431112f4fbc58d82b1313838, type: 3}
+  dontWorryVoice: {fileID: 8300000, guid: 6705d0541ec8dd54582a60daddac24e0, type: 3}
+  climaxBGM: {fileID: 8300000, guid: 42be0e12da3ce1642a95ef6805ab3bee, type: 3}
 --- !u!114 &6562089233851108077
 MonoBehaviour:
   m_ObjectHideFlags: 0

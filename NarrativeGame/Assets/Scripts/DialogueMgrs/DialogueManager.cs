@@ -12,12 +12,14 @@ public class DialogueManager : MonoBehaviour
 
     protected GameController gameController;
     protected UIController uiController;
+    protected AudioController audioController;
     protected NPCMovement npcMovement;
 
     protected void Awake()
     {
         gameController = FindObjectOfType<GameController>();
         uiController = FindObjectOfType<UIController>();
+        audioController = FindObjectOfType<AudioController>();
         npcMovement = GetComponent<NPCMovement>();
     }
 
