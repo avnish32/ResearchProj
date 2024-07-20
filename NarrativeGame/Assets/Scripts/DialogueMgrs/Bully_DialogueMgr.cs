@@ -10,18 +10,11 @@ public class Bully_DialogueMgr : DialogueManager
 
     // ### voices
     [SerializeField]
-    AudioClip whatVoice;
-
-    [SerializeField]
-    AudioClip hahVoice;
-
-    [SerializeField]
-    AudioClip yeahYeahVoice;
-
-    [SerializeField]
-    AudioClip owwVoice;
-
+    AudioClip whatVoice, hahVoice, yeahYeahVoice;
     // ### voices end
+
+    [SerializeField]
+    AudioClip winSfx, loseSfx;
 
     private const ECharacters BULLY_CHAR = ECharacters.BULLY;
 
@@ -215,7 +208,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Leave me alone, for god's sake."
         };
 
-        audioController.PlaySound(owwVoice);
+        audioController.PlaySound(winSfx);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 
@@ -228,7 +221,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Run along now, and stay away, you hear?"
         };
 
-        audioController.PlaySound(hahVoice);
+        audioController.PlaySound(loseSfx);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 

@@ -16,22 +16,7 @@ public class Janitor_DialogueMgr : DialogueManager
 
     // ### voices
     [SerializeField]
-    AudioClip whatVoice;
-
-    [SerializeField]
-    AudioClip noneBusinessVoice;
-
-    [SerializeField]
-    AudioClip yeahVoice;
-
-    [SerializeField]
-    AudioClip reallyVoice;
-
-    [SerializeField]
-    AudioClip goodLuckVoice;
-
-    [SerializeField]
-    AudioClip dontWorryVoice;
+    AudioClip whatVoice, noneBusinessVoice, yeahVoice, reallyVoice, goodLuckVoice, dontWorryVoice;
     // ### voices end
 
     [SerializeField]

@@ -11,25 +11,8 @@ public class Friend_DialogueMgr : DialogueManager
 
     // ### voices
     [SerializeField]
-    private AudioClip uhHiVoice;
-
-    [SerializeField]
-    private AudioClip huhVoice;
-
-    [SerializeField]
-    private AudioClip hiFriendlyVoice;
-
-    [SerializeField]
-    private AudioClip yepVoice;
-
-    [SerializeField]
-    private AudioClip tyVoice;
-
-    [SerializeField]
-    private AudioClip wowVoice;
-
-    [SerializeField]
-    private AudioClip hmmVoice;
+    private AudioClip uhHiVoice, huhVoice, hiFriendlyVoice, 
+        yepVoice, tyVoice, wowVoice, hmmVoice;
     // #### voices end
 
     private const ECharacters FRIEND_CHAR = ECharacters.FRIEND;

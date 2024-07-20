@@ -324,7 +324,8 @@ MonoBehaviour:
   whatVoice: {fileID: 8300000, guid: ae6c9e825d625274d87f91cd59688241, type: 3}
   hahVoice: {fileID: 8300000, guid: ff9834cd22b300140b8597fa57fa4625, type: 3}
   yeahYeahVoice: {fileID: 8300000, guid: 948ebc06928a3024e8f0ed77c0935647, type: 3}
-  owwVoice: {fileID: 8300000, guid: b1e3ef952180011409f1eec2795fb86d, type: 3}
+  winSfx: {fileID: 8300000, guid: 04148dc36bac5f246b782c53144c7752, type: 3}
+  loseSfx: {fileID: 8300000, guid: 7d108800429799b4594cf87baf69ea2e, type: 3}
 --- !u!114 &7822649856062241188
 MonoBehaviour:
   m_ObjectHideFlags: 0
