@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class UIController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject playerDialogueOuterPanel, playerDialogueInnerPanelPrefab, dialogueButtonPrefab;
+    private PlayerDialoguesOuterPanel playerDialogueOuterPanel;
 
     [SerializeField]
     private NPCDialoguePanel npcDialoguePanel;
@@ -23,7 +23,6 @@ public class UIController : MonoBehaviour
 
     private AudioController audioController;
     private GameController gameController;
-    private GameObject instantiatedPlayerDialogueInnerPanel;
     private bool npcDialogueAdvanced = false;
     private Dictionary<ECharacters, SSPeakerInfo> speakerToInfoMap;
 
@@ -42,30 +41,19 @@ public class UIController : MonoBehaviour
             speakerToInfoMap[speakerInfo.speaker] = speakerInfo;
         }
 
-        playerDialogueOuterPanel.SetActive(false);
-        npcDialoguePanel.gameObject.SetActive(false);
+        playerDialogueOuterPanel.Disable();
+        npcDialoguePanel.Disable();
     }
 
     public void DisplayPlayerDialoguePanel(List<SDialogue> dialogues)
     {
-        instantiatedPlayerDialogueInnerPanel = Instantiate(playerDialogueInnerPanelPrefab);
-        instantiatedPlayerDialogueInnerPanel.transform.SetParent(playerDialogueOuterPanel.transform, false);
-        foreach (SDialogue dialogue in dialogues)
-        {
-            GameObject newDialogueButton = Instantiate(dialogueButtonPrefab);
-            newDialogueButton.GetComponent<PlayerDialogueButton>().Init(dialogue, this);
-            newDialogueButton.transform.SetParent(instantiatedPlayerDialogueInnerPanel.transform, false);
-        }
-
         gameController.DisablePlayerMovement();
-        playerDialogueOuterPanel.SetActive(true);
+        playerDialogueOuterPanel.Spawn(dialogues, this);
     }
 
     public void HidePlayerDialoguePanel()
     {
-        Destroy(instantiatedPlayerDialogueInnerPanel);
-        instantiatedPlayerDialogueInnerPanel = null;
-        playerDialogueOuterPanel.SetActive(false);
+        playerDialogueOuterPanel.Hide();
     }
 
     public void OnPlayerDialoguePanelClosed()
@@ -85,19 +73,19 @@ public class UIController : MonoBehaviour
             SSPeakerInfo speakerInfo = speakerToInfoMap[speaker];
             npcDialoguePanel.SetNPCSpeakerDetails(speakerInfo.speakerName, speakerInfo.speakerImg);
             npcDialoguePanel.ShowNPCSpeakerDetails();
-        }        
-        
-        npcDialoguePanel.gameObject.SetActive(true);
+        }
+
+        npcDialoguePanel.Spawn();
     }
 
     private void HideNPCDialoguePanel()
     {
-        npcDialoguePanel.gameObject.SetActive(false);
+        npcDialoguePanel.Disable();
     }
 
     public bool IsAnyDialogueGoingOn()
     {
-        return npcDialoguePanel.gameObject.activeInHierarchy || playerDialogueOuterPanel.activeInHierarchy;
+        return npcDialoguePanel.gameObject.activeInHierarchy || playerDialogueOuterPanel.gameObject.activeInHierarchy;
     }
 
     private IEnumerator RunThroughNPCDialogues(string[] npcDialogues, Action dialogueEndAction)

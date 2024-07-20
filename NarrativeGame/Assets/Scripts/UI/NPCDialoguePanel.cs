@@ -70,4 +70,25 @@ public class NPCDialoguePanel : MonoBehaviour
         npcSpeakerNamePanel.SetActive(true);
         npcSpeakerImgPanel.SetActive(true);
     }
+
+    public void Spawn()
+    {
+        gameObject.SetActive(true);
+        //animation handled by controller
+
+        // animation disabled for npc dialogue panel
+        // as it was being played too often e.g. between different
+        // function calls for different characters (L2 intro convo b/w mgr and janitor)
+    }
+
+    public void Hide()
+    {
+        animator.Play("Hide");
+    }
+
+    //Called at the end of "hide" animation
+    public void Disable()
+    {
+        gameObject.SetActive(false);
+    }
 }

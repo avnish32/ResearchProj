@@ -11,18 +11,6 @@ public class NPCInteraction : MonoBehaviour, IInteractable
         uiController = FindObjectOfType<UIController>();
     }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void PrintDialogues(List<SDialogue> dialogues)
     {
         string dialogueString = "";
