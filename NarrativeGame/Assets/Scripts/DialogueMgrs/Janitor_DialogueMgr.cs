@@ -11,7 +11,7 @@ using UnityEngine.Rendering.Universal;
 public class Janitor_DialogueMgr : DialogueManager
 {
     private string safeCode;
-    private bool isSafeCracked = false;
+    //private bool isSafeCracked = false;
     private const ECharacters JANITOR_CHAR = ECharacters.JANITOR;
 
     // ### voices
@@ -118,14 +118,28 @@ public class Janitor_DialogueMgr : DialogueManager
         uiController.StartDialogues(dialogueList, JANITOR_CHAR, () =>
         {
             List<SDialogue> playerDialogueList;
-            if (isSafeCracked)
+            if (stateWPlayer.Equals(PlayerStates.SAFECRACKED))
             {
-                playerDialogueList = GetDialogueListFromId(new List<EDialogueID>{EDialogueID.JANITORTHECODEIS});
-                SDialogue theCodeIsDialogue = playerDialogueList[0];
-                theCodeIsDialogue.dialogueText = string.Format
+                playerDialogueList = GetDialogueListFromId(new List<EDialogueID>{EDialogueID.JANITORTHECODEISCORRECT});
+                SDialogue theCodeIsCorrectDialogue = playerDialogueList[0];
+                theCodeIsCorrectDialogue.dialogueText = string.Format
                 ("It’s {0}. There was a lot of stuff inside, I couldn’t tell which file was yours.", safeCode);
                 playerDialogueList.Clear();
-                playerDialogueList.Add(theCodeIsDialogue);
+
+                playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.JANITORTHECODEISWRONG});
+                SDialogue theCodeIsWrongDialogue = playerDialogueList[0];
+
+                char[] jumbledCode = safeCode.ToCharArray();
+                jumbledCode[0] = safeCode[safeCode.Length - 1];
+                jumbledCode[safeCode.Length - 1] = safeCode[0];
+
+                theCodeIsWrongDialogue.dialogueText = string.Format
+                ("It’s {0}. There was a lot of stuff inside, I couldn’t tell which file was yours.", new String(jumbledCode));
+                
+                playerDialogueList.Clear();
+
+                playerDialogueList.Add(theCodeIsWrongDialogue);
+                playerDialogueList.Add(theCodeIsCorrectDialogue);
             } else
             {
                 playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.JANITORJOGMEMORY });
@@ -347,14 +361,46 @@ public class Janitor_DialogueMgr : DialogueManager
         gameController.EnablePlayerMovement();
     }
 
-    private void JanitorTheCodeIsAction()
+    private void JanitorTheCodeIsWrongAction()
     {
-        if (isSafeCracked)
+        //isSafeCracked = false;
+        stateWPlayer = PlayerStates.SAFECRACKACCEPTED;
+        SendJanitorToCheckCode();
+    }
+
+    private void SendJanitorToCheckCode()
+    {
+        string[] dialogueList = {
+            "That’s fine, kid. I can deal with that.",
+            "No way you could have checked every single file.",
+            "But with the code I will go fetch it by myself as soon as I get a chance.",
+            "I'll tell you everything once I get my file. Wait for me."
+        };
+
+        uiController.StartDialogues(dialogueList, JANITOR_CHAR, WhileJanitorChecksCode);
+    }
+
+    private void WhileJanitorChecksCode()
+    {
+        string[] dialogueList = {
+            "Some time later..."
+        };
+
+        uiController.FadeToBlack(() =>
+        {
+            uiController.StartDialogues(dialogueList, ECharacters.NARRATOR, AfterJanitorChecksCode);
+        });
+    }
+
+    private void AfterJanitorChecksCode()
+    {
+        uiController.FadeFromBlack(null);
+
+        if (stateWPlayer.Equals(PlayerStates.SAFECRACKED))
         {
             string[] dialogueList = {
-                "That’s fine, kid. I can deal with that.",
-                "No way you could have checked every single file.",
-                "But with the code I can go fetch it by myself now.",
+                "Thanks, kid. I got my file.",
+                "Couldn't have done it without your help.",
                 "Right then, as promised, here’s what I know about that whole dirty business.",
                 "Bridges had a client – a shady lady by the name of Katherine.",
                 "He had rented out a storage unit to her. On Grove Street, I think.",
@@ -372,7 +418,13 @@ public class Janitor_DialogueMgr : DialogueManager
         }
         else
         {
-            Debug.LogError("Safe is not cracked yet player is getting \"the code is...\" dialogue");
+            // this will execute when player has cracked the safe but chose the wrong code
+            string[] dialogueList = {
+                "Do you take me for a fool or something?",
+                "The code you gave me was wrong! The safe didn't open an inch.",
+                "Go try again, and you better come back with the correct code this time."
+            };
+            uiController.StartDialogues(dialogueList, JANITOR_CHAR, gameController.EnablePlayerMovement);
         }
     }
 
@@ -478,9 +530,10 @@ public class Janitor_DialogueMgr : DialogueManager
             SDialogue janitorGotCode = new SDialogue();
             janitorGotCode.dialogueText = "I did it, I got the passcode.";
             janitorGotCode.dialogueId = EDialogueID.JANITORIGOTCODE;
-            janitorGotCode.playerStates = new List<PlayerStates> { PlayerStates.SAFECRACKACCEPTED };
+            janitorGotCode.playerStates = new List<PlayerStates> { PlayerStates.SAFECRACKACCEPTED, PlayerStates.SAFECRACKED };
             Dictionary<PlayerStates, Action> janitorGotCodeRespMap = new Dictionary<PlayerStates, Action>();
             janitorGotCodeRespMap[PlayerStates.SAFECRACKACCEPTED] = JanitorIGotCodeAction;
+            janitorGotCodeRespMap[PlayerStates.SAFECRACKED] = JanitorIGotCodeAction;
             janitorGotCode.rshipToResponseMap = janitorGotCodeRespMap;
             dialogueList.Add(janitorGotCode);
         }
@@ -661,13 +714,23 @@ public class Janitor_DialogueMgr : DialogueManager
         }
 
         {
-            SDialogue janitorTheCodeIs = new SDialogue();
-            janitorTheCodeIs.dialogueText = "Here you go. There was a lot of stuff inside, I couldn’t tell which file was yours.";
-            janitorTheCodeIs.dialogueId = EDialogueID.JANITORTHECODEIS;
-            Dictionary<PlayerStates, Action> janitorTheCodeIsRespMap = new Dictionary<PlayerStates, Action>();
-            janitorTheCodeIsRespMap[PlayerStates.SAFECRACKACCEPTED] = JanitorTheCodeIsAction;
-            janitorTheCodeIs.rshipToResponseMap = janitorTheCodeIsRespMap;
-            dialogueList.Add(janitorTheCodeIs);
+            SDialogue janitorTheCodeIsCorrectOption = new SDialogue();
+            janitorTheCodeIsCorrectOption.dialogueText = "Here you go. There was a lot of stuff inside, I couldn’t tell which file was yours.";
+            janitorTheCodeIsCorrectOption.dialogueId = EDialogueID.JANITORTHECODEISCORRECT;
+            Dictionary<PlayerStates, Action> janitorTheCodeIsCorrectOptionRespMap = new Dictionary<PlayerStates, Action>();
+            janitorTheCodeIsCorrectOptionRespMap[PlayerStates.SAFECRACKED] = SendJanitorToCheckCode;
+            janitorTheCodeIsCorrectOption.rshipToResponseMap = janitorTheCodeIsCorrectOptionRespMap;
+            dialogueList.Add(janitorTheCodeIsCorrectOption);
+        }
+
+        {
+            SDialogue janitorTheCodeIsWrongOption = new SDialogue();
+            janitorTheCodeIsWrongOption.dialogueText = "Here you go. There was a lot of stuff inside, I couldn’t tell which file was yours.";
+            janitorTheCodeIsWrongOption.dialogueId = EDialogueID.JANITORTHECODEISWRONG;
+            Dictionary<PlayerStates, Action> janitorTheCodeIsWrongOptionRespMap = new Dictionary<PlayerStates, Action>();
+            janitorTheCodeIsWrongOptionRespMap[PlayerStates.SAFECRACKED] = JanitorTheCodeIsWrongAction;
+            janitorTheCodeIsWrongOption.rshipToResponseMap = janitorTheCodeIsWrongOptionRespMap;
+            dialogueList.Add(janitorTheCodeIsWrongOption);
         }
 
         {
@@ -693,7 +756,8 @@ public class Janitor_DialogueMgr : DialogueManager
 
     public void OnSafeCracked(string safeCode)
     {
-        isSafeCracked = true;
+        //isSafeCracked = true;
+        stateWPlayer = PlayerStates.SAFECRACKED;
         this.safeCode = safeCode;
     }
 }

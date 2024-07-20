@@ -44,7 +44,7 @@ public class Safe : MonoBehaviour, IInteractable
 
     private bool CanPlayerInteract()
     {
-        return janitor.GetStateWPlayer() == PlayerStates.SAFECRACKACCEPTED && !isSafeCracked;
+        return janitor.GetStateWPlayer().Equals(PlayerStates.SAFECRACKACCEPTED);
     }
 
     public void OnPlayerEnteredToInteract() 
@@ -68,7 +68,7 @@ public class Safe : MonoBehaviour, IInteractable
 
     public void OnSafeCracked(string codeString)
     {
-        isSafeCracked =true;
+        //isSafeCracked =true;
         janitor.OnSafeCracked(codeString);
     }
 }
