@@ -8,6 +8,9 @@ public class PlayerDialogueButton : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI buttonText;
 
+    [SerializeField]
+    private AudioClip clickSfx;
+
     //private DialogueManager dialogueManager;
     private SDialogue dialogue;
     private UIController uiController;
@@ -33,6 +36,7 @@ public class PlayerDialogueButton : MonoBehaviour
 
     public void OnButtonClicked()
     {
+        FindObjectOfType<AudioController>().PlaySound(clickSfx);
         this.dialogue.dialogueAction.Invoke();
         uiController.HidePlayerDialoguePanel();
     }

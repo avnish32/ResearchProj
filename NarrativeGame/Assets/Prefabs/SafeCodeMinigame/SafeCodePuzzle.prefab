@@ -3846,6 +3846,9 @@ MonoBehaviour:
   historyItemPrefab: {fileID: 3906507282185309620, guid: fcbbe1096b081944798fb7a7a29aa470, type: 3}
   codeEnterInputAction: {fileID: 358492301593411116, guid: de8824fa2fe827a418d5a19ccd71f48c, type: 3}
   endMsgText: {fileID: 1351610088195360226}
+  clickSfx: {fileID: 8300000, guid: 71b4ead188becd3409628c8cb45fb9d2, type: 3}
+  onCrackedSfx: {fileID: 8300000, guid: 04148dc36bac5f246b782c53144c7752, type: 3}
+  onNotCrackedSfx: {fileID: 8300000, guid: 7d108800429799b4594cf87baf69ea2e, type: 3}
 --- !u!1 &8347421862610017314
 GameObject:
   m_ObjectHideFlags: 0

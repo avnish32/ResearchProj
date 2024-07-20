@@ -18,6 +18,10 @@ public class UIController : MonoBehaviour
     [SerializeField]
     SSPeakerInfo[] speakersInfo;
 
+    [SerializeField]
+    private AudioClip clickSfx;
+
+    private AudioController audioController;
     private GameController gameController;
     private GameObject instantiatedPlayerDialogueInnerPanel;
     private bool npcDialogueAdvanced = false;
@@ -25,6 +29,7 @@ public class UIController : MonoBehaviour
 
     private void Awake()
     {
+        audioController = FindObjectOfType<AudioController>();
         gameController = FindObjectOfType<GameController>();
     }
 
@@ -65,6 +70,7 @@ public class UIController : MonoBehaviour
 
     public void OnPlayerDialoguePanelClosed()
     {
+        audioController.PlaySound(clickSfx);
         HidePlayerDialoguePanel();
         gameController.EnablePlayerMovement();
     }
@@ -116,6 +122,7 @@ public class UIController : MonoBehaviour
 
     public void AdvanceNPCDialogue()
     {
+        audioController.PlaySound(clickSfx);
         npcDialogueAdvanced = true;
     }
 

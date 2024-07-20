@@ -35,7 +35,7 @@ public class Janitor_DialogueMgr : DialogueManager
     // ### voices end
 
     [SerializeField]
-    AudioClip climaxBGM;
+    AudioClip pencilWriteSfx;
 
     new void Awake()
     {
@@ -415,8 +415,8 @@ public class Janitor_DialogueMgr : DialogueManager
     private void EpilogueEndAction()
     {
         // play scribbling noise
+        audioController.PlaySound(pencilWriteSfx);
         uiController.FadeToBlack(null);
-        audioController.PlayMusic(climaxBGM);
 
         string[] dialogueList = {
             "He wrote something on a piece of paper, handed it to me and left.",

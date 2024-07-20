@@ -80,6 +80,7 @@ MonoBehaviour:
   - speaker: 5
     speakerName: Mr. Bridges
     speakerImg: {fileID: 21300000, guid: 469893e525ed1bb49b4ad2c82f86383b, type: 3}
+  clickSfx: {fileID: 8300000, guid: 71b4ead188becd3409628c8cb45fb9d2, type: 3}
 --- !u!82 &4403111365425568529
 AudioSource:
   m_ObjectHideFlags: 0

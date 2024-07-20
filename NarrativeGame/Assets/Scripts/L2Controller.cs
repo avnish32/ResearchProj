@@ -16,7 +16,7 @@ public class L2Controller : MonoBehaviour
     private AudioController audioController;
 
     [SerializeField]
-    private AudioClip levelBGM;
+    private AudioClip levelBGM, climaxBGM;
 
     [SerializeField]
     private Janitor_DialogueMgr janitor;
@@ -150,6 +150,7 @@ public class L2Controller : MonoBehaviour
             "I should go and thank him."
         };
 
+        audioController.PlayMusic(climaxBGM);
         janitor.SetStateWPlayer(PlayerStates.MGRARRESTED);
 
         uiController.StartDialogues(epilogueDialogue, ECharacters.NARRATOR, () => {

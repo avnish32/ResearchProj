@@ -20,7 +20,7 @@ public class WAB : MonoBehaviour
     RectTransform slotParentBehind, slotParentFront, slot;
 
     [SerializeField]
-    AudioClip onMissSfx, onHitSfx;
+    AudioClip onMissSfx, onHitSfx, clickSfx;
 
     //minSpawnWait >= maxLifetime?
     [SerializeField]
@@ -59,6 +59,7 @@ public class WAB : MonoBehaviour
 
     public void StartSpawning()
     {
+        audioController.PlaySound(clickSfx);
         if (shouldSpawn)
         {
             return;

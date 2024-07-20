@@ -114,6 +114,7 @@ MonoBehaviour:
   uiController: {fileID: 3438661597072359071}
   audioController: {fileID: 13750101576555126}
   levelBGM: {fileID: 8300000, guid: 9b9e3249b2419d74386937a3eb572c50, type: 3}
+  climaxBGM: {fileID: 8300000, guid: 42be0e12da3ce1642a95ef6805ab3bee, type: 3}
   janitor: {fileID: 0}
   manager: {fileID: 0}
   mainCam: {fileID: 0}

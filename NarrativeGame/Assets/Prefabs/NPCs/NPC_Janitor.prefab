@@ -343,7 +343,7 @@ MonoBehaviour:
   reallyVoice: {fileID: 8300000, guid: b130332e2f3df944f9b21a2ff267c2ca, type: 3}
   goodLuckVoice: {fileID: 8300000, guid: 8d973096431112f4fbc58d82b1313838, type: 3}
   dontWorryVoice: {fileID: 8300000, guid: 6705d0541ec8dd54582a60daddac24e0, type: 3}
-  climaxBGM: {fileID: 8300000, guid: 42be0e12da3ce1642a95ef6805ab3bee, type: 3}
+  pencilWriteSfx: {fileID: 8300000, guid: ab281222fc55aa7469fa4d6820afb6a1, type: 3}
 --- !u!114 &6562089233851108077
 MonoBehaviour:
   m_ObjectHideFlags: 0

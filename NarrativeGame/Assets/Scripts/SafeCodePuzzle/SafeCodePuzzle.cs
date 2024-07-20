@@ -25,6 +25,9 @@ public class SafeCodePuzzle : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI endMsgText;
+
+    [SerializeField]
+    private AudioClip clickSfx, onCrackedSfx, onNotCrackedSfx;
     
     private int guessesRemaining;
     private int[] code = new int[3];
@@ -33,6 +36,7 @@ public class SafeCodePuzzle : MonoBehaviour
     private bool isCodeCracked = false;
     private string codeString = "";
     private Safe instantiatingSafe;
+    private AudioController audioController;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +56,7 @@ public class SafeCodePuzzle : MonoBehaviour
         inputDigits[0].ActivateInputField();
         guessesRemaining = 5;
         endMsgText.text = string.Empty;
+        audioController = FindObjectOfType<AudioController>();
     }
 
     private void ResetInputField(int i)
@@ -95,6 +100,7 @@ public class SafeCodePuzzle : MonoBehaviour
     public void OnCodeEntered()
     {
         Debug.Log("Inside on code entered.");
+        audioController.PlaySound(clickSfx);
         if (isCodeCracked || guessesRemaining <= 0 || !IsEnteredCodeValid())
         {
             inputDigits[0].ActivateInputField();
@@ -115,6 +121,7 @@ public class SafeCodePuzzle : MonoBehaviour
         if (instantiatedHistoryItem.IsEnteredCodeCorrect())
         {
             Debug.Log("Successfully cracked the code. Codestring: "+codeString);
+            audioController.PlaySound(onCrackedSfx);
             endMsgText.text = "Success! Press 'Exit' to leave.";
             isCodeCracked = true;
             instantiatingSafe.OnSafeCracked(codeString);
@@ -124,6 +131,7 @@ public class SafeCodePuzzle : MonoBehaviour
         if (guessesRemaining <= 0)
         {
             Debug.Log("Couldn't guess code. Code was: "+codeString);
+            audioController.PlaySound(onNotCrackedSfx);
             endMsgText.text = "Failed.";
             Destroy(gameObject, 2f);
         }
@@ -132,11 +140,13 @@ public class SafeCodePuzzle : MonoBehaviour
     public void OnCloseButtonPressed()
     {
         //puzzleCanvas.gameObject.SetActive(false);
+        audioController.PlaySound(clickSfx);
         Destroy(gameObject);
     }
 
     public void SelectNextInputDigit(int currentlySelectedInput)
     {
+        audioController.PlaySound(clickSfx);
         inputDigits[((currentlySelectedInput + 1) % inputDigits.Length)].Select();
         //Debug.Log("Input field " + (currentlySelectedInput + 1) % inputDigits.Length + " is selcted.");
     }
