@@ -5,10 +5,12 @@ using UnityEngine;
 public class NPCInteraction : MonoBehaviour, IInteractable
 {
     private UIController uiController;
+    private GameController gameController;
 
     private void Awake()
     {
         uiController = FindObjectOfType<UIController>();
+        gameController = FindObjectOfType<GameController>();
     }
 
     private void PrintDialogues(List<SDialogue> dialogues)
@@ -23,7 +25,7 @@ public class NPCInteraction : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (uiController.IsAnyDialogueGoingOn())
+        if (!gameController.CanPlayerMoveOrInteract())
         {
             return;
         }

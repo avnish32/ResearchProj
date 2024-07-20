@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!gameController.CanPlayerMove())
+        if (!gameController.CanPlayerMoveOrInteract())
         {
             return;
         }

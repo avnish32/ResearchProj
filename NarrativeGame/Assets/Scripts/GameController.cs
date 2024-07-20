@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    private bool canPlayerMove = true;
+    private bool canPlayerMoveOrInteract = true;
 
     // Start is called before the first frame update
     void Start()
@@ -20,17 +20,17 @@ public class GameController : MonoBehaviour
 
     public void DisablePlayerMovement()
     {
-        canPlayerMove = false;
+        canPlayerMoveOrInteract = false;
     }
 
     public void EnablePlayerMovement()
     {
-        canPlayerMove = true;
+        canPlayerMoveOrInteract = true;
     }
 
-    public bool CanPlayerMove()
+    public bool CanPlayerMoveOrInteract()
     {
-        return canPlayerMove;
+        return canPlayerMoveOrInteract;
     }
 
     public void OnGameEnd()
