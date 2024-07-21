@@ -6,7 +6,7 @@ using UnityEngine;
 public class Bully_DialogueMgr : DialogueManager
 {
     [SerializeField]
-    GameObject wabMinigame;
+    GameObject wabMinigamePrefab;
 
     // ### voices
     [SerializeField]
@@ -185,7 +185,8 @@ public class Bully_DialogueMgr : DialogueManager
     private void StartWABMinigame()
     {
         stateWPlayer = PlayerStates.BULLYFOUGHT;
-        Instantiate(wabMinigame);
+        GameObject wabMinigame = Instantiate(wabMinigamePrefab);
+        wabMinigame.GetComponent<WAB>().Init(audioController, gameController);
     }
 
     private void BullySorryImLeavingAction()

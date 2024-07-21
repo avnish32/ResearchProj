@@ -134,4 +134,14 @@ public class UIController : MonoBehaviour
     {
         blackPanel.FadeOut(fadeEndAction);
     }
+
+    public void OnGamePaused()
+    {
+        Debug.Log("UI controller paused.");
+    }
+
+    public void OnGameResumed()
+    {
+        Debug.Log("UI controller resumed.");
+    }
 }

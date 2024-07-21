@@ -29,13 +29,19 @@ public class WAB : MonoBehaviour
     private bool shouldSpawn = false;
     private int score = 0, miss = 0;
     private AudioController audioController;
+    private GameController gameController;
 
     // Start is called before the first frame update
     void Start()
     {
-        audioController = FindObjectOfType<AudioController>();
         scoreText.text = string.Format("Score: {0}", score);
         livesText.text = string.Format("Lives left: {0}", MAX_MISSES - miss);
+    }
+
+    public void Init(AudioController audioController, GameController gameController)
+    {
+        this.audioController = audioController;
+        this.gameController = gameController;
     }
 
     private IEnumerator SpawnBullyFace()
@@ -44,7 +50,7 @@ public class WAB : MonoBehaviour
         {
             yield return new WaitForSeconds(UnityEngine.Random.Range(minSpawnWait, maxSpawnWait));
 
-            if (!shouldSpawn)
+            if (!shouldSpawn || gameController.IsGamePaused())
             {
                 continue;
             }

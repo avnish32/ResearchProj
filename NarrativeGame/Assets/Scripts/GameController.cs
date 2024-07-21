@@ -34,4 +34,39 @@ public class GameController : MonoBehaviour
         Debug.Log("End of game.");
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void OnPauseButtonClicked()
+    {
+        if (isGamePaused)
+        {
+            return;
+        }
+
+        Time.timeScale = 0f;
+        isGamePaused = true;
+        canPlayerMoveOrInteract=false;
+
+        foreach (var pauseBroadcaster in PauseBroadcaster.GetInstances())
+        {
+            //Debug.Log("PB ongamepaused called.");
+            pauseBroadcaster.BroadcastPause();
+        }
+    }
+
+    public void OnResumeButtonClicked()
+    {
+        canPlayerMoveOrInteract = true;
+        isGamePaused=false;
+        Time.timeScale = 1f;
+
+        foreach (var pauseBroadcaster in PauseBroadcaster.GetInstances())
+        {
+            pauseBroadcaster.roadcastResume();
+        }
+    }
+
+    public bool IsGamePaused()
+    {
+        return isGamePaused;
+    }
 }
