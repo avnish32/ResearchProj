@@ -29,25 +29,6 @@ public class NPCDialoguePanel : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Debug.Log("npc dialogue panel start");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnEnable()
-    {
-        //Debug.Log("npc dialogue panel enabled");
-        //juice
-        //animator.Play("Spawn");
-    }
-
     public void SetNPCDialogueText(string dialogueText)
     {
         this.npcDialogueText.text = dialogueText;

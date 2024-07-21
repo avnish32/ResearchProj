@@ -16,6 +16,9 @@ public class UIController : MonoBehaviour
     private BlackPanel blackPanel;
 
     [SerializeField]
+    private PanelAnimator pausePanel;
+
+    [SerializeField]
     SSPeakerInfo[] speakersInfo;
 
     [SerializeField]
@@ -25,6 +28,7 @@ public class UIController : MonoBehaviour
     private GameController gameController;
     private bool npcDialogueAdvanced = false;
     private Dictionary<ECharacters, SSPeakerInfo> speakerToInfoMap;
+    private bool wasNpcDialoguePanelActiveB4Pause, wasPlayerDialoguePanelActiveB4Pause;
 
     private void Awake()
     {
@@ -41,8 +45,9 @@ public class UIController : MonoBehaviour
             speakerToInfoMap[speakerInfo.speaker] = speakerInfo;
         }
 
-        playerDialogueOuterPanel.Disable();
+        playerDialogueOuterPanel.OnHideAnimEnd();
         npcDialoguePanel.Disable();
+        pausePanel.OnHideAnimEnd();
     }
 
     public void DisplayPlayerDialoguePanel(List<SDialogue> dialogues)
@@ -51,9 +56,9 @@ public class UIController : MonoBehaviour
         playerDialogueOuterPanel.Spawn(dialogues, this);
     }
 
-    public void HidePlayerDialoguePanel()
+    public void HidePlayerDialoguePanel(bool hidingDueToPause = false)
     {
-        playerDialogueOuterPanel.Hide();
+        playerDialogueOuterPanel.Hide(hidingDueToPause);
     }
 
     public void OnPlayerDialoguePanelClosed()
@@ -81,11 +86,6 @@ public class UIController : MonoBehaviour
     private void HideNPCDialoguePanel()
     {
         npcDialoguePanel.Disable();
-    }
-
-    public bool IsAnyDialogueGoingOn()
-    {
-        return npcDialoguePanel.gameObject.activeInHierarchy || playerDialogueOuterPanel.gameObject.activeInHierarchy;
     }
 
     private IEnumerator RunThroughNPCDialogues(string[] npcDialogues, Action dialogueEndAction)
@@ -125,6 +125,11 @@ public class UIController : MonoBehaviour
         StartCoroutine(RunThroughNPCDialogues(npcDialogues, dialogueEndAction));
     }
 
+    public bool IsAnyDialogueGoingOn()
+    {
+        return npcDialoguePanel.gameObject.activeInHierarchy || playerDialogueOuterPanel.gameObject.activeInHierarchy;
+    }
+
     public void FadeToBlack(Action fadeEndAction)
     {
         blackPanel.FadeIn(fadeEndAction);
@@ -138,10 +143,31 @@ public class UIController : MonoBehaviour
     public void OnGamePaused()
     {
         Debug.Log("UI controller paused.");
+        wasNpcDialoguePanelActiveB4Pause = npcDialoguePanel.gameObject.activeInHierarchy;
+        if (wasNpcDialoguePanelActiveB4Pause)
+        {
+            HideNPCDialoguePanel();
+        }
+        wasPlayerDialoguePanelActiveB4Pause = playerDialogueOuterPanel.gameObject.activeInHierarchy;
+        if (wasPlayerDialoguePanelActiveB4Pause)
+        {
+            HidePlayerDialoguePanel(true);
+        }
+        pausePanel.gameObject.SetActive(true);
     }
 
     public void OnGameResumed()
     {
         Debug.Log("UI controller resumed.");
+        pausePanel.Hide();
+
+        if (wasNpcDialoguePanelActiveB4Pause)
+        {
+            npcDialoguePanel.Spawn();
+        }
+        if (wasPlayerDialoguePanelActiveB4Pause)
+        {
+            playerDialogueOuterPanel.gameObject.SetActive(true);
+        }
     }
 }

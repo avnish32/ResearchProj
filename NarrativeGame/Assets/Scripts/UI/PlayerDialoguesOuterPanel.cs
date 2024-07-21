@@ -2,19 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDialoguesOuterPanel : MonoBehaviour
+public class PlayerDialoguesOuterPanel : PanelAnimator
 {
     [SerializeField]
     private GameObject playerDialogueInnerPanelPrefab, dialogueButtonPrefab;
 
-    private Animator myAnimator;
     private GameObject instantiatedPlayerDialogueInnerPanel;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        myAnimator = GetComponent<Animator>();
-    }
 
     public void Spawn(List<SDialogue> dialogues, UIController uIController)
     {
@@ -31,16 +24,15 @@ public class PlayerDialoguesOuterPanel : MonoBehaviour
         //spawn animation handled by controller
     }
 
-    public void Hide()
-    {
-        myAnimator.Play("Hide");
-    }
-
     //Called at the end of "Hide" animation
-    public void Disable()
+    public new void OnHideAnimEnd()
     {
-        Destroy(instantiatedPlayerDialogueInnerPanel);
-        instantiatedPlayerDialogueInnerPanel = null;
+        if (!hidDueToPause)
+        {
+            Destroy(instantiatedPlayerDialogueInnerPanel);
+            instantiatedPlayerDialogueInnerPanel = null;
+        }
+        
         this.gameObject.SetActive(false);
     }
 }

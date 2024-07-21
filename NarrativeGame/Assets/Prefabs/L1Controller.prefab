@@ -59,6 +59,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5195472783672353046, guid: 25e14f3d4ad53cf4891166b5705d6e8e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8940394000149551429}
+    - targetCorrespondingSourceObject: {fileID: 5195472783672353046, guid: 25e14f3d4ad53cf4891166b5705d6e8e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6619345051328892880}
   m_SourcePrefab: {fileID: 100100000, guid: 25e14f3d4ad53cf4891166b5705d6e8e, type: 3}
 --- !u!114 &3548127778008615882 stripped
 MonoBehaviour:
@@ -92,6 +95,18 @@ MonoBehaviour:
   uiController: {fileID: 7589831513156227387}
   audioController: {fileID: 5106011781560595922}
   levelBGM: {fileID: 8300000, guid: 53228faec8be6254c87aaaa3794b1406, type: 3}
+--- !u!114 &6619345051328892880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4583669786065232252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e01d7d0d6eee54c47acdf2a689be0a6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5106011781560595922 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3556228743225357752, guid: 25e14f3d4ad53cf4891166b5705d6e8e, type: 3}
