@@ -1,21 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    private bool canPlayerMoveOrInteract = true;
+    private bool canPlayerMoveOrInteract = true, isGamePaused = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Time.timeScale = 1.0f;
     }
 
     public void DisablePlayerMovement()
@@ -38,5 +32,6 @@ public class GameController : MonoBehaviour
         //credits
         //load main menu
         Debug.Log("End of game.");
+        SceneManager.LoadScene("MainMenu");
     }
 }
