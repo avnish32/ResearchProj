@@ -12,7 +12,8 @@ public class Mgr_DialogueMgr : DialogueManager
     L2Controller l2Controller;
 
     [SerializeField]
-    private AudioClip whatIsItVoice;
+    private AudioClip makeItQuickVoice, moreSpecificVoice, leaveAloneVoice, whatUnitVoice,
+        notAwareVoice, getToWorkVoice, sheVoice, nerveVoice, niceStoryVoice, lookVoice;
 
     private ECharacters MANAGER_CHAR = ECharacters.MANAGER;
 
@@ -46,7 +47,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "Make it quick, I have things to do."
         };
 
-        audioController.PlaySound(whatIsItVoice);
+        audioController.PlaySound(makeItQuickVoice);
         uiController.StartDialogues(dialogueList, MANAGER_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -61,6 +62,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "You’ll need to be more specific than that."
         };
 
+        audioController.PlaySound(moreSpecificVoice);
         uiController.StartDialogues(dialogueList, MANAGER_CHAR, () =>
         {
             List<SDialogue> playerDialogueList;
@@ -82,10 +84,11 @@ public class Mgr_DialogueMgr : DialogueManager
     private void MgrUKnowWhatImSayinAction()
     {
         string[] dialogueList = {
-            "Play this game with someone else, buddy.",
-            "Leave me alone."
+            "Leave me alone, son.",
+            "Play this game with someone else."
         };
 
+        audioController.PlaySound(leaveAloneVoice);
         uiController.StartDialogues(dialogueList, MANAGER_CHAR, gameController.EnablePlayerMovement);
     }
 
@@ -95,6 +98,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "What storage unit?"
         };
 
+        audioController.PlaySound(whatUnitVoice);
         uiController.StartDialogues(dialogueList, MANAGER_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -109,6 +113,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "I’m not aware of any storage unit there."
         };
 
+        audioController.PlaySound(notAwareVoice);
         uiController.StartDialogues(dialogueList, MANAGER_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -123,6 +128,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "Stop spouting nonsense and get back to work!"
         };
 
+        audioController.PlaySound(getToWorkVoice);
         uiController.StartDialogues(dialogueList, MANAGER_CHAR, gameController.EnablePlayerMovement);
     }
 
@@ -132,6 +138,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "She? Who is she?"
         };
 
+        audioController.PlaySound(sheVoice);
         uiController.StartDialogues(dialogueList, MANAGER_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -147,23 +154,25 @@ public class Mgr_DialogueMgr : DialogueManager
             "Better do what I pay you for, young man, or I’ll show you out myself!"
         };
 
+        audioController.PlaySound(nerveVoice);
         uiController.StartDialogues(dialogueList, MANAGER_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void MgrKatarinaAction()
     {
         string[] dialogueList = {
-            "Hah, nice story, Jared.",
+            "Hah, nice story, son.",
             "Why don’t you give up this job and write a book instead?"
         };
 
+        audioController.PlaySound(niceStoryVoice);
         uiController.StartDialogues(dialogueList, MANAGER_CHAR, gameController.EnablePlayerMovement);
     }
 
     private void MgrKatherineAction()
     {
         string[] dialogueList = {
-            "*visibly sweating* *takes a deep breath*",
+            "Okay, look... *visibly sweating* *takes a deep breath*",
             "Look, I’d told her already. The guns inside that unit, I’ve sold them all.",
             "There’s nothing in there anymore.",
             "Maybe if that nosey reporter had not discovered it, we would have still been in business now.",
@@ -174,6 +183,7 @@ public class Mgr_DialogueMgr : DialogueManager
             "Tell her to lay low for a while; I thought she had better sense than this."
         };
 
+        audioController.PlaySound(lookVoice);
         uiController.StartDialogues(dialogueList, MANAGER_CHAR, l2Controller.OnConfessionObtained);
     }
 

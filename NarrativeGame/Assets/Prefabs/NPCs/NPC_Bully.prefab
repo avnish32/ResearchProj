@@ -321,9 +321,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateWPlayer: 0
   wabMinigamePrefab: {fileID: 1822373432475968674, guid: 7255d48f3aa92a84e8c468b528ae412d, type: 3}
-  whatVoice: {fileID: 8300000, guid: ae6c9e825d625274d87f91cd59688241, type: 3}
-  hahVoice: {fileID: 8300000, guid: ff9834cd22b300140b8597fa57fa4625, type: 3}
   yeahYeahVoice: {fileID: 8300000, guid: 948ebc06928a3024e8f0ed77c0935647, type: 3}
+  heyKidVoice: {fileID: 8300000, guid: 28648cc73a2670247ae20607222ca542, type: 3}
+  wassupVoice: {fileID: 8300000, guid: a3fb941c25bbb7942b285110412fafce, type: 3}
+  whatDoUMeanVoice: {fileID: 8300000, guid: efeaa721fdcdb0c419d15d42e5c36107, type: 3}
+  whyVoice: {fileID: 8300000, guid: dc1ef769545cd86459b40c105c68b4a4, type: 3}
+  IDoWatIPleaseVoice: {fileID: 8300000, guid: 325282948170292488425d732673da52, type: 3}
+  doICareVoice: {fileID: 8300000, guid: 06c2d7a8dcbb0b24284fd6f4f5b76177, type: 3}
+  ohVoice: {fileID: 8300000, guid: 281ff107a81181f449c18782d8ef0371, type: 3}
+  ISeeVoice: {fileID: 8300000, guid: 4c315bcdf618a5448acafcd2d1a19641, type: 3}
   winSfx: {fileID: 8300000, guid: 04148dc36bac5f246b782c53144c7752, type: 3}
   loseSfx: {fileID: 8300000, guid: 7d108800429799b4594cf87baf69ea2e, type: 3}
 --- !u!114 &7822649856062241188

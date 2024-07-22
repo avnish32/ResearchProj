@@ -12,7 +12,12 @@ public class Friend_DialogueMgr : DialogueManager
     // ### voices
     [SerializeField]
     private AudioClip uhHiVoice, huhVoice, hiFriendlyVoice, 
-        yepVoice, tyVoice, wowVoice, hmmVoice;
+        yepVoice, tyVoice, wowVoice, hmmVoice, doIKnowUVoice,
+        howDoUKnowVoice, almostVoice, reallyVoice, okVoice,
+        whyVoice, evenAQuestionVoice, omgVoice, excuseMeVoice,
+        ikrVoice, alrightVoice, luckyYouVoice, whatVoice, ohVoice,
+        weirdVoice, theresAProblemVoice, howRudeVoice, didUJustSayVoice,
+        suitUrselfVoice, urLyingVoice;
     // #### voices end
 
     private const ECharacters FRIEND_CHAR = ECharacters.FRIEND;
@@ -61,7 +66,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Do I know you?"
         };
 
-        audioController.PlaySound(huhVoice);
+        audioController.PlaySound(doIKnowUVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -71,7 +76,7 @@ public class Friend_DialogueMgr : DialogueManager
             "How do you know that? Have you been stalking me?"
         };
 
-        audioController.PlaySound(huhVoice);
+        audioController.PlaySound(howDoUKnowVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -111,6 +116,7 @@ public class Friend_DialogueMgr : DialogueManager
             "You know what, I’m not telling you anything else if you can't stop making fun of it."
         };
 
+        audioController.PlaySound(almostVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -148,6 +154,7 @@ public class Friend_DialogueMgr : DialogueManager
         {
             string[] dialogueList = { "Really?"};
 
+            audioController.PlaySound(reallyVoice);
             uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
             {
                 var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.FRLYINGABTBULLY, EDialogueID.FRYESREALLYHANDLEDBULLY });
@@ -174,6 +181,7 @@ public class Friend_DialogueMgr : DialogueManager
         {
             string[] dialogueList = { "Really?" };
 
+            audioController.PlaySound(reallyVoice);
             uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
             {
                 var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> { EDialogueID.FRLYINGABTBULLY, EDialogueID.FRYESREALLYHANDLEDBULLY });
@@ -198,6 +206,7 @@ public class Friend_DialogueMgr : DialogueManager
             "O...kay?"
         };
 
+        audioController.PlaySound(okVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> 
@@ -215,6 +224,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Gosh, I have so many questions. You look like bad news, dude."
         };
 
+        audioController.PlaySound(whyVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -226,6 +236,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Get a grip on yourself."
         };
 
+        audioController.PlaySound(evenAQuestionVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -235,6 +246,7 @@ public class Friend_DialogueMgr : DialogueManager
             "*rolls eyes* Ohmygod, tell me about it. I almost fell off my chair snoozing in the class."
         };
 
+        audioController.PlaySound(omgVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> 
@@ -249,6 +261,7 @@ public class Friend_DialogueMgr : DialogueManager
             "*narrows eyes* Excuse me, who are you to judge?"
         };
 
+        audioController.PlaySound(excuseMeVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -258,6 +271,7 @@ public class Friend_DialogueMgr : DialogueManager
             "I know, right?"
         };
 
+        audioController.PlaySound(ikrVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID> 
@@ -272,6 +286,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Hi Jared, I’m Anya. Nice to meet you."
         };
 
+        audioController.PlaySound(hiFriendlyVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             stateWPlayer = PlayerStates.ACQUAINTANCE;
@@ -286,9 +301,10 @@ public class Friend_DialogueMgr : DialogueManager
     private void FrndWhat2SayNextAction()
     {
         string[] dialogueList = {
-            "It’s all right, don’t sweat it. See you later!"
+            "It’s all right, don’t sweat it."
         };
 
+        audioController.PlaySound(alrightVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -298,6 +314,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Lucky you. I couldn’t even if I wanted. I’ve got work after this."
         };
 
+        audioController.PlaySound(luckyYouVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -314,6 +331,7 @@ public class Friend_DialogueMgr : DialogueManager
             "How selfish can you be?"
         };
 
+        audioController.PlaySound(whatVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -324,6 +342,8 @@ public class Friend_DialogueMgr : DialogueManager
         };
 
         stateWPlayer = PlayerStates.FRNDJOBREVEALED;
+
+        audioController.PlaySound(hmmVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -340,6 +360,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Jeez, what a creep."
         };
 
+        audioController.PlaySound(howDoUKnowVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -349,6 +370,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Really? Have you heard back?"
         };
 
+        audioController.PlaySound(reallyVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -364,6 +386,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Oh, okay...that was quite honest."
         };
 
+        audioController.PlaySound(okVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -374,6 +397,7 @@ public class Friend_DialogueMgr : DialogueManager
             "I guess I should get going now. *turns away thinking you’re weird*"
         };
 
+        audioController.PlaySound(ohVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -384,6 +408,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Unless they have multiple candidates and are having a hard time deciding."
         };
 
+        audioController.PlaySound(weirdVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -400,6 +425,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Guess I hit a nerve there."
         };
 
+        audioController.PlaySound(wowVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -436,6 +462,7 @@ public class Friend_DialogueMgr : DialogueManager
             "There’s something bothering me, and I might forget to speak with the manager because of that."
         };
 
+        audioController.PlaySound(theresAProblemVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -453,6 +480,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Forgect about it, Jared, I’m not talking to the manager for you."
         };
 
+        audioController.PlaySound(howRudeVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -481,6 +509,7 @@ public class Friend_DialogueMgr : DialogueManager
             "If you’re such a hotshot multi-tasker, why not just go and brag about it at AB&C yourself, huh?"
         };
 
+        audioController.PlaySound(didUJustSayVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -497,6 +526,7 @@ public class Friend_DialogueMgr : DialogueManager
             "Suit yourself."
         };
 
+        audioController.PlaySound(suitUrselfVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 
@@ -512,6 +542,7 @@ public class Friend_DialogueMgr : DialogueManager
             "I cannot recommend a fraud like you to my manager."
         };
 
+        audioController.PlaySound(urLyingVoice);
         uiController.StartDialogues(dialogueList, FRIEND_CHAR, OnDialogueEnd);
     }
 

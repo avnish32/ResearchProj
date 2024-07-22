@@ -10,7 +10,9 @@ public class Bully_DialogueMgr : DialogueManager
 
     // ### voices
     [SerializeField]
-    AudioClip whatVoice, hahVoice, yeahYeahVoice;
+    AudioClip yeahYeahVoice, heyKidVoice,
+        wassupVoice, whatDoUMeanVoice, whyVoice, IDoWatIPleaseVoice,
+        doICareVoice, ohVoice, ISeeVoice;
     // ### voices end
 
     [SerializeField]
@@ -50,7 +52,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Kindergarten is that way."
         };
 
-        audioController.PlaySound(whatVoice);
+        audioController.PlaySound(heyKidVoice);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 
@@ -61,7 +63,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Hey, kiddo. Are you lost? Can't find your parents?"
         };
 
-        audioController.PlaySound(whatVoice);
+        audioController.PlaySound(heyKidVoice);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -78,7 +80,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Wassup tiny fellow, back for more?"
         };
 
-        audioController.PlaySound(whatVoice);
+        audioController.PlaySound(wassupVoice);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -107,6 +109,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Huh? What do you mean?"
         };
 
+        audioController.PlaySound(whatDoUMeanVoice);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -124,6 +127,7 @@ public class Bully_DialogueMgr : DialogueManager
             "I ain’t telling you anything!"
         };
 
+        audioController.PlaySound(whyVoice);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 
@@ -134,6 +138,7 @@ public class Bully_DialogueMgr : DialogueManager
             "I do what I please. Who are you, my dad?"
         };
 
+        audioController.PlaySound(IDoWatIPleaseVoice);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -151,6 +156,7 @@ public class Bully_DialogueMgr : DialogueManager
             "Go away before you get crushed under my feet."
         };
 
+        audioController.PlaySound(doICareVoice);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 
@@ -162,6 +168,7 @@ public class Bully_DialogueMgr : DialogueManager
             "*shoves you aside forcefully, almost knocking you over*"
         };
 
+        audioController.PlaySound(ohVoice);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, () =>
         {
             var playerDialogueList = GetDialogueListFromId(new List<EDialogueID>
@@ -179,6 +186,7 @@ public class Bully_DialogueMgr : DialogueManager
             "If you take your sorry face away before I smash it to a pulp."
         };
 
+        audioController.PlaySound(ISeeVoice);
         uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
     }
 

@@ -326,7 +326,16 @@ MonoBehaviour:
   stateWPlayer: 0
   janitor: {fileID: 0}
   l2Controller: {fileID: 0}
-  whatIsItVoice: {fileID: 8300000, guid: 00a8f1602437df944a2df3d0f5a7735f, type: 3}
+  makeItQuickVoice: {fileID: 8300000, guid: 83fc0aa3735b7ce42ba43957eaf2e7e7, type: 3}
+  moreSpecificVoice: {fileID: 8300000, guid: de87c54ad716f8845b87e536daafd312, type: 3}
+  leaveAloneVoice: {fileID: 8300000, guid: 21dfae22e51a0924a93a80cbd94a2965, type: 3}
+  whatUnitVoice: {fileID: 8300000, guid: 2eb26b1ef90ca3c4196c62624ad150a3, type: 3}
+  notAwareVoice: {fileID: 8300000, guid: ade7024f584fb8541a34fad5f0a9d7ef, type: 3}
+  getToWorkVoice: {fileID: 8300000, guid: 3c6c75cbc8915934f8bfa5a0e01da42d, type: 3}
+  sheVoice: {fileID: 8300000, guid: 7f5d29d03b57d1142bffe6589786d688, type: 3}
+  nerveVoice: {fileID: 8300000, guid: 7ea94f6c423817a42ac8571d01df1c3e, type: 3}
+  niceStoryVoice: {fileID: 8300000, guid: 458cb7b4a4f85d249a784fc55ed95d83, type: 3}
+  lookVoice: {fileID: 8300000, guid: df1cb7371900359449f4ea89f0f60f44, type: 3}
 --- !u!114 &2430247168243362984
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -356,6 +356,26 @@ MonoBehaviour:
   tyVoice: {fileID: 8300000, guid: ee2b9eddef467e8449093b09ee02379a, type: 3}
   wowVoice: {fileID: 8300000, guid: 873e4380b2fe4d44f9a3e02b45d18846, type: 3}
   hmmVoice: {fileID: 8300000, guid: bfcc97850cfe184499bb6d6710df7324, type: 3}
+  doIKnowUVoice: {fileID: 8300000, guid: 6f33f2d70a37dbc46876faf368d7a32f, type: 3}
+  howDoUKnowVoice: {fileID: 8300000, guid: f294ce4e2b757d64b85c06ac7097e3b1, type: 3}
+  almostVoice: {fileID: 8300000, guid: 570ef4a8f4556694ea5e324ea2a3f592, type: 3}
+  reallyVoice: {fileID: 8300000, guid: 423a89b468cddf448b6f1ad7be9744bf, type: 3}
+  okVoice: {fileID: 8300000, guid: f6b617577a99d154f8e8638c91e865bc, type: 3}
+  whyVoice: {fileID: 8300000, guid: d61c981d5330cd642b2bcd5800bc1743, type: 3}
+  evenAQuestionVoice: {fileID: 8300000, guid: 09aa3daae18d1dd43b396961faf8e89d, type: 3}
+  omgVoice: {fileID: 8300000, guid: 6e5cfa64abcc9374f862825d644ffb9b, type: 3}
+  excuseMeVoice: {fileID: 8300000, guid: f859e43c84759ef4589dfee539b03726, type: 3}
+  ikrVoice: {fileID: 8300000, guid: 6bbc1aedbd1754a4587ddc2dc285c38a, type: 3}
+  alrightVoice: {fileID: 8300000, guid: 0f8ff72e18872e34fbd97b5323a99653, type: 3}
+  luckyYouVoice: {fileID: 8300000, guid: e590689e746c5114594a0cd9a4db831e, type: 3}
+  whatVoice: {fileID: 8300000, guid: b56f0d0fd4f3d8346b3638d927f9e202, type: 3}
+  ohVoice: {fileID: 8300000, guid: 2d96ab6d71e9c6d4da2e49d98c3277bb, type: 3}
+  weirdVoice: {fileID: 8300000, guid: af6ced8069d67d04786168dce395ed78, type: 3}
+  theresAProblemVoice: {fileID: 8300000, guid: 293456e602309d541a0486aaeaabea92, type: 3}
+  howRudeVoice: {fileID: 8300000, guid: 30b48f301710b4d418c47091079fca63, type: 3}
+  didUJustSayVoice: {fileID: 8300000, guid: 6af8463622d90474c9961febcc211642, type: 3}
+  suitUrselfVoice: {fileID: 8300000, guid: 24c78a990af8f1641afe751171ff2c60, type: 3}
+  urLyingVoice: {fileID: 8300000, guid: 443a0b738d4147e4e99bba77b4d9e826, type: 3}
 --- !u!114 &1107009640254415029
 MonoBehaviour:
   m_ObjectHideFlags: 0
