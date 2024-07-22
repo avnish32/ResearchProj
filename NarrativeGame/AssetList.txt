@@ -1,10 +1,10 @@
-Character sprites and animations: MetroCity - Free Top Down Character Pack by JIK-A-4 
+Character sprites and animations: MetroCity - Free Top Down Character Pack by JIK-A-4 on itch.io
 https://jik-a-4.itch.io/metrocity-free-topdown-character-pack
 
 School assets by Houdini on Itch.io
 https://hou-uoh.itch.io/2d-tileset-for-rpg-top-down
 
-Office assets by LimeZu on Itch.io
+Office assets Modern interiors - RPG Tileset by LimeZu on Itch.io
 https://limezu.itch.io/moderninteriors/devlog/244045/free-version-overview-18042021-update
 
 Strongbox icons collection by bakar015
@@ -19,8 +19,10 @@ Voices generated using elevenlabs.io
 SFX generated using https://myedit.online/
 
 Safe cracking minigame sfx from https://opengameart.org
+Win sound #1 by remaxim on opengameart.org
+8bit Death Whirl by Fupi
 
-Pencil writing Sound Effect by floraphonic from Pixabay
+Pencil writing Sound Effect: Pencil Foley Write 7 by floraphonic from Pixabay
 
 Fonts
 Day Roman by Apostrophic Labs on dafont.com

@@ -33,10 +33,11 @@ public class SafeCodePuzzle : MonoBehaviour
     private int[] code = new int[3];
     private int[] codeEntered = new int[3];
     private List<int> numsAvailableForCode = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-    private bool isCodeCracked = false;
+    private bool isCodeCracked = false, isGamePaused = false;
     private string codeString = "";
     private Safe instantiatingSafe;
     private AudioController audioController;
+    private GameController gameController;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +57,6 @@ public class SafeCodePuzzle : MonoBehaviour
         inputDigits[0].ActivateInputField();
         guessesRemaining = 5;
         endMsgText.text = string.Empty;
-        audioController = FindObjectOfType<AudioController>();
     }
 
     private void ResetInputField(int i)
@@ -92,14 +92,21 @@ public class SafeCodePuzzle : MonoBehaviour
         instantiatingSafe.OnSafeMinigameClosed();
     }
 
-    public void Init(Safe instantiatingSafe)
+    public void Init(Safe instantiatingSafe, AudioController audioController,
+        GameController gameController)
     {
         this.instantiatingSafe = instantiatingSafe;
+        this.audioController = audioController;
+        this.gameController = gameController;
     }
 
     public void OnCodeEntered()
     {
-        Debug.Log("Inside on code entered.");
+        //Debug.Log("Inside on code entered.");
+        if (isGamePaused)
+        {
+            return;
+        }
         audioController.PlaySound(clickSfx);
         if (isCodeCracked || guessesRemaining <= 0 || !IsEnteredCodeValid())
         {
@@ -140,6 +147,10 @@ public class SafeCodePuzzle : MonoBehaviour
     public void OnCloseButtonPressed()
     {
         //puzzleCanvas.gameObject.SetActive(false);
+        if (isGamePaused)
+        {
+            return;
+        }
         audioController.PlaySound(clickSfx);
         Destroy(gameObject);
     }
@@ -151,4 +162,18 @@ public class SafeCodePuzzle : MonoBehaviour
         //Debug.Log("Input field " + (currentlySelectedInput + 1) % inputDigits.Length + " is selcted.");
     }
 
+    public void OnPauseButtonClicked()
+    {
+        gameController.OnPauseButtonClicked();
+    }
+
+    public void OnGamePaused()
+    {
+        isGamePaused = true;
+    }
+
+    public void OnGameResumed()
+    {
+        isGamePaused = false;
+    }
 }

@@ -142,7 +142,7 @@ public class UIController : MonoBehaviour
 
     public void OnGamePaused()
     {
-        Debug.Log("UI controller paused.");
+        //Debug.Log("UI controller paused.");
         wasNpcDialoguePanelActiveB4Pause = npcDialoguePanel.gameObject.activeInHierarchy;
         if (wasNpcDialoguePanelActiveB4Pause)
         {
@@ -158,7 +158,7 @@ public class UIController : MonoBehaviour
 
     public void OnGameResumed()
     {
-        Debug.Log("UI controller resumed.");
+        //Debug.Log("UI controller resumed.");
         pausePanel.Hide();
 
         if (wasNpcDialoguePanelActiveB4Pause)

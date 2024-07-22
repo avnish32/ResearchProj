@@ -11,6 +11,9 @@ public class Safe : MonoBehaviour, IInteractable
     private GameController gameController;
 
     [SerializeField]
+    private AudioController audioController;
+
+    [SerializeField]
     private Janitor_DialogueMgr janitor;
 
     [SerializeField]
@@ -38,7 +41,7 @@ public class Safe : MonoBehaviour, IInteractable
             return;
         }
         instantiatedMinigame = Instantiate(safeCodeMinigame);
-        instantiatedMinigame.GetComponent<SafeCodePuzzle>().Init(this);
+        instantiatedMinigame.GetComponent<SafeCodePuzzle>().Init(this, audioController, gameController);
         gameController.DisablePlayerMovement();
     }
 

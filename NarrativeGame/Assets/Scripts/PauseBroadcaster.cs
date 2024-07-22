@@ -22,9 +22,9 @@ public class PauseBroadcaster : MonoBehaviour
         SendMessage("OnGamePaused", SendMessageOptions.DontRequireReceiver);
     }
 
-    public void roadcastResume()
+    public void BroadcastResume()
     {
-        BroadcastMessage("OnGameResumed");
+        SendMessage("OnGameResumed", SendMessageOptions.DontRequireReceiver);
     }
 
     public static HashSet<PauseBroadcaster> GetInstances()

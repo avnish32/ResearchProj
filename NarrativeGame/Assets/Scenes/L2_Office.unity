@@ -863,6 +863,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61b74eacb3ff8414fb72bff89a8aa846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &258128031 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 13750101576555126, guid: 080446b83e2527e42b04e8569012091f, type: 3}
+  m_PrefabInstance: {fileID: 258128029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183d763623066ab4f8710ae831a6fe4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &322674080 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8698060836547858894, guid: 09dd2c0986c0c26479811c63a4fac23e, type: 3}
@@ -17446,6 +17457,10 @@ PrefabInstance:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 1387424269}
+    - target: {fileID: 1390756176228696755, guid: b650d1f32e6ea384d85e42115970aaf1, type: 3}
+      propertyPath: audioController
+      value: 
+      objectReference: {fileID: 258128031}
     - target: {fileID: 2179690408405236091, guid: b650d1f32e6ea384d85e42115970aaf1, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
       value: 0.5

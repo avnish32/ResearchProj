@@ -5,7 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField]
+    AudioClip clickSfx;
+    
     private bool canPlayerMoveOrInteract = true, isGamePaused = false;
+    private AudioController audioController;
+
+    private void Awake()
+    {
+        audioController = FindObjectOfType<AudioController>();
+    }
 
     private void Start()
     {
@@ -42,6 +51,7 @@ public class GameController : MonoBehaviour
             return;
         }
 
+        audioController.PlaySound(clickSfx);
         Time.timeScale = 0f;
         isGamePaused = true;
 
@@ -54,12 +64,13 @@ public class GameController : MonoBehaviour
 
     public void OnResumeButtonClicked()
     {
-        isGamePaused=false;
+        audioController.PlaySound(clickSfx);
+        isGamePaused =false;
         Time.timeScale = 1f;
 
         foreach (var pauseBroadcaster in PauseBroadcaster.GetInstances())
         {
-            pauseBroadcaster.roadcastResume();
+            pauseBroadcaster.BroadcastResume();
         }
     }
 

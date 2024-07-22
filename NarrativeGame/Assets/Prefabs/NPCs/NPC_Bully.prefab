@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateWPlayer: 0
-  wabMinigame: {fileID: 1822373432475968674, guid: 7255d48f3aa92a84e8c468b528ae412d, type: 3}
+  wabMinigamePrefab: {fileID: 1822373432475968674, guid: 7255d48f3aa92a84e8c468b528ae412d, type: 3}
   whatVoice: {fileID: 8300000, guid: ae6c9e825d625274d87f91cd59688241, type: 3}
   hahVoice: {fileID: 8300000, guid: ff9834cd22b300140b8597fa57fa4625, type: 3}
   yeahYeahVoice: {fileID: 8300000, guid: 948ebc06928a3024e8f0ed77c0935647, type: 3}

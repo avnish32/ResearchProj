@@ -32,7 +32,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (objectInteractAction.action.WasReleasedThisFrame() && currentInteractable != null)
+        if (objectInteractAction.action.WasReleasedThisFrame() && currentInteractable != null
+            && !gameController.IsGamePaused())
         {
             currentInteractable.Interact();
         }
@@ -40,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!gameController.CanPlayerMoveOrInteract())
+        if (!gameController.CanPlayerMoveOrInteract() || gameController.IsGamePaused())
         {
             return;
         }

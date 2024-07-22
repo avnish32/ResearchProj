@@ -8,6 +8,9 @@ public class WAB : MonoBehaviour
     private const int WIN_SCORE = 5, MAX_MISSES = 3;
 
     [SerializeField]
+    Canvas myCanvas;
+
+    [SerializeField]
     RectTransform[] spawnPts;
 
     [SerializeField]
@@ -26,7 +29,7 @@ public class WAB : MonoBehaviour
     [SerializeField]
     private float minSpawnWait, maxSpawnWait, minBullyFaceLifetime, maxBullyFaceLifetime;
 
-    private bool shouldSpawn = false;
+    private bool shouldSpawn = false, wasSpawningBeforePaused = false;
     private int score = 0, miss = 0;
     private AudioController audioController;
     private GameController gameController;
@@ -50,7 +53,7 @@ public class WAB : MonoBehaviour
         {
             yield return new WaitForSeconds(UnityEngine.Random.Range(minSpawnWait, maxSpawnWait));
 
-            if (!shouldSpawn || gameController.IsGamePaused())
+            if (!shouldSpawn)
             {
                 continue;
             }
@@ -63,25 +66,34 @@ public class WAB : MonoBehaviour
         }
     }
 
-    public void StartSpawning()
+    public void OnStartButtonClicked()
     {
-        audioController.PlaySound(clickSfx);
-        if (shouldSpawn)
+        if (shouldSpawn || gameController.IsGamePaused())
         {
             return;
         }
+        audioController.PlaySound(clickSfx);
         startButtonText.text = "...";
+        StartSpawning();
+    }
+
+    private void StartSpawning()
+    {
         shouldSpawn = true;
         StartCoroutine(SpawnBullyFace());
     }
 
-    public void StopSpawning()
+    private void StopSpawning()
     {
         shouldSpawn = false;
     }
 
     public void IncrementScore()
     {
+        if (gameController.IsGamePaused())
+        {
+            return;
+        }
         audioController.PlaySound(onHitSfx);
         if (++score >= WIN_SCORE)
         {
@@ -99,6 +111,7 @@ public class WAB : MonoBehaviour
         //Debug.Log("Bully missed.");
         if (++miss >= MAX_MISSES)
         {
+            myCanvas.sortingOrder = 100;
             StopSpawning();
             Debug.Log("WAB lost.");
             FindObjectOfType<Bully_DialogueMgr>().OnBullyWon();
@@ -106,5 +119,24 @@ public class WAB : MonoBehaviour
         }
         livesText.text = string.Format("Lives left: {0}", 
             Mathf.Clamp(MAX_MISSES - miss, 0, MAX_MISSES));
+    }
+
+    public void OnPauseButtonClicked()
+    {
+        gameController.OnPauseButtonClicked();
+    }
+
+    public void OnGamePaused()
+    {
+        /*wasSpawningBeforePaused = shouldSpawn;
+        StopSpawning();*/
+    }
+
+    public void OnGameResumed()
+    {
+        /*if (wasSpawningBeforePaused)
+        {
+            StartSpawning();
+        }*/
     }
 }

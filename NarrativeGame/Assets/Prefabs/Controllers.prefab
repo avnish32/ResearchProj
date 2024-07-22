@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43d9cbc99d713f04aa4949b04c48e18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSfx: {fileID: 8300000, guid: 71b4ead188becd3409628c8cb45fb9d2, type: 3}
 --- !u!114 &2220853056980242769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,10 +61,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDialogueOuterPanel: {fileID: 0}
-  playerDialogueInnerPanelPrefab: {fileID: 5586633065647657746, guid: 7e89a706cce037c488c3b6686daf89c7, type: 3}
-  dialogueButtonPrefab: {fileID: 6939046663380771860, guid: 68b4a3a37ce49064899f2e203650fda2, type: 3}
   npcDialoguePanel: {fileID: 0}
   blackPanel: {fileID: 0}
+  pausePanel: {fileID: 0}
   speakersInfo:
   - speaker: 1
     speakerName: Jared
