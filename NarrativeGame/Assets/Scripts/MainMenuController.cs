@@ -9,7 +9,7 @@ public class MainMenuController : MonoBehaviour
     private GameObject creditsPanel, controlsPanel, buttonsPanel;
 
     [SerializeField]
-    private AudioClip menuBgm;
+    private AudioClip menuBgm, clickSfx;
 
     [SerializeField]
     private AudioController audioController;
@@ -39,26 +39,31 @@ public class MainMenuController : MonoBehaviour
 
     public void OnControlsButtonClicked()
     {
+        audioController.PlaySound(clickSfx);
         UpdateCurrentActivePanel(controlsPanel);
     }
 
     public void OnCreditsButtonClicked()
     {
+        audioController.PlaySound(clickSfx);
         UpdateCurrentActivePanel(creditsPanel);
     }
 
     public void OnCloseButtonClicked()
     {
+        audioController.PlaySound(clickSfx);
         UpdateCurrentActivePanel(buttonsPanel);
     }
 
     public void OnExitButtonClicked()
     {
+        audioController.PlaySound(clickSfx);
         Application.Quit();
     }
 
     public void OnPlayButtonClicked()
     {
+        audioController.PlaySound(clickSfx);
         SceneManager.LoadScene("L1_School");
     }
 }

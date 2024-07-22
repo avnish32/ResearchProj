@@ -343,6 +343,22 @@ MonoBehaviour:
   reallyVoice: {fileID: 8300000, guid: b130332e2f3df944f9b21a2ff267c2ca, type: 3}
   goodLuckVoice: {fileID: 8300000, guid: 8d973096431112f4fbc58d82b1313838, type: 3}
   dontWorryVoice: {fileID: 8300000, guid: 6705d0541ec8dd54582a60daddac24e0, type: 3}
+  okVoice: {fileID: 8300000, guid: 3c01697a03c424646bf4c72476e47db8, type: 3}
+  heyVoice: {fileID: 8300000, guid: b3ce0fd56b4fd644990bab50a01b2d45, type: 3}
+  thanksVoice: {fileID: 8300000, guid: 1ad366a8a21cba84aba705e4602adb17, type: 3}
+  thatsFineVoice: {fileID: 8300000, guid: 265c3c26fbeb8604fb6d52679723b5b7, type: 3}
+  wowVoice: {fileID: 8300000, guid: 595ebf5e3e8292b438344f07f916b632, type: 3}
+  hmmVoice: {fileID: 8300000, guid: 8c6baafd532cc0c4ebdaf3fdfcdbab8d, type: 3}
+  allRightVoice: {fileID: 8300000, guid: ceb1d75b511149c4aa782f379c45ea62, type: 3}
+  fineVoice: {fileID: 8300000, guid: ba5e81bd7ef61da4dbc0e5577a94c4f3, type: 3}
+  howVoice: {fileID: 8300000, guid: c3e7d5873eb1d1d40be99254e441bf90, type: 3}
+  wishICudHelpVoice: {fileID: 8300000, guid: 547094e61d01f7348b5865d2c0749165, type: 3}
+  iHeardThatVoice: {fileID: 8300000, guid: 9ee3a84c66c788542a5189b7244fb81a, type: 3}
+  whyVoice: {fileID: 8300000, guid: b57143e6142ddb14599b11a7badef85d, type: 3}
+  quitPokingVoice: {fileID: 8300000, guid: 2198d57f30691c34089bf1f772118f13, type: 3}
+  soVoice: {fileID: 8300000, guid: 45772be0a4eb87d488a82ef503c59dba, type: 3}
+  notSharpVoice: {fileID: 8300000, guid: 3fc9e3d4f3af0424a806c08f6fb4932c, type: 3}
+  listenVoice: {fileID: 8300000, guid: 7a3c39d3955da234fa62c26cbf6c8123, type: 3}
   pencilWriteSfx: {fileID: 8300000, guid: ab281222fc55aa7469fa4d6820afb6a1, type: 3}
 --- !u!114 &6562089233851108077
 MonoBehaviour:
