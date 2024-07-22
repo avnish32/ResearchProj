@@ -477,7 +477,7 @@ public class Friend_DialogueMgr : DialogueManager
         string[] dialogueList = {
             "How rude! So this was what you were hoping I would say all along?",
             "Tryna steer the conversation, weren’t you?",
-            "Forgect about it, Jared, I’m not talking to the manager for you."
+            "Forget about it, Jared, I’m not talking to the manager for you."
         };
 
         audioController.PlaySound(howRudeVoice);
