@@ -15,23 +15,16 @@ public class PlayerDialogueButton : MonoBehaviour
     private SDialogue dialogue;
     private UIController uiController;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Init(SDialogue dialogue, UIController uiController)
     {
         this.dialogue = dialogue;
         this.uiController = uiController;
         buttonText.text = dialogue.dialogueText;
+
+        if (!uiController.IsGameJuicy())
+        {
+            GetComponent<Animator>().enabled = false;
+        }
     }
 
     public void OnButtonClicked()

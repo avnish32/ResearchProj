@@ -25,7 +25,7 @@ public class PlayerDialoguesOuterPanel : PanelAnimator
     }
 
     //Called at the end of "Hide" animation
-    public new void OnHideAnimEnd()
+    public override void OnHideAnimEnd()
     {
         if (!hidDueToPause)
         {

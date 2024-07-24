@@ -58,7 +58,7 @@ public class UIController : MonoBehaviour
 
     public void HidePlayerDialoguePanel(bool hidingDueToPause = false)
     {
-        playerDialogueOuterPanel.Hide(hidingDueToPause);
+        playerDialogueOuterPanel.Hide(audioController.IsGameJuicy(), hidingDueToPause);
     }
 
     public void OnPlayerDialoguePanelClosed()
@@ -159,7 +159,7 @@ public class UIController : MonoBehaviour
     public void OnGameResumed()
     {
         //Debug.Log("UI controller resumed.");
-        pausePanel.Hide();
+        pausePanel.Hide(audioController.IsGameJuicy());
 
         if (wasNpcDialoguePanelActiveB4Pause)
         {
@@ -169,5 +169,10 @@ public class UIController : MonoBehaviour
         {
             playerDialogueOuterPanel.gameObject.SetActive(true);
         }
+    }
+
+    public bool IsGameJuicy()
+    {
+        return audioController.IsGameJuicy();
     }
 }

@@ -14,20 +14,27 @@ public class PanelAnimator : MonoBehaviour
         myAnimator = GetComponent<Animator>();
     }
 
-    public void Hide(bool hidDueToPause = false)
+    public void Hide(bool isJuicy, bool hidDueToPause = false)
     {
         this.hidDueToPause = hidDueToPause;
+
+        if (!isJuicy)
+        {
+            OnHideAnimEnd();
+            return;
+        }
+
         myAnimator.Play("Hide");
     }
 
     //Called at the end of "Hide" animation
     //Can be overridden in child classes
-    public void OnHideAnimEnd()
+    virtual public void OnHideAnimEnd()
     {
         this.gameObject.SetActive(false);
     }
 
-    public void OnSpawnAnimEnd()
+    virtual public void OnSpawnAnimEnd()
     {
         //do nothing by default
     }

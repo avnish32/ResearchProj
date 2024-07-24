@@ -79,6 +79,11 @@ public class GameController : MonoBehaviour
         return isGamePaused;
     }
 
+    public bool IsGameJuicy()
+    {
+        return audioController.IsGameJuicy();
+    }
+
     public void ExitGame()
     {
         Application.Quit();

@@ -767,6 +767,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 13750101576555126, guid: 080446b83e2527e42b04e8569012091f, type: 3}
+      propertyPath: juicy
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3115109483591583169, guid: 080446b83e2527e42b04e8569012091f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -17227,6 +17231,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1389572552}
     m_Modifications:
+    - target: {fileID: 3896680676610051497, guid: 09dd2c0986c0c26479811c63a4fac23e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6539267815102942524, guid: 09dd2c0986c0c26479811c63a4fac23e, type: 3}
       propertyPath: m_Name
       value: PlayerDialoguesOuterPanel
@@ -17600,11 +17608,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8587186151003858457, guid: c1cff4e7139e6714e8e090e8e8585bee, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8587186151003858457, guid: c1cff4e7139e6714e8e090e8e8585bee, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8587186151003858457, guid: c1cff4e7139e6714e8e090e8e8585bee, type: 3}
       propertyPath: m_LocalPosition.x

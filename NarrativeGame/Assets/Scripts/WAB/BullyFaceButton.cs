@@ -7,18 +7,7 @@ public class BullyFaceButton : MonoBehaviour
     private float lifetimeInSecs;
     private WAB wabMgr;
     private RectTransform slotParentBehind, slotParentFront, slot;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private bool isGameJuicy;
 
     private IEnumerator Countdown()
     {
@@ -27,13 +16,14 @@ public class BullyFaceButton : MonoBehaviour
     }
 
     public void Init(float lifetime, WAB wabMgr, RectTransform slotParentBehind, RectTransform slotParentFront,
-        RectTransform slot)
+        RectTransform slot, bool isGameJuicy)
     {
         this.lifetimeInSecs = lifetime;
         this.wabMgr = wabMgr;
         this.slotParentBehind = slotParentBehind;
         this.slotParentFront = slotParentFront;
         this.slot = slot;
+        this.isGameJuicy = isGameJuicy;
         StartCoroutine(Countdown());
     }
 
@@ -53,11 +43,19 @@ public class BullyFaceButton : MonoBehaviour
 
     public void PushSlotsBack()
     {
+        if ( !isGameJuicy)
+        {
+            return;
+        }
         slot.SetParent(slotParentBehind);
     }
 
     public void BringSlotsToFront()
     {
+        if (!isGameJuicy)
+        {
+            return;
+        }
         slot.SetParent(slotParentFront);
     }
 }
