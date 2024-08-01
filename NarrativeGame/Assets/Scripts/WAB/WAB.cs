@@ -86,6 +86,7 @@ public class WAB : MonoBehaviour
 
     public void OnExitButtonClicked()
     {
+        audioController.PlaySound(clickSfx);
         StopSpawning();
         if (!hasMinigameEnded)
         {

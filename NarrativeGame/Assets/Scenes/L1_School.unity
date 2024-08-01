@@ -3415,6 +3415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: L1Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 5106011781560595922, guid: 1abef37c5e8f82a4fb7bdb706f2f6fcf, type: 3}
+      propertyPath: juicy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7589831513156227387, guid: 1abef37c5e8f82a4fb7bdb706f2f6fcf, type: 3}
       propertyPath: blackPanel
       value: 
