@@ -319,7 +319,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7e21c6a3c5a2e4c9673d6065ff38c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateWPlayer: 0
   wabMinigamePrefab: {fileID: 1822373432475968674, guid: 7255d48f3aa92a84e8c468b528ae412d, type: 3}
   yeahYeahVoice: {fileID: 8300000, guid: 948ebc06928a3024e8f0ed77c0935647, type: 3}
   heyKidVoice: {fileID: 8300000, guid: 28648cc73a2670247ae20607222ca542, type: 3}

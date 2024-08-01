@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
-{
+{    
     protected List<SDialogue> dialogueList;
-    protected PlayerStates stateWPlayer;
+    public PlayerStates stateWPlayer;
     private Dictionary<EDialogueID, SDialogue> dialogueIdsToDialogueMap;
     private Dictionary<PlayerStates, List<EDialogueID>> rshipLevelToDialogueIdsMap;
 
@@ -47,12 +47,6 @@ public class DialogueManager : MonoBehaviour
                 rshipLevelToDialogueIdsMap[rshipLevel].Add(dialogue.dialogueId);
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     protected void InvokePlayerDialogueAction(Dictionary<PlayerStates, Action> rshipToActionMap)

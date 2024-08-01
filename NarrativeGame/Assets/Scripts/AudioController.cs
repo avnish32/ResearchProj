@@ -27,10 +27,6 @@ public class AudioController : MonoBehaviour
 
     public void PlayMusic(AudioClip music)
     {
-        if (!juicy)
-        {
-            return;
-        }
         audioSource.volume = 0.7f;
         audioSource.clip = music;
         audioSource.loop = true;

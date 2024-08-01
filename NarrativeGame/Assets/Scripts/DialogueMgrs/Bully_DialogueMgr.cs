@@ -44,6 +44,11 @@ public class Bully_DialogueMgr : DialogueManager
         base.Start();
     }
 
+    private void OnDialogueEnd()
+    {
+        gameController.EnablePlayerMovement();
+    }
+
     private void BullyHeyNeutralAction()
     {
         string[] dialogueList =
@@ -53,7 +58,7 @@ public class Bully_DialogueMgr : DialogueManager
         };
 
         audioController.PlaySound(heyKidVoice);
-        uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, OnDialogueEnd);
     }
 
     private void BullyHeyMentionedAction()
@@ -99,7 +104,7 @@ public class Bully_DialogueMgr : DialogueManager
         };
 
         audioController.PlaySound(yeahYeahVoice);
-        uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, OnDialogueEnd);
     }
 
     private void BullyWhatsWithSisAction()
@@ -128,7 +133,7 @@ public class Bully_DialogueMgr : DialogueManager
         };
 
         audioController.PlaySound(whyVoice);
-        uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, OnDialogueEnd);
     }
 
     private void BullyWhyBullyingAction()
@@ -157,7 +162,7 @@ public class Bully_DialogueMgr : DialogueManager
         };
 
         audioController.PlaySound(doICareVoice);
-        uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, OnDialogueEnd);
     }
 
     private void BullyStopBotheringHerAction()
@@ -187,7 +192,7 @@ public class Bully_DialogueMgr : DialogueManager
         };
 
         audioController.PlaySound(ISeeVoice);
-        uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, OnDialogueEnd);
     }
 
     private void StartWABMinigame()
@@ -199,12 +204,12 @@ public class Bully_DialogueMgr : DialogueManager
 
     private void BullySorryImLeavingAction()
     {
-        gameController.EnablePlayerMovement();
+        OnDialogueEnd();
     }
 
     private void BullyPassingByAction()
     {
-        gameController.EnablePlayerMovement();
+        OnDialogueEnd();
     }
 
     public void OnBullyDefeated()
@@ -217,8 +222,8 @@ public class Bully_DialogueMgr : DialogueManager
             "Leave me alone, for god's sake."
         };
 
-        audioController.PlaySound(winSfx);
-        uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
+        //audioController.PlaySound(winSfx);
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, OnDialogueEnd);
     }
 
     public void OnBullyWon()
@@ -230,8 +235,8 @@ public class Bully_DialogueMgr : DialogueManager
             "Run along now, and stay away, you hear?"
         };
 
-        audioController.PlaySound(loseSfx);
-        uiController.StartDialogues(dialogueList, BULLY_CHAR, gameController.EnablePlayerMovement);
+        //audioController.PlaySound(loseSfx);
+        uiController.StartDialogues(dialogueList, BULLY_CHAR, OnDialogueEnd);
     }
 
     private void PopulateDialogueList()

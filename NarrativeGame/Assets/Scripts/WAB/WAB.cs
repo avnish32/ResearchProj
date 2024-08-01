@@ -17,19 +17,22 @@ public class WAB : MonoBehaviour
     BullyFaceButton bullyFaceButtonPrefab;
 
     [SerializeField]
-    TextMeshProUGUI scoreText, livesText, startButtonText;
+    TextMeshProUGUI scoreText, livesText, startButtonText, onEndText;
 
     [SerializeField]
     RectTransform slotParentBehind, slotParentFront, slot;
 
     [SerializeField]
-    AudioClip onMissSfx, onHitSfx, clickSfx;
+    AudioClip onMissSfx, onHitSfx, clickSfx, winSfx, lossSfx;
+
+    [SerializeField]
+    GameObject winPanel, losePanel;
 
     //minSpawnWait >= maxLifetime?
     [SerializeField]
     private float minSpawnWait, maxSpawnWait, minBullyFaceLifetime, maxBullyFaceLifetime;
 
-    private bool shouldSpawn = false, wasSpawningBeforePaused = false;
+    private bool shouldSpawn = false, hasMinigameEnded = false;
     private int score = 0, miss = 0;
     private AudioController audioController;
     private GameController gameController;
@@ -39,6 +42,10 @@ public class WAB : MonoBehaviour
     {
         scoreText.text = string.Format("Score: {0}", score);
         livesText.text = string.Format("Lives left: {0}", MAX_MISSES - miss);
+        onEndText.text = string.Empty;
+
+        winPanel.gameObject.SetActive(false);
+        losePanel.gameObject.SetActive(false);
     }
 
     public void Init(AudioController audioController, GameController gameController)
@@ -77,6 +84,16 @@ public class WAB : MonoBehaviour
         StartSpawning();
     }
 
+    public void OnExitButtonClicked()
+    {
+        StopSpawning();
+        if (!hasMinigameEnded)
+        {
+            gameController.EnablePlayerMovement();
+        }
+        Destroy(gameObject);
+    }
+
     private void StartSpawning()
     {
         shouldSpawn = true;
@@ -97,10 +114,21 @@ public class WAB : MonoBehaviour
         audioController.PlaySound(onHitSfx);
         if (++score >= WIN_SCORE)
         {
+            hasMinigameEnded = true;
+            myCanvas.sortingOrder = 100;
             StopSpawning();
             Debug.Log("WAB won.");
             FindObjectOfType<Bully_DialogueMgr>().OnBullyDefeated();
-            Destroy(gameObject);
+            //Destroy(gameObject);
+
+            if (gameController.IsGameJuicy())
+            {
+                winPanel.gameObject.SetActive(true);
+                audioController.PlaySound(winSfx);
+            } else
+            {
+                onEndText.text = "Man, you can fight! Press 'exit' to leave.";
+            }
         }
         scoreText.text = string.Format("Score: {0}", score);
     }
@@ -111,11 +139,23 @@ public class WAB : MonoBehaviour
         //Debug.Log("Bully missed.");
         if (++miss >= MAX_MISSES)
         {
+            hasMinigameEnded = true;
             myCanvas.sortingOrder = 100;
             StopSpawning();
             Debug.Log("WAB lost.");
+            
             FindObjectOfType<Bully_DialogueMgr>().OnBullyWon();
-            Destroy(gameObject, 2f);
+            //Destroy(gameObject, 2f);
+
+            if (gameController.IsGameJuicy())
+            {
+                losePanel.gameObject.SetActive(true);
+                audioController.PlaySound(lossSfx);
+            }
+            else
+            {
+                onEndText.text = "Looks like Roger was a bit too good for you. Press 'exit' to leave.";
+            }
         }
         livesText.text = string.Format("Lives left: {0}", 
             Mathf.Clamp(MAX_MISSES - miss, 0, MAX_MISSES));
