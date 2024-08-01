@@ -27,6 +27,9 @@ public class SafeCodePuzzle : MonoBehaviour
     private TextMeshProUGUI endMsgText;
 
     [SerializeField]
+    private GameObject winPanel, losePanel, inputFieldPanel, enterButton;
+
+    [SerializeField]
     private AudioClip clickSfx, onCrackedSfx, onNotCrackedSfx;
     
     private int guessesRemaining;
@@ -57,6 +60,8 @@ public class SafeCodePuzzle : MonoBehaviour
         inputDigits[0].ActivateInputField();
         guessesRemaining = 5;
         endMsgText.text = string.Empty;
+        winPanel.SetActive(false);
+        losePanel.SetActive(false);
     }
 
     private void ResetInputField(int i)
@@ -128,8 +133,17 @@ public class SafeCodePuzzle : MonoBehaviour
         if (instantiatedHistoryItem.IsEnteredCodeCorrect())
         {
             Debug.Log("Successfully cracked the code. Codestring: "+codeString);
-            audioController.PlaySound(onCrackedSfx);
+
+            if (gameController.IsGameJuicy())
+            {
+                inputFieldPanel.SetActive(false);
+                enterButton.SetActive(false);
+                winPanel.SetActive(true);
+            }
+
             endMsgText.text = "Success! Press 'Exit' to leave.";
+            audioController.PlaySound(onCrackedSfx);
+            
             isCodeCracked = true;
             instantiatingSafe.OnSafeCracked(codeString);
             return;
@@ -138,9 +152,18 @@ public class SafeCodePuzzle : MonoBehaviour
         if (guessesRemaining <= 0)
         {
             Debug.Log("Couldn't guess code. Code was: "+codeString);
+            
+            if (gameController.IsGameJuicy())
+            {
+                
+                inputFieldPanel.SetActive(false);
+                enterButton.SetActive(false);
+                losePanel.SetActive(true);
+            }
+
+            endMsgText.text = "Failed. Press 'Exit' to leave.";
             audioController.PlaySound(onNotCrackedSfx);
-            endMsgText.text = "Failed.";
-            Destroy(gameObject, 2f);
+            //Destroy(gameObject, 2f);
         }
     }
 
