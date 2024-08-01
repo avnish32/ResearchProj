@@ -7,5 +7,9 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: AC_SafeLosePanel
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: 2c2b9e811900bc749ac27f35a5f63510, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 183ab9fe4dfec6b4289687f29ef8b1cd, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 183ab9fe4dfec6b4289687f29ef8b1cd, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b849e755a9fd2ba4996b22b96528fc84, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a7c9406ab15260e4495efd050d550a72, type: 2}

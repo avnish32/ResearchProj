@@ -46,6 +46,11 @@ public class Friend_DialogueMgr : DialogueManager
         base.Start();
     }
 
+    private void LoadOfficeScene()
+    {
+        SceneManager.LoadScene("L2_Office");
+    }
+
     private void FrndHeyNeutralAction()
     {
         string[] dialogueList = {
@@ -148,7 +153,14 @@ public class Friend_DialogueMgr : DialogueManager
             audioController.PlaySound(tyVoice);
             uiController.StartDialogues(dialogueList, FRIEND_CHAR, () =>
             {
-                SceneManager.LoadScene("L2_Office");
+                if (audioController.IsGameJuicy())
+                {
+                    uiController.FadeToBlack(LoadOfficeScene);
+                } else
+                {
+                    LoadOfficeScene();
+                }
+                
             });
         } else
         {

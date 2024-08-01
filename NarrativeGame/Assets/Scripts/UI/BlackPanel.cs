@@ -8,10 +8,11 @@ public class BlackPanel : MonoBehaviour
     private Animator animator;
     private Action animEndAction;
 
-    private void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
     }
+
     public void FadeIn(Action fadeEndAction)
     {
         animEndAction = fadeEndAction;

@@ -38,6 +38,7 @@ public class L2Controller : MonoBehaviour
     void Start()
     {
         audioController.PlayMusic(levelBGM);
+        gameController.DisablePlayerMovement();
         opCutsceneCam.Priority = SECONDARY_CAM_PRIORITY;
         mainCam.Priority = MAIN_CAM_PRIORITY;
 
@@ -53,7 +54,16 @@ public class L2Controller : MonoBehaviour
             "Sure enough, I overheard a conversation earlier today that confirmed my theory."
         };
 
-        uiController.StartDialogues(l2IntroDialogue, ECharacters.NARRATOR, StartJanitorLetMeGoDialogue);
+        if (audioController.IsGameJuicy())
+        {
+            uiController.FadeFromBlack(() =>
+            {
+                uiController.StartDialogues(l2IntroDialogue, ECharacters.NARRATOR, StartJanitorLetMeGoDialogue);
+            });
+        } else
+        {
+            uiController.StartDialogues(l2IntroDialogue, ECharacters.NARRATOR, StartJanitorLetMeGoDialogue);
+        }
     }
 
     private void StartJanitorLetMeGoDialogue()
