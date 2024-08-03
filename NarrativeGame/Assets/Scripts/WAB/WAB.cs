@@ -121,7 +121,7 @@ public class WAB : MonoBehaviour
         {
             /*Animator scoreTextAnimator = scoreText.GetComponent<Animator>();
             scoreTextAnimator.enabled = true;*/
-            Debug.Log("Current state OnUpdate?: " + scoreTextAnimator.GetCurrentAnimatorStateInfo(0).IsName("OnUpdate"));
+            //Debug.Log("Current state OnUpdate?: " + scoreTextAnimator.GetCurrentAnimatorStateInfo(0).IsName("OnUpdate"));
             scoreTextAnimator.Play("OnUpdate");
         }
         
