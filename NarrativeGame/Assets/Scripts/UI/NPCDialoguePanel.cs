@@ -46,10 +46,18 @@ public class NPCDialoguePanel : MonoBehaviour
         npcSpeakerImgPanel.SetActive(false);
     }
 
-    public void ShowNPCSpeakerDetails()
+    public void ShowNPCSpeakerDetails(bool isGameJuicy)
     {
         npcSpeakerNamePanel.SetActive(true);
-        npcSpeakerImgPanel.SetActive(true);
+
+        if (isGameJuicy)
+        {
+            npcSpeakerImgPanel.SetActive(true);
+        } else
+        {
+            npcSpeakerImgPanel.SetActive(false);
+        }
+        
     }
 
     public void Spawn()

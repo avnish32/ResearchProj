@@ -77,7 +77,7 @@ public class UIController : MonoBehaviour
         {
             SSPeakerInfo speakerInfo = speakerToInfoMap[speaker];
             npcDialoguePanel.SetNPCSpeakerDetails(speakerInfo.speakerName, speakerInfo.speakerImg);
-            npcDialoguePanel.ShowNPCSpeakerDetails();
+            npcDialoguePanel.ShowNPCSpeakerDetails(IsGameJuicy());
         }
 
         npcDialoguePanel.Spawn();
