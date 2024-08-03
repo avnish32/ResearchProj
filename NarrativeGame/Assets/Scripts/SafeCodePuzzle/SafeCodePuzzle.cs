@@ -115,8 +115,15 @@ public class SafeCodePuzzle : MonoBehaviour
         {
             return;
         }
+        
+        if (isCodeCracked || guessesRemaining <= 0)
+        {
+            inputDigits[0].ActivateInputField();
+            return;
+        }
         audioController.PlaySound(clickSfx);
-        if (isCodeCracked || guessesRemaining <= 0 || !IsEnteredCodeValid())
+
+        if (!IsEnteredCodeValid() )
         {
             inputDigits[0].ActivateInputField();
             return;
