@@ -976,6 +976,7 @@ GameObject:
   - component: {fileID: 777495009071749894}
   - component: {fileID: 1558301222668393954}
   - component: {fileID: 8437829512520646898}
+  - component: {fileID: 1648167401803818649}
   m_Layer: 5
   m_Name: Label (1)
   m_TagString: Untagged
@@ -1099,6 +1100,27 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!95 &1648167401803818649
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2890029562870022688}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e3ef45441fbd5494fb192173921adcaf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3043983309490094509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,6 +1132,7 @@ GameObject:
   - component: {fileID: 3521750019229104871}
   - component: {fileID: 1923819638201241686}
   - component: {fileID: 7805055832271620226}
+  - component: {fileID: 9054493963143167655}
   m_Layer: 5
   m_Name: Label (4)
   m_TagString: Untagged
@@ -1233,6 +1256,27 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!95 &9054493963143167655
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3043983309490094509}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e3ef45441fbd5494fb192173921adcaf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3318366303493817414
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,6 +1695,7 @@ GameObject:
   - component: {fileID: 4740916745433748852}
   - component: {fileID: 4125240567580773845}
   - component: {fileID: 723310835690139487}
+  - component: {fileID: 704409529110863795}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -1774,6 +1819,27 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!95 &704409529110863795
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4308672047486518719}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e3ef45441fbd5494fb192173921adcaf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4432309659056014177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,6 +1851,7 @@ GameObject:
   - component: {fileID: 7079097468776401708}
   - component: {fileID: 915099447233058533}
   - component: {fileID: 6654787183203433635}
+  - component: {fileID: 3568770744965725010}
   m_Layer: 5
   m_Name: Label (3)
   m_TagString: Untagged
@@ -1908,6 +1975,27 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!95 &3568770744965725010
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4432309659056014177}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e3ef45441fbd5494fb192173921adcaf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4434608690470727606
 GameObject:
   m_ObjectHideFlags: 0
@@ -3138,6 +3226,7 @@ GameObject:
   - component: {fileID: 5856719315522714533}
   - component: {fileID: 5203839410825671341}
   - component: {fileID: 1632488944878857769}
+  - component: {fileID: 4547251380859499870}
   m_Layer: 5
   m_Name: Label (2)
   m_TagString: Untagged
@@ -3261,6 +3350,27 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!95 &4547251380859499870
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7293696107948503935}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e3ef45441fbd5494fb192173921adcaf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7422856195082816470
 GameObject:
   m_ObjectHideFlags: 0
@@ -4077,6 +4187,12 @@ MonoBehaviour:
   - {fileID: 2378465326588639839}
   - {fileID: 7654694691928182261}
   historyPanel: {fileID: 2409375885832311522}
+  historyItemLabelAnimators:
+  - {fileID: 704409529110863795}
+  - {fileID: 1648167401803818649}
+  - {fileID: 4547251380859499870}
+  - {fileID: 3568770744965725010}
+  - {fileID: 9054493963143167655}
   historyItemPrefab: {fileID: 3906507282185309620, guid: fcbbe1096b081944798fb7a7a29aa470, type: 3}
   codeEnterInputAction: {fileID: 358492301593411116, guid: de8824fa2fe827a418d5a19ccd71f48c, type: 3}
   endMsgText: {fileID: 1351610088195360226}

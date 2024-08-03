@@ -1424,6 +1424,8 @@ MonoBehaviour:
   lossSfx: {fileID: 8300000, guid: 7d108800429799b4594cf87baf69ea2e, type: 3}
   winPanel: {fileID: 753286546797665569}
   losePanel: {fileID: 3396630194061753180}
+  scoreTextAnimator: {fileID: 601165481800530613}
+  livesTextAnimator: {fileID: 5014821689473838240}
   minSpawnWait: 1
   maxSpawnWait: 3
   minBullyFaceLifetime: 0.5
@@ -1660,6 +1662,7 @@ GameObject:
   - component: {fileID: 3622172109343571527}
   - component: {fileID: 1336813666673299291}
   - component: {fileID: 7094055208369786287}
+  - component: {fileID: 5014821689473838240}
   m_Layer: 5
   m_Name: LivesText
   m_TagString: Untagged
@@ -1683,9 +1686,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -209, y: -35.999977}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -500, y: -87}
+  m_SizeDelta: {x: 500, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1336813666673299291
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1777,12 +1780,33 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -378.06723, y: -17.643215, z: 0, w: -80.65435}
+  m_margin: {x: 0.39313495, y: -1.1884727, z: 0, w: -2.8680096}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!95 &5014821689473838240
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2698325970157419821}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e3ef45441fbd5494fb192173921adcaf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3144119912033377719
 GameObject:
   m_ObjectHideFlags: 0
@@ -3060,6 +3084,7 @@ GameObject:
   - component: {fileID: 5269575605232080575}
   - component: {fileID: 961133415629870506}
   - component: {fileID: 1142443994652962920}
+  - component: {fileID: 601165481800530613}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: Untagged
@@ -3077,15 +3102,15 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5023917340654174024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -209, y: 83.00002}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -500, y: 53}
+  m_SizeDelta: {x: 500, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &961133415629870506
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3177,12 +3202,33 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -378.06723, y: -17.643215, z: 0, w: -80.65435}
+  m_margin: {x: 3.3224034, y: 0.29662707, z: 0, w: -3.4404886}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!95 &601165481800530613
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6405495471122872877}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e3ef45441fbd5494fb192173921adcaf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6448519849612574567
 GameObject:
   m_ObjectHideFlags: 0

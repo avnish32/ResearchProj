@@ -11106,6 +11106,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Friend
       objectReference: {fileID: 0}
+    - target: {fileID: 5526867376421407354, guid: ea2dd05926195564eb51c3778b231076, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278251263
+      objectReference: {fileID: 0}
     - target: {fileID: 7967416221836430024, guid: ea2dd05926195564eb51c3778b231076, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.81

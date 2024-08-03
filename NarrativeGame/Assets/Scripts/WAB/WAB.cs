@@ -28,6 +28,9 @@ public class WAB : MonoBehaviour
     [SerializeField]
     GameObject winPanel, losePanel;
 
+    [SerializeField]
+    Animator scoreTextAnimator, livesTextAnimator;
+
     //minSpawnWait >= maxLifetime?
     [SerializeField]
     private float minSpawnWait, maxSpawnWait, minBullyFaceLifetime, maxBullyFaceLifetime;
@@ -112,8 +115,18 @@ public class WAB : MonoBehaviour
         {
             return;
         }
+
+        scoreText.text = string.Format("Score: {0}", ++score);
+        if (gameController.IsGameJuicy())
+        {
+            /*Animator scoreTextAnimator = scoreText.GetComponent<Animator>();
+            scoreTextAnimator.enabled = true;*/
+            Debug.Log("Current state OnUpdate?: " + scoreTextAnimator.GetCurrentAnimatorStateInfo(0).IsName("OnUpdate"));
+            scoreTextAnimator.Play("OnUpdate");
+        }
+        
         audioController.PlaySound(onHitSfx);
-        if (++score >= WIN_SCORE)
+        if (score >= WIN_SCORE)
         {
             hasMinigameEnded = true;
             myCanvas.sortingOrder = 100;
@@ -131,14 +144,25 @@ public class WAB : MonoBehaviour
                 onEndText.text = "Man, you can fight! Press 'exit' to leave.";
             }
         }
-        scoreText.text = string.Format("Score: {0}", score);
+        
     }
 
     public void IncrementMiss()
     {
+        ++miss;
         audioController.PlaySound(onMissSfx);
+        livesText.text = string.Format("Lives left: {0}",
+            Mathf.Clamp(MAX_MISSES - miss, 0, MAX_MISSES));
         //Debug.Log("Bully missed.");
-        if (++miss >= MAX_MISSES)
+
+        if (gameController.IsGameJuicy())
+        {
+            /*Animator livesTextAnimator = livesText.GetComponent<Animator>();
+            livesTextAnimator.enabled = true;*/
+            livesTextAnimator.Play("OnUpdate");
+        }
+
+        if (miss >= MAX_MISSES)
         {
             hasMinigameEnded = true;
             myCanvas.sortingOrder = 100;
@@ -158,8 +182,7 @@ public class WAB : MonoBehaviour
                 onEndText.text = "Looks like Roger was a bit too good for you. Press 'exit' to leave.";
             }
         }
-        livesText.text = string.Format("Lives left: {0}", 
-            Mathf.Clamp(MAX_MISSES - miss, 0, MAX_MISSES));
+        
     }
 
     public void OnPauseButtonClicked()

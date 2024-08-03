@@ -18,6 +18,9 @@ public class SafeCodePuzzle : MonoBehaviour
     private RectTransform historyPanel;
 
     [SerializeField]
+    private Animator[] historyItemLabelAnimators;
+
+    [SerializeField]
     private SafeCodeHistoryItem historyItemPrefab;
 
     [SerializeField]
@@ -123,6 +126,10 @@ public class SafeCodePuzzle : MonoBehaviour
 
         SafeCodeHistoryItem instantiatedHistoryItem = Instantiate(historyItemPrefab, historyPanel, false);
         instantiatedHistoryItem.Init(codeEntered, code);
+        if (audioController.IsGameJuicy())
+        {
+            historyItemLabelAnimators[historyItemLabelAnimators.Length - guessesRemaining - 1].Play("OnUpdate");
+        }
 
         for (int i = 0; i < inputDigits.Length; i++)
         {
