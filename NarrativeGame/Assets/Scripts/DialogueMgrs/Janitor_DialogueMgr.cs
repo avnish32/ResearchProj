@@ -169,7 +169,7 @@ public class Janitor_DialogueMgr : DialogueManager
             " and I’m assuming that whatever was in there, isn’t there anymore.",
             "I’m guessing someone found out about it, Bridges panicked and shut shop, " +
             "and Katherine went into hiding.",
-            "Got all that?"
+            "Got all that? I hope you can get the manager to confess now."
         };
 
         audioController.PlaySound(notSharpVoice);
@@ -424,7 +424,8 @@ public class Janitor_DialogueMgr : DialogueManager
                 "I’m guessing someone found out about it, Bridges panicked and shut shop, " +
                 "and Katherine went into hiding.",
                 "But that’s all I know. I hope that helps you.",
-                "I could do with seeing that man’s back when they catch him."
+                "I could do with seeing that man’s back when they catch him.",
+                "Go get that confession outta him!"
             };
 
             stateWPlayer = PlayerStates.MGRSECRETFOUND;
