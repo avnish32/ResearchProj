@@ -41,7 +41,8 @@ public class NPCInteraction : MonoBehaviour, IInteractable
         {
             myNpcMovement.StopWalking();
         }
-        
+
+        gameController.DisablePlayerMovement();
         List<SDialogue> dialogues = myDialogueMgr.GetDialogueListBasedOnRship();
         //PrintDialogues(dialogues);
 

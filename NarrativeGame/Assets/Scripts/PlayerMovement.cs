@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!gameController.CanPlayerMoveOrInteract() || gameController.IsGamePaused())
         {
+            rb.velocity = Vector3.zero;
             return;
         }
         rb.velocity = movementAction.action.ReadValue<Vector2>() * movementSpeed * Time.fixedDeltaTime;
