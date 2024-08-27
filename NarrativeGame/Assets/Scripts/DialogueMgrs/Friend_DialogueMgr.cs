@@ -206,6 +206,8 @@ public class Friend_DialogueMgr : DialogueManager
     {
         string[] dialogueList = { 
             "I’m sure you’ll figure something out.",
+            "Exit the classroom and go to the other end of the corridor.",
+            "You'll see the playground. That's where he hangs out mostly.",
             "Just remember to be confident and assertive with him. There's no use being polite."
         };
         audioController.PlaySound(hmmVoice);

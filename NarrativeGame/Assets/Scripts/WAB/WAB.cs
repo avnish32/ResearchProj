@@ -78,7 +78,7 @@ public class WAB : MonoBehaviour
 
     public void OnStartButtonClicked()
     {
-        if (shouldSpawn || gameController.IsGamePaused())
+        if (shouldSpawn || gameController.IsGamePaused() || hasMinigameEnded)
         {
             return;
         }
