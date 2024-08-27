@@ -72,6 +72,7 @@ public class Safe : MonoBehaviour, IInteractable
     public void OnSafeCracked(string codeString)
     {
         //isSafeCracked =true;
+        interactTxtCanvas.gameObject.SetActive(false);
         janitor.OnSafeCracked(codeString);
     }
 }
