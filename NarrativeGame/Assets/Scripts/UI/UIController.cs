@@ -108,6 +108,8 @@ public class UIController : MonoBehaviour
         }
     }
 
+    //Called when the dialogue panel is clicked
+    //This causes the 'RunThroughNPCDialogues' to move to the next dialogue
     public void AdvanceNPCDialogue()
     {
         audioController.PlaySound(clickSfx);

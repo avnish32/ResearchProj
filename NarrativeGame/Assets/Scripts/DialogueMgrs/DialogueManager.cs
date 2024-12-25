@@ -8,7 +8,7 @@ public class DialogueManager : MonoBehaviour
     protected List<SDialogue> dialogueList;
     public PlayerStates stateWPlayer;
     private Dictionary<EDialogueID, SDialogue> dialogueIdsToDialogueMap;
-    private Dictionary<PlayerStates, List<EDialogueID>> rshipLevelToDialogueIdsMap;
+    private Dictionary<PlayerStates, List<EDialogueID>> stateToDialogueIdsMap;
 
     protected GameController gameController;
     protected UIController uiController;
@@ -28,7 +28,7 @@ public class DialogueManager : MonoBehaviour
     {
         stateWPlayer = PlayerStates.NEUTRAL;
         dialogueIdsToDialogueMap = new Dictionary<EDialogueID, SDialogue>();
-        rshipLevelToDialogueIdsMap = new Dictionary<PlayerStates, List<EDialogueID>>();
+        stateToDialogueIdsMap = new Dictionary<PlayerStates, List<EDialogueID>>();
 
         foreach (var dialogue in dialogueList)
         {
@@ -40,11 +40,11 @@ public class DialogueManager : MonoBehaviour
 
             foreach (var rshipLevel in dialogue.playerStates)
             {
-                if (!rshipLevelToDialogueIdsMap.ContainsKey(rshipLevel))
+                if (!stateToDialogueIdsMap.ContainsKey(rshipLevel))
                 {
-                    rshipLevelToDialogueIdsMap[rshipLevel] = new List<EDialogueID>();
+                    stateToDialogueIdsMap[rshipLevel] = new List<EDialogueID>();
                 }
-                rshipLevelToDialogueIdsMap[rshipLevel].Add(dialogue.dialogueId);
+                stateToDialogueIdsMap[rshipLevel].Add(dialogue.dialogueId);
             }
         }
     }
@@ -53,7 +53,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (!rshipToActionMap.ContainsKey(stateWPlayer))
         {
-            Debug.LogError("ERROR: No action defined for this dialogue at " + stateWPlayer + " rship.");
+            Debug.LogError("ERROR: No action defined for this dialogue at " + stateWPlayer + " state.");
             return;
         }
         rshipToActionMap[stateWPlayer].Invoke();
@@ -69,10 +69,10 @@ public class DialogueManager : MonoBehaviour
         return dialogueList;
     }
 
-    public List<SDialogue> GetDialogueListBasedOnRship()
+    public List<SDialogue> GetDialogueListBasedOnState()
     {
         List<SDialogue> dialogueList = new List<SDialogue>();
-        List<EDialogueID> dialogueIds = rshipLevelToDialogueIdsMap[stateWPlayer];
+        List<EDialogueID> dialogueIds = stateToDialogueIdsMap[stateWPlayer];
 
         foreach (var dialogueId in dialogueIds)
         {

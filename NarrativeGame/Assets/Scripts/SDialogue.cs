@@ -7,8 +7,7 @@ public struct SDialogue
     public EDialogueID dialogueId;
     public List<PlayerStates> playerStates;
     public string dialogueText;
-    public Dictionary<PlayerStates, Action> rshipToResponseMap;
-    public List<EDialogueID> nextDialogueIds;
+    public Dictionary<PlayerStates, Action> stateToResponseMap;
     public Action dialogueAction;
 };
 

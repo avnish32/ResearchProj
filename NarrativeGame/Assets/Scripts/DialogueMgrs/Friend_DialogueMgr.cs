@@ -38,7 +38,7 @@ public class Friend_DialogueMgr : DialogueManager
             SDialogue currentDialogue = dialogueList[i];
             currentDialogue.dialogueAction = () =>
             {
-                InvokePlayerDialogueAction(currentDialogue.rshipToResponseMap);
+                InvokePlayerDialogueAction(currentDialogue.stateToResponseMap);
             };
             dialogueList[i] = currentDialogue;
         }
@@ -582,7 +582,7 @@ public class Friend_DialogueMgr : DialogueManager
             Dictionary<PlayerStates, Action> frndHeyRespMap = new Dictionary<PlayerStates, Action>();
             frndHeyRespMap[PlayerStates.NEUTRAL] = FrndHeyNeutralAction;
             frndHeyRespMap[PlayerStates.ACQUAINTANCE] = FrndHeyAcqAction;
-            frndHey.rshipToResponseMap = frndHeyRespMap;
+            frndHey.stateToResponseMap = frndHeyRespMap;
             dialogueList.Add(frndHey);
         }
 
@@ -593,7 +593,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndHiNeedUrHelp.playerStates = new List<PlayerStates>{PlayerStates.NEUTRAL};
             Dictionary<PlayerStates, Action> frndHiNeedUrHelpRespMap = new Dictionary<PlayerStates, Action>();
             frndHiNeedUrHelpRespMap[PlayerStates.NEUTRAL] = FrndHiNeedHelpNeutralAction;
-            frndHiNeedUrHelp.rshipToResponseMap = frndHiNeedUrHelpRespMap;
+            frndHiNeedUrHelp.stateToResponseMap = frndHiNeedUrHelpRespMap;
             dialogueList.Add(frndHiNeedUrHelp);
         }
 
@@ -605,7 +605,7 @@ public class Friend_DialogueMgr : DialogueManager
             Dictionary<PlayerStates, Action> frndDontUWorkAtLettingsRespMap = new Dictionary<PlayerStates, Action>();
             frndDontUWorkAtLettingsRespMap[PlayerStates.NEUTRAL] = FrndDontUWorkAtLettingsNeutralAction;
             frndDontUWorkAtLettingsRespMap[PlayerStates.FRNDJOBREVEALED] = FrndDontUWorkAtLettingsJobRvldAction;
-            frndDontUWorkAtLettings.rshipToResponseMap = frndDontUWorkAtLettingsRespMap;
+            frndDontUWorkAtLettings.stateToResponseMap = frndDontUWorkAtLettingsRespMap;
             dialogueList.Add(frndDontUWorkAtLettings);
         }
 
@@ -619,7 +619,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndCantBelieveUFellRespMap[PlayerStates.ACQUAINTANCE] = FrndCantBelieveUFellAction;
             frndCantBelieveUFellRespMap[PlayerStates.FRNDJOBREVEALED] = FrndCantBelieveUFellAction;
             frndCantBelieveUFellRespMap[PlayerStates.FRNDBULLYMENTIONED] = FrndCantBelieveUFellAction;
-            frndCantBelieveUFell.rshipToResponseMap = frndCantBelieveUFellRespMap;
+            frndCantBelieveUFell.stateToResponseMap = frndCantBelieveUFellRespMap;
             dialogueList.Add(frndCantBelieveUFell);
         }
 
@@ -630,7 +630,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndStillTalk2Bully.playerStates = new List<PlayerStates> { PlayerStates.FRNDBULLYMENTIONED };
             Dictionary<PlayerStates, Action> frndStillTalk2BullyRespMap = new Dictionary<PlayerStates, Action>();
             frndStillTalk2BullyRespMap[PlayerStates.FRNDBULLYMENTIONED] = FrndWantMe2Talk2RogerAction;
-            frndStillTalk2Bully.rshipToResponseMap = frndStillTalk2BullyRespMap;
+            frndStillTalk2Bully.stateToResponseMap = frndStillTalk2BullyRespMap;
             dialogueList.Add(frndStillTalk2Bully);
         }
 
@@ -641,7 +641,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndIHandledIt.playerStates = new List<PlayerStates> { PlayerStates.WILLTALK2BULLY };
             Dictionary<PlayerStates, Action> frndIHandledItRespMap = new Dictionary<PlayerStates, Action>();
             frndIHandledItRespMap[PlayerStates.WILLTALK2BULLY] = FrndIHandledITBullyMentionedAction;
-            frndIHandledIt.rshipToResponseMap = frndIHandledItRespMap;
+            frndIHandledIt.stateToResponseMap = frndIHandledItRespMap;
             dialogueList.Add(frndIHandledIt);
         }
 
@@ -652,7 +652,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndStupidBully.playerStates = new List<PlayerStates> { PlayerStates.WILLTALK2BULLY };
             Dictionary<PlayerStates, Action> frndIHandledItRespMap = new Dictionary<PlayerStates, Action>();
             frndIHandledItRespMap[PlayerStates.WILLTALK2BULLY] = FrndStupidBullyMentionedAction;
-            frndStupidBully.rshipToResponseMap = frndIHandledItRespMap;
+            frndStupidBully.stateToResponseMap = frndIHandledItRespMap;
             dialogueList.Add(frndStupidBully);
         }
 
@@ -663,7 +663,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndTrynaFigureOut.playerStates = new List<PlayerStates> { PlayerStates.WILLTALK2BULLY };
             Dictionary<PlayerStates, Action> frndTrynaFigureOutRespMap = new Dictionary<PlayerStates, Action>();
             frndTrynaFigureOutRespMap[PlayerStates.WILLTALK2BULLY] = FrndTrynaFigureOutAction;
-            frndTrynaFigureOut.rshipToResponseMap = frndTrynaFigureOutRespMap;
+            frndTrynaFigureOut.stateToResponseMap = frndTrynaFigureOutRespMap;
             dialogueList.Add(frndTrynaFigureOut);
         }
 
@@ -675,7 +675,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndNeedUrHelp.dialogueText = "I need your help.";
             frndNeedUrHelp.dialogueId = EDialogueID.FRNEEDURHELP;
             frndNeedUrHelpRespMap[PlayerStates.NEUTRAL] = FrndNeedUrHelpNeutralAction;
-            frndNeedUrHelp.rshipToResponseMap = frndNeedUrHelpRespMap;
+            frndNeedUrHelp.stateToResponseMap = frndNeedUrHelpRespMap;
             dialogueList.Add(frndNeedUrHelp);
         }
 
@@ -685,7 +685,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndCanUReferMe.dialogueText = "Can you put in a reference for me where you work?";
             frndCanUReferMe.dialogueId = EDialogueID.FRCANUREFERME;
             frndCanUReferMeRespMap[PlayerStates.NEUTRAL] = FrndCanUReferMeNeutralAction;
-            frndCanUReferMe.rshipToResponseMap = frndCanUReferMeRespMap;
+            frndCanUReferMe.stateToResponseMap = frndCanUReferMeRespMap;
             dialogueList.Add(frndCanUReferMe);
         }
 
@@ -695,7 +695,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndYRUHostile.dialogueText = "Why are you so hostile to me?";
             frndYRUHostile.dialogueId = EDialogueID.FRYRUHOSTILE;
             frndYRUHostileRespMap[PlayerStates.NEUTRAL] = FrndYRUHostileNeutralAction;
-            frndYRUHostile.rshipToResponseMap = frndYRUHostileRespMap;
+            frndYRUHostile.stateToResponseMap = frndYRUHostileRespMap;
             dialogueList.Add(frndYRUHostile);
         }
 
@@ -705,7 +705,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndBoring2Day.dialogueText = "Bit boring today, isn’t it?";
             frndBoring2Day.dialogueId = EDialogueID.FRBORING2DAY;
             frndBoring2DayRespMap[PlayerStates.NEUTRAL] = FrndBoring2DayAction;
-            frndBoring2Day.rshipToResponseMap = frndBoring2DayRespMap;
+            frndBoring2Day.stateToResponseMap = frndBoring2DayRespMap;
             dialogueList.Add(frndBoring2Day);
         }
 
@@ -715,7 +715,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndBitMuch.dialogueText = "That’s a bit much, don’t you think?";
             frndBitMuch.dialogueId = EDialogueID.FRBITMUCH;
             frndBitMuchRespMap[PlayerStates.NEUTRAL] = FrndBitMuchAction;
-            frndBitMuch.rshipToResponseMap = frndBitMuchRespMap;
+            frndBitMuch.stateToResponseMap = frndBitMuchRespMap;
             dialogueList.Add(frndBitMuch);
         }
 
@@ -725,7 +725,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndCanUnderstand.dialogueText = "Hahaha, I can understand. These back-to-back lectures are always tiring.";
             frndCanUnderstand.dialogueId = EDialogueID.FRCANUNDERSTAND;
             frndCanUnderstandRespMap[PlayerStates.NEUTRAL] = FrndCanUnderstandAction;
-            frndCanUnderstand.rshipToResponseMap = frndCanUnderstandRespMap;
+            frndCanUnderstand.stateToResponseMap = frndCanUnderstandRespMap;
             dialogueList.Add(frndCanUnderstand);
         }
 
@@ -735,7 +735,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndImJared.dialogueText = "I’m Jared.";
             frndImJared.dialogueId = EDialogueID.FRIMJARED;
             frndImJaredRespMap[PlayerStates.NEUTRAL] = FrndImJaredAction;
-            frndImJared.rshipToResponseMap = frndImJaredRespMap;
+            frndImJared.stateToResponseMap = frndImJaredRespMap;
             dialogueList.Add(frndImJared);
         }
 
@@ -745,7 +745,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndWhat2SayNext.dialogueText = "Hmm...don’t know what to say next, hehe.";
             frndWhat2SayNext.dialogueId = EDialogueID.FRWHAT2SAYNEXT;
             frndWhat2SayNextRespMap[PlayerStates.NEUTRAL] = FrndWhat2SayNextAction;
-            frndWhat2SayNext.rshipToResponseMap = frndWhat2SayNextRespMap;
+            frndWhat2SayNext.stateToResponseMap = frndWhat2SayNextRespMap;
             dialogueList.Add(frndWhat2SayNext);
         }
 
@@ -755,7 +755,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndCantWaitToNap.dialogueText = "And you, Anya. I bet you can’t wait to take a looong nap. I know I will.";
             frndCantWaitToNap.dialogueId = EDialogueID.FRCANTWAITTONAP;
             frndCantWaitToNapRespMap[PlayerStates.ACQUAINTANCE] = FrndCantWaitToNapAction;
-            frndCantWaitToNap.rshipToResponseMap = frndCantWaitToNapRespMap;
+            frndCantWaitToNap.stateToResponseMap = frndCantWaitToNapRespMap;
             dialogueList.Add(frndCantWaitToNap);
         }
 
@@ -765,7 +765,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndNowThatWeKnow.dialogueText = "Anya. Cool. Now that you know me, can I ask you a favour?";
             frndNowThatWeKnow.dialogueId = EDialogueID.FRNOWTHATWEKNOW;
             frndNowThatWeKnowRespMap[PlayerStates.ACQUAINTANCE] = FrndNowThatWeKnowAction;
-            frndNowThatWeKnow.rshipToResponseMap = frndNowThatWeKnowRespMap;
+            frndNowThatWeKnow.stateToResponseMap = frndNowThatWeKnowRespMap;
             dialogueList.Add(frndNowThatWeKnow);
         }
 
@@ -775,7 +775,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndWhereDoUWork.dialogueText = "Ah, you work part-time? Where exactly?";
             frndWhereDoUWork.dialogueId = EDialogueID.FRWHEREDOUWORK;
             frndWhereDoUWorkRespMap[PlayerStates.ACQUAINTANCE] = FrndWhereDoUWorkAction;
-            frndWhereDoUWork.rshipToResponseMap = frndWhereDoUWorkRespMap;
+            frndWhereDoUWork.stateToResponseMap = frndWhereDoUWorkRespMap;
             dialogueList.Add(frndWhereDoUWork);
         }
 
@@ -785,7 +785,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndAtLettingsRight.dialogueText = "At AB&C Lettings, right?";
             frndAtLettingsRight.dialogueId = EDialogueID.FRATLETTINGSRIGHT;
             frndAtLettingsRightRespMap[PlayerStates.ACQUAINTANCE] = FrndAtLettingsRightAction;
-            frndAtLettingsRight.rshipToResponseMap = frndAtLettingsRightRespMap;
+            frndAtLettingsRight.stateToResponseMap = frndAtLettingsRightRespMap;
             dialogueList.Add(frndAtLettingsRight);
         }
 
@@ -795,7 +795,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndAppliedMyself.dialogueText = "Funny you should ask. I’ve actually applied for one of their part-time roles myself.";
             frndAppliedMyself.dialogueId = EDialogueID.FRAPPLIEDMYSELF;
             frndAppliedMyselfRespMap[PlayerStates.FRNDJOBREVEALED] = FrndAppliedMyselfAction;
-            frndAppliedMyself.rshipToResponseMap = frndAppliedMyselfRespMap;
+            frndAppliedMyself.stateToResponseMap = frndAppliedMyselfRespMap;
             dialogueList.Add(frndAppliedMyself);
         }
 
@@ -805,7 +805,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndIDontWork.dialogueText = "No, I don't work.";
             frndIDontWork.dialogueId = EDialogueID.FRIDONTWORK;
             frndIDontWorkRespMap[PlayerStates.FRNDJOBREVEALED] = FrndIDontWorkAction;
-            frndIDontWork.rshipToResponseMap = frndIDontWorkRespMap;
+            frndIDontWork.stateToResponseMap = frndIDontWorkRespMap;
             dialogueList.Add(frndIDontWork);
         }
 
@@ -815,7 +815,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndTheyBehindMyDad.dialogueText = "Heard of them? They’re the ones responsible for my father’s disappearance! ";
             frndTheyBehindMyDad.dialogueId = EDialogueID.FRTHEYBEHINDMYDAD;
             frndTheyBehindMyDadRespMap[PlayerStates.FRNDJOBREVEALED] = FrndTheyBehindMyDadAction;
-            frndTheyBehindMyDad.rshipToResponseMap = frndTheyBehindMyDadRespMap;
+            frndTheyBehindMyDad.stateToResponseMap = frndTheyBehindMyDadRespMap;
             dialogueList.Add(frndTheyBehindMyDad);
         }
 
@@ -825,7 +825,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndItsBeenAWeek.dialogueText = "Nah. It’s been, like, a week.";
             frndItsBeenAWeek.dialogueId = EDialogueID.FRITSBEENAWEEK;
             frndItsBeenAWeekRespMap[PlayerStates.FRNDJOBREVEALED] = FrndItsBeenAWeekAction;
-            frndItsBeenAWeek.rshipToResponseMap = frndItsBeenAWeekRespMap;
+            frndItsBeenAWeek.stateToResponseMap = frndItsBeenAWeekRespMap;
             dialogueList.Add(frndItsBeenAWeek);
         }
 
@@ -835,7 +835,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndWudITalk2U.dialogueText = "Would I be talking to you right now if I had?";
             frndWudITalk2U.dialogueId = EDialogueID.FRWUDITALK2U;
             frndWudITalk2URespMap[PlayerStates.FRNDJOBREVEALED] = FrndWudITalk2UAction;
-            frndWudITalk2U.rshipToResponseMap = frndWudITalk2URespMap;
+            frndWudITalk2U.stateToResponseMap = frndWudITalk2URespMap;
             dialogueList.Add(frndWudITalk2U);
         }
 
@@ -845,7 +845,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndIfAppHighlighted.dialogueText = "Yeah, that makes sense. If only there was some way to highlight my application...";
             frndIfAppHighlighted.dialogueId = EDialogueID.FRAPPHIGHLIGHT;
             frndIfAppHighlightedRespMap[PlayerStates.FRNDJOBREVEALED] = FrndIfOnlyAppHighlightedAction;
-            frndIfAppHighlighted.rshipToResponseMap = frndIfAppHighlightedRespMap;
+            frndIfAppHighlighted.stateToResponseMap = frndIfAppHighlightedRespMap;
             dialogueList.Add(frndIfAppHighlighted);
         }
 
@@ -855,7 +855,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndUKnowALot.dialogueText = "You seem to know an awful lot about their hiring process for someone who just works part-time.";
             frndUKnowALot.dialogueId = EDialogueID.FRUKNOWALOT;
             frndUKnowALotRespMap[PlayerStates.FRNDJOBREVEALED] = FrndUKnowALotAction;
-            frndUKnowALot.rshipToResponseMap = frndUKnowALotRespMap;
+            frndUKnowALot.stateToResponseMap = frndUKnowALotRespMap;
             dialogueList.Add(frndUKnowALot);
         }
 
@@ -865,7 +865,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndWudBHelp.dialogueText = "Thanks, that would be a huge help!";
             frndWudBHelp.dialogueId = EDialogueID.FRWUDBHELP;
             frndWudBHelpRespMap[PlayerStates.FRNDJOBREVEALED] = FrndWudBHelpAction;
-            frndWudBHelp.rshipToResponseMap = frndWudBHelpRespMap;
+            frndWudBHelp.stateToResponseMap = frndWudBHelpRespMap;
             dialogueList.Add(frndWudBHelp);
         }
 
@@ -875,7 +875,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndTookULongEnuf.dialogueText = "*sighs in relief* Now we’re talking. Ah, finally...took you long enough.";
             frndTookULongEnuf.dialogueId = EDialogueID.FRTOOKULONGENUF;
             frndTookULongEnufRespMap[PlayerStates.FRNDJOBREVEALED] = FrndTookULongEnufAction;
-            frndTookULongEnuf.rshipToResponseMap = frndTookULongEnufRespMap;
+            frndTookULongEnuf.stateToResponseMap = frndTookULongEnufRespMap;
             dialogueList.Add(frndTookULongEnuf);
         }
 
@@ -885,7 +885,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndMaybICanHelp.dialogueText = "Oh. What is it? Maybe I can help.";
             frndMaybICanHelp.dialogueId = EDialogueID.FRMAYBEICANHELP;
             frndMaybICanHelpRespMap[PlayerStates.FRNDJOBREVEALED] = FrndMaybeICanHelpAction;
-            frndMaybICanHelp.rshipToResponseMap = frndMaybICanHelpRespMap;
+            frndMaybICanHelp.stateToResponseMap = frndMaybICanHelpRespMap;
             dialogueList.Add(frndMaybICanHelp);
         }
 
@@ -895,7 +895,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndOneTrackMind.dialogueText = "Seriously? How one-track is your mind?";
             frndOneTrackMind.dialogueId = EDialogueID.FRONETRACKMIND;
             frndOneTrackMindRespMap[PlayerStates.FRNDJOBREVEALED] = FrndOneTrackMindAction;
-            frndOneTrackMind.rshipToResponseMap = frndOneTrackMindRespMap;
+            frndOneTrackMind.stateToResponseMap = frndOneTrackMindRespMap;
             dialogueList.Add(frndOneTrackMind);
         }
 
@@ -905,7 +905,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndWillTalkToBully.dialogueText = "Yeah, yeah, definitely. Just wait for me here, I’ll go talk to him.";
             frndWillTalkToBully.dialogueId = EDialogueID.FRWILLTALK2BULLY;
             frndWillTalkToBullyRespMap[PlayerStates.FRNDBULLYMENTIONED] = FrndWillTalk2BullyAction;
-            frndWillTalkToBully.rshipToResponseMap = frndWillTalkToBullyRespMap;
+            frndWillTalkToBully.stateToResponseMap = frndWillTalkToBullyRespMap;
             dialogueList.Add(frndWillTalkToBully);
         }
 
@@ -915,7 +915,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndWontTalkToBully.dialogueText = "Oh, uh...no, I think I’ll prioritise my physical well-being and stay away from such risky engagements.";
             frndWontTalkToBully.dialogueId = EDialogueID.FRWONTTALK2BULLY;
             frndWontTalkToBullyRespMap[PlayerStates.FRNDBULLYMENTIONED] = FrndWontTalk2BullyAction;
-            frndWontTalkToBully.rshipToResponseMap = frndWontTalkToBullyRespMap;
+            frndWontTalkToBully.stateToResponseMap = frndWontTalkToBullyRespMap;
             dialogueList.Add(frndWontTalkToBully);
         }
 
@@ -925,7 +925,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndLyingAbtBully.dialogueText = "No, I’m lying, I’m sorry. I’ll go talk to him right away.";
             frndLyingAbtBully.dialogueId = EDialogueID.FRLYINGABTBULLY;
             frndLyingAbtBullyRespMap[PlayerStates.WILLTALK2BULLY] = FrndLyingAbtBullyAction;
-            frndLyingAbtBully.rshipToResponseMap = frndLyingAbtBullyRespMap;
+            frndLyingAbtBully.stateToResponseMap = frndLyingAbtBullyRespMap;
             dialogueList.Add(frndLyingAbtBully);
         }
 
@@ -935,7 +935,7 @@ public class Friend_DialogueMgr : DialogueManager
             frndYesReallyHandledBully.dialogueText = "Yes.";
             frndYesReallyHandledBully.dialogueId = EDialogueID.FRYESREALLYHANDLEDBULLY;
             frndYesReallyHandledBullyRespMap[PlayerStates.WILLTALK2BULLY] = FrndYesReallyHandledBullyAction;
-            frndYesReallyHandledBully.rshipToResponseMap = frndYesReallyHandledBullyRespMap;
+            frndYesReallyHandledBully.stateToResponseMap = frndYesReallyHandledBullyRespMap;
             dialogueList.Add(frndYesReallyHandledBully);
         }
 

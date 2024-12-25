@@ -33,7 +33,7 @@ public class Mgr_DialogueMgr : DialogueManager
             SDialogue currentDialogue = dialogueList[i];
             currentDialogue.dialogueAction = () =>
             {
-                InvokePlayerDialogueAction(currentDialogue.rshipToResponseMap);
+                InvokePlayerDialogueAction(currentDialogue.stateToResponseMap);
             };
             dialogueList[i] = currentDialogue;
         }
@@ -197,7 +197,7 @@ public class Mgr_DialogueMgr : DialogueManager
             mgrNeed2Talk.playerStates = new List<PlayerStates> { PlayerStates.NEUTRAL };
             Dictionary<PlayerStates, Action> mgrNeed2TalkRespMap = new Dictionary<PlayerStates, Action>();
             mgrNeed2TalkRespMap[PlayerStates.NEUTRAL] = MgrNeed2TalkAction;
-            mgrNeed2Talk.rshipToResponseMap = mgrNeed2TalkRespMap;
+            mgrNeed2Talk.stateToResponseMap = mgrNeed2TalkRespMap;
             dialogueList.Add(mgrNeed2Talk);
         }
 
@@ -209,7 +209,7 @@ public class Mgr_DialogueMgr : DialogueManager
             mgrAbtAYrAgo.dialogueId = EDialogueID.MGRABTAYRAGO;
             Dictionary<PlayerStates, Action> mgrAbtAYrAgoRespMap = new Dictionary<PlayerStates, Action>();
             mgrAbtAYrAgoRespMap[PlayerStates.NEUTRAL] = MgrAbtAYrAgoAction;
-            mgrAbtAYrAgo.rshipToResponseMap = mgrAbtAYrAgoRespMap;
+            mgrAbtAYrAgo.stateToResponseMap = mgrAbtAYrAgoRespMap;
             dialogueList.Add(mgrAbtAYrAgo);
         }
 
@@ -219,7 +219,7 @@ public class Mgr_DialogueMgr : DialogueManager
             mgrUKnowWhatImSayin.dialogueId = EDialogueID.MGRUKNOWWHATIMSAYIN;
             Dictionary<PlayerStates, Action> mgrUKnowWhatImSayinRespMap = new Dictionary<PlayerStates, Action>();
             mgrUKnowWhatImSayinRespMap[PlayerStates.NEUTRAL] = MgrUKnowWhatImSayinAction;
-            mgrUKnowWhatImSayin.rshipToResponseMap = mgrUKnowWhatImSayinRespMap;
+            mgrUKnowWhatImSayin.stateToResponseMap = mgrUKnowWhatImSayinRespMap;
             dialogueList.Add(mgrUKnowWhatImSayin);
         }
 
@@ -229,7 +229,7 @@ public class Mgr_DialogueMgr : DialogueManager
             mgrAbtStorageUnit.dialogueId = EDialogueID.MGRABTSTORAGEUNIT;
             Dictionary<PlayerStates, Action> mgrAbtStorageUnitRespMap = new Dictionary<PlayerStates, Action>();
             mgrAbtStorageUnitRespMap[PlayerStates.NEUTRAL] = MgrAbtStorageUnitAction;
-            mgrAbtStorageUnit.rshipToResponseMap = mgrAbtStorageUnitRespMap;
+            mgrAbtStorageUnit.stateToResponseMap = mgrAbtStorageUnitRespMap;
             dialogueList.Add(mgrAbtStorageUnit);
         }
 
@@ -239,7 +239,7 @@ public class Mgr_DialogueMgr : DialogueManager
             mgrOnGroveSt.dialogueId = EDialogueID.MGRONGROVEST;
             Dictionary<PlayerStates, Action> mgrOnGroveStRespMap = new Dictionary<PlayerStates, Action>();
             mgrOnGroveStRespMap[PlayerStates.NEUTRAL] = MgrGroveStAction;
-            mgrOnGroveSt.rshipToResponseMap = mgrOnGroveStRespMap;
+            mgrOnGroveSt.stateToResponseMap = mgrOnGroveStRespMap;
             dialogueList.Add(mgrOnGroveSt);
         }
 
@@ -249,7 +249,7 @@ public class Mgr_DialogueMgr : DialogueManager
             mgrOnTroveSt.dialogueId = EDialogueID.MGRONTROVEST;
             Dictionary<PlayerStates, Action> mgrOnGroveStRespMap = new Dictionary<PlayerStates, Action>();
             mgrOnGroveStRespMap[PlayerStates.NEUTRAL] = MgrTroveStAction;
-            mgrOnTroveSt.rshipToResponseMap = mgrOnGroveStRespMap;
+            mgrOnTroveSt.stateToResponseMap = mgrOnGroveStRespMap;
             dialogueList.Add(mgrOnTroveSt);
         }
 
@@ -261,7 +261,7 @@ public class Mgr_DialogueMgr : DialogueManager
             mgrDontPretend.dialogueId = EDialogueID.MGRDONTPRETEND;
             Dictionary<PlayerStates, Action> mgrDontPretendRespMap = new Dictionary<PlayerStates, Action>();
             mgrDontPretendRespMap[PlayerStates.NEUTRAL] = MgrDontPretendAction;
-            mgrDontPretend.rshipToResponseMap = mgrDontPretendRespMap;
+            mgrDontPretend.stateToResponseMap = mgrDontPretendRespMap;
             dialogueList.Add(mgrDontPretend);
         }
 
@@ -272,7 +272,7 @@ public class Mgr_DialogueMgr : DialogueManager
             mgrDontLie.dialogueId = EDialogueID.MGRDONTLIE;
             Dictionary<PlayerStates, Action> mgrDontLieRespMap = new Dictionary<PlayerStates, Action>();
             mgrDontLieRespMap[PlayerStates.NEUTRAL] = MgrDontLieAction;
-            mgrDontLie.rshipToResponseMap = mgrDontLieRespMap;
+            mgrDontLie.stateToResponseMap = mgrDontLieRespMap;
             dialogueList.Add(mgrDontLie);
         }
 
@@ -282,7 +282,7 @@ public class Mgr_DialogueMgr : DialogueManager
             mgrKatarina.dialogueId = EDialogueID.MGRKATARINA;
             Dictionary<PlayerStates, Action> mgrKatarinaRespMap = new Dictionary<PlayerStates, Action>();
             mgrKatarinaRespMap[PlayerStates.NEUTRAL] = MgrKatarinaAction;
-            mgrKatarina.rshipToResponseMap = mgrKatarinaRespMap;
+            mgrKatarina.stateToResponseMap = mgrKatarinaRespMap;
             dialogueList.Add(mgrKatarina);
         }
 
@@ -292,7 +292,7 @@ public class Mgr_DialogueMgr : DialogueManager
             mgrKatherine.dialogueId = EDialogueID.MGRKATHERINE;
             Dictionary<PlayerStates, Action> mgrKatherineRespMap = new Dictionary<PlayerStates, Action>();
             mgrKatherineRespMap[PlayerStates.NEUTRAL] = MgrKatherineAction;
-            mgrKatherine.rshipToResponseMap = mgrKatherineRespMap;
+            mgrKatherine.stateToResponseMap = mgrKatherineRespMap;
             dialogueList.Add(mgrKatherine);
         }
     }

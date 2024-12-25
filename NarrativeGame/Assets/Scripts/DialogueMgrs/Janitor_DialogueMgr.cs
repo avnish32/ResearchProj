@@ -36,7 +36,7 @@ public class Janitor_DialogueMgr : DialogueManager
             SDialogue currentDialogue = dialogueList[i];
             currentDialogue.dialogueAction = () =>
             {
-                InvokePlayerDialogueAction(currentDialogue.rshipToResponseMap);
+                InvokePlayerDialogueAction(currentDialogue.stateToResponseMap);
             };
             dialogueList[i] = currentDialogue;
         }
@@ -497,7 +497,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorIHeardUTalking.playerStates = new List<PlayerStates>{PlayerStates.NEUTRAL};
             Dictionary<PlayerStates, Action> janitorIHeardUTalkingRespMap = new Dictionary<PlayerStates, Action>();
             janitorIHeardUTalkingRespMap[PlayerStates.NEUTRAL] = JanitorIHeardAction;
-            janitorIHeardUTalking.rshipToResponseMap = janitorIHeardUTalkingRespMap;
+            janitorIHeardUTalking.stateToResponseMap = janitorIHeardUTalkingRespMap;
             dialogueList.Add(janitorIHeardUTalking);
         }
 
@@ -508,7 +508,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorDoUKnwMyDad.playerStates = new List<PlayerStates> { PlayerStates.NEUTRAL };
             Dictionary<PlayerStates, Action> janitorDoUKnwMyDadRespMap = new Dictionary<PlayerStates, Action>();
             janitorDoUKnwMyDadRespMap[PlayerStates.NEUTRAL] = JanitorDoUKnwMyDadAction;
-            janitorDoUKnwMyDad.rshipToResponseMap = janitorDoUKnwMyDadRespMap;
+            janitorDoUKnwMyDad.stateToResponseMap = janitorDoUKnwMyDadRespMap;
             dialogueList.Add(janitorDoUKnwMyDad);
         }
 
@@ -519,7 +519,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorAreUCloseWidMgr.playerStates = new List<PlayerStates> { PlayerStates.NEUTRAL };
             Dictionary<PlayerStates, Action> janitorAreUCloseWidMgrRespMap = new Dictionary<PlayerStates, Action>();
             janitorAreUCloseWidMgrRespMap[PlayerStates.NEUTRAL] = JanitorRUCloseWidMgrAction;
-            janitorAreUCloseWidMgr.rshipToResponseMap = janitorAreUCloseWidMgrRespMap;
+            janitorAreUCloseWidMgr.stateToResponseMap = janitorAreUCloseWidMgrRespMap;
             dialogueList.Add(janitorAreUCloseWidMgr);
         }
 
@@ -530,7 +530,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorStillWantMe2Crack.playerStates = new List<PlayerStates> { PlayerStates.SAFECRACKOFFERED };
             Dictionary<PlayerStates, Action> janitorStillWantMe2CrackRespMap = new Dictionary<PlayerStates, Action>();
             janitorStillWantMe2CrackRespMap[PlayerStates.SAFECRACKOFFERED] = JanitorStillWantMe2CrackAction;
-            janitorStillWantMe2Crack.rshipToResponseMap = janitorStillWantMe2CrackRespMap;
+            janitorStillWantMe2Crack.stateToResponseMap = janitorStillWantMe2CrackRespMap;
             dialogueList.Add(janitorStillWantMe2Crack);
         }
 
@@ -541,7 +541,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorSortWoutCracking.playerStates = new List<PlayerStates> { PlayerStates.SAFECRACKOFFERED };
             Dictionary<PlayerStates, Action> janitorSortWoutCrackingRespMap = new Dictionary<PlayerStates, Action>();
             janitorSortWoutCrackingRespMap[PlayerStates.SAFECRACKOFFERED] = JanitorSortWoutCrackingAction;
-            janitorSortWoutCracking.rshipToResponseMap = janitorSortWoutCrackingRespMap;
+            janitorSortWoutCracking.stateToResponseMap = janitorSortWoutCrackingRespMap;
             dialogueList.Add(janitorSortWoutCracking);
         }
 
@@ -553,7 +553,7 @@ public class Janitor_DialogueMgr : DialogueManager
             Dictionary<PlayerStates, Action> janitorGotCodeRespMap = new Dictionary<PlayerStates, Action>();
             janitorGotCodeRespMap[PlayerStates.SAFECRACKACCEPTED] = JanitorIGotCodeAction;
             janitorGotCodeRespMap[PlayerStates.SAFECRACKED] = JanitorIGotCodeAction;
-            janitorGotCode.rshipToResponseMap = janitorGotCodeRespMap;
+            janitorGotCode.stateToResponseMap = janitorGotCodeRespMap;
             dialogueList.Add(janitorGotCode);
         }
 
@@ -564,7 +564,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorStillWorking.playerStates = new List<PlayerStates> { PlayerStates.SAFECRACKACCEPTED };
             Dictionary<PlayerStates, Action> janitorStillWorkingRespMap = new Dictionary<PlayerStates, Action>();
             janitorStillWorkingRespMap[PlayerStates.SAFECRACKACCEPTED] = JanitorStillWorkingAction;
-            janitorStillWorking.rshipToResponseMap = janitorStillWorkingRespMap;
+            janitorStillWorking.stateToResponseMap = janitorStillWorkingRespMap;
             dialogueList.Add(janitorStillWorking);
         }
 
@@ -575,7 +575,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorRepeatSecret.playerStates = new List<PlayerStates> { PlayerStates.MGRSECRETFOUND };
             Dictionary<PlayerStates, Action> janitorRepeatSecretRespMap = new Dictionary<PlayerStates, Action>();
             janitorRepeatSecretRespMap[PlayerStates.MGRSECRETFOUND] = JanitorRepeatSecretAction;
-            janitorRepeatSecret.rshipToResponseMap = janitorRepeatSecretRespMap;
+            janitorRepeatSecret.stateToResponseMap = janitorRepeatSecretRespMap;
             dialogueList.Add(janitorRepeatSecret);
         }
 
@@ -586,7 +586,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorThanks.playerStates = new List<PlayerStates> { PlayerStates.MGRARRESTED };
             Dictionary<PlayerStates, Action> janitorThanksRespMap = new Dictionary<PlayerStates, Action>();
             janitorThanksRespMap[PlayerStates.MGRARRESTED] = JanitorThanksAction;
-            janitorThanks.rshipToResponseMap = janitorThanksRespMap;
+            janitorThanks.stateToResponseMap = janitorThanksRespMap;
             dialogueList.Add(janitorThanks);
         }
 
@@ -598,7 +598,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorDontPretend.dialogueId = EDialogueID.JANITORDONTPRETEND;
             Dictionary<PlayerStates, Action> janitorDontPretendRespMap = new Dictionary<PlayerStates, Action>();
             janitorDontPretendRespMap[PlayerStates.NEUTRAL] = JanitorDontPretendAction;
-            janitorDontPretend.rshipToResponseMap = janitorDontPretendRespMap;
+            janitorDontPretend.stateToResponseMap = janitorDontPretendRespMap;
             dialogueList.Add(janitorDontPretend);
         }
 
@@ -608,7 +608,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorIWantedToKnw.dialogueId = EDialogueID.JANITORIWANTEDTOKNW;
             Dictionary<PlayerStates, Action> janitorIWantedToKnwRespMap = new Dictionary<PlayerStates, Action>();
             janitorIWantedToKnwRespMap[PlayerStates.NEUTRAL] = JanitorIWantedtoKnwAction;
-            janitorIWantedToKnw.rshipToResponseMap = janitorIWantedToKnwRespMap;
+            janitorIWantedToKnw.stateToResponseMap = janitorIWantedToKnwRespMap;
             dialogueList.Add(janitorIWantedToKnw);
         }
 
@@ -618,7 +618,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorJustCurious.dialogueId = EDialogueID.JANITORJUSTCURIOUS;
             Dictionary<PlayerStates, Action> janitorIWantedToKnwRespMap = new Dictionary<PlayerStates, Action>();
             janitorIWantedToKnwRespMap[PlayerStates.NEUTRAL] = JanitorJustCuriousAction;
-            janitorJustCurious.rshipToResponseMap = janitorIWantedToKnwRespMap;
+            janitorJustCurious.stateToResponseMap = janitorIWantedToKnwRespMap;
             dialogueList.Add(janitorJustCurious);
         }
 
@@ -628,7 +628,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorMgrBMailingU.dialogueId = EDialogueID.JANITORMGRBMAILINGU;
             Dictionary<PlayerStates, Action> janitorMgrBMailingURespMap = new Dictionary<PlayerStates, Action>();
             janitorMgrBMailingURespMap[PlayerStates.NEUTRAL] = JanitorMgrBMailingUAction;
-            janitorMgrBMailingU.rshipToResponseMap = janitorMgrBMailingURespMap;
+            janitorMgrBMailingU.stateToResponseMap = janitorMgrBMailingURespMap;
             dialogueList.Add(janitorMgrBMailingU);
         }
 
@@ -638,7 +638,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorIWannaTakeHimDown.dialogueId = EDialogueID.JANITORIWANNATAKEHIMDOWN;
             Dictionary<PlayerStates, Action> janitorIWannaTakeHimDownRespMap = new Dictionary<PlayerStates, Action>();
             janitorIWannaTakeHimDownRespMap[PlayerStates.NEUTRAL] = JanitorIWannaTakeHimDownAction;
-            janitorIWannaTakeHimDown.rshipToResponseMap = janitorIWannaTakeHimDownRespMap;
+            janitorIWannaTakeHimDown.stateToResponseMap = janitorIWannaTakeHimDownRespMap;
             dialogueList.Add(janitorIWannaTakeHimDown);
         }
 
@@ -648,7 +648,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorHopelessGuy.dialogueId = EDialogueID.JANITORHOPELESSGUY;
             Dictionary<PlayerStates, Action> janitorHopelessGuyRespMap = new Dictionary<PlayerStates, Action>();
             janitorHopelessGuyRespMap[PlayerStates.NEUTRAL] = JanitorHopelessGuyAction;
-            janitorHopelessGuy.rshipToResponseMap = janitorHopelessGuyRespMap;
+            janitorHopelessGuy.stateToResponseMap = janitorHopelessGuyRespMap;
             dialogueList.Add(janitorHopelessGuy);
         }
 
@@ -658,7 +658,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorMgrInvolvedInIncident.dialogueId = EDialogueID.JANITORMGRINVOLVEDININCIDENT;
             Dictionary<PlayerStates, Action> janitorMgrInvolvedInIncidentRespMap = new Dictionary<PlayerStates, Action>();
             janitorMgrInvolvedInIncidentRespMap[PlayerStates.NEUTRAL] = JanitorMgrInvolvedAction;
-            janitorMgrInvolvedInIncident.rshipToResponseMap = janitorMgrInvolvedInIncidentRespMap;
+            janitorMgrInvolvedInIncident.stateToResponseMap = janitorMgrInvolvedInIncidentRespMap;
             dialogueList.Add(janitorMgrInvolvedInIncident);
         }
 
@@ -668,7 +668,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorGotMyReasons.dialogueId = EDialogueID.JANITORGOTMYREASONS;
             Dictionary<PlayerStates, Action> janitorGotMyReasonsRespMap = new Dictionary<PlayerStates, Action>();
             janitorGotMyReasonsRespMap[PlayerStates.NEUTRAL] = JanitorGotMyReasonsAction;
-            janitorGotMyReasons.rshipToResponseMap = janitorGotMyReasonsRespMap;
+            janitorGotMyReasons.stateToResponseMap = janitorGotMyReasonsRespMap;
             dialogueList.Add(janitorGotMyReasons);
         }
 
@@ -678,7 +678,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorTurnInUrFavor.dialogueId = EDialogueID.JANITORTURNINURFAVOR;
             Dictionary<PlayerStates, Action> janitorTurnInUrFavorRespMap = new Dictionary<PlayerStates, Action>();
             janitorTurnInUrFavorRespMap[PlayerStates.NEUTRAL] = JanitorTurnInUrFavorAction;
-            janitorTurnInUrFavor.rshipToResponseMap = janitorTurnInUrFavorRespMap;
+            janitorTurnInUrFavor.stateToResponseMap = janitorTurnInUrFavorRespMap;
             dialogueList.Add(janitorTurnInUrFavor);
         }
 
@@ -688,7 +688,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorCantTellU.dialogueId = EDialogueID.JANITORCANTTELLU;
             Dictionary<PlayerStates, Action> janitorCantTellURespMap = new Dictionary<PlayerStates, Action>();
             janitorCantTellURespMap[PlayerStates.NEUTRAL] = JanitorCantTellUAction;
-            janitorCantTellU.rshipToResponseMap = janitorCantTellURespMap;
+            janitorCantTellU.stateToResponseMap = janitorCantTellURespMap;
             dialogueList.Add(janitorCantTellU);
         }
 
@@ -698,7 +698,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorTellAbtDirt.dialogueId = EDialogueID.JANITORTELLMEABTDIRT;
             Dictionary<PlayerStates, Action> janitorTellAbtDirtRespMap = new Dictionary<PlayerStates, Action>();
             janitorTellAbtDirtRespMap[PlayerStates.NEUTRAL] = JanitorTellMeAbtDirtAction;
-            janitorTellAbtDirt.rshipToResponseMap = janitorTellAbtDirtRespMap;
+            janitorTellAbtDirt.stateToResponseMap = janitorTellAbtDirtRespMap;
             dialogueList.Add(janitorTellAbtDirt);
         }
 
@@ -708,7 +708,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorIfMgrJailed.dialogueId = EDialogueID.JANITORIFMGRJAILED;
             Dictionary<PlayerStates, Action> janitorIfMgrJailedRespMap = new Dictionary<PlayerStates, Action>();
             janitorIfMgrJailedRespMap[PlayerStates.NEUTRAL] = JanitorIfMgrJailedAction;
-            janitorIfMgrJailed.rshipToResponseMap = janitorIfMgrJailedRespMap;
+            janitorIfMgrJailed.stateToResponseMap = janitorIfMgrJailedRespMap;
             dialogueList.Add(janitorIfMgrJailed);
         }
 
@@ -718,7 +718,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorIThinkSo.dialogueId = EDialogueID.JANITORITHINKSO;
             Dictionary<PlayerStates, Action> janitorIThinkSoRespMap = new Dictionary<PlayerStates, Action>();
             janitorIThinkSoRespMap[PlayerStates.SAFECRACKOFFERED] = JanitorIThinkSoAction;
-            janitorIThinkSo.rshipToResponseMap = janitorIThinkSoRespMap;
+            janitorIThinkSo.stateToResponseMap = janitorIThinkSoRespMap;
             dialogueList.Add(janitorIThinkSo);
         }
 
@@ -728,7 +728,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorDangerousMission.dialogueId = EDialogueID.JANITORDANGEROUSMISSION;
             Dictionary<PlayerStates, Action> janitorDangerousMissionRespMap = new Dictionary<PlayerStates, Action>();
             janitorDangerousMissionRespMap[PlayerStates.SAFECRACKOFFERED] = JanitorDangerousMissionAction;
-            janitorDangerousMission.rshipToResponseMap = janitorDangerousMissionRespMap;
+            janitorDangerousMission.stateToResponseMap = janitorDangerousMissionRespMap;
             dialogueList.Add(janitorDangerousMission);
         }
 
@@ -738,7 +738,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorTheCodeIsCorrectOption.dialogueId = EDialogueID.JANITORTHECODEISCORRECT;
             Dictionary<PlayerStates, Action> janitorTheCodeIsCorrectOptionRespMap = new Dictionary<PlayerStates, Action>();
             janitorTheCodeIsCorrectOptionRespMap[PlayerStates.SAFECRACKED] = SendJanitorToCheckCode;
-            janitorTheCodeIsCorrectOption.rshipToResponseMap = janitorTheCodeIsCorrectOptionRespMap;
+            janitorTheCodeIsCorrectOption.stateToResponseMap = janitorTheCodeIsCorrectOptionRespMap;
             dialogueList.Add(janitorTheCodeIsCorrectOption);
         }
 
@@ -748,7 +748,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorTheCodeIsWrongOption.dialogueId = EDialogueID.JANITORTHECODEISWRONG;
             Dictionary<PlayerStates, Action> janitorTheCodeIsWrongOptionRespMap = new Dictionary<PlayerStates, Action>();
             janitorTheCodeIsWrongOptionRespMap[PlayerStates.SAFECRACKED] = JanitorTheCodeIsWrongAction;
-            janitorTheCodeIsWrongOption.rshipToResponseMap = janitorTheCodeIsWrongOptionRespMap;
+            janitorTheCodeIsWrongOption.stateToResponseMap = janitorTheCodeIsWrongOptionRespMap;
             dialogueList.Add(janitorTheCodeIsWrongOption);
         }
 
@@ -758,7 +758,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorJogMyMemory.dialogueId = EDialogueID.JANITORJOGMEMORY;
             Dictionary<PlayerStates, Action> janitorJogMyMemoryRespMap = new Dictionary<PlayerStates, Action>();
             janitorJogMyMemoryRespMap[PlayerStates.SAFECRACKACCEPTED] = JanitorJogMemoryAction;
-            janitorJogMyMemory.rshipToResponseMap = janitorJogMyMemoryRespMap;
+            janitorJogMyMemory.stateToResponseMap = janitorJogMyMemoryRespMap;
             dialogueList.Add(janitorJogMyMemory);
         }
 
@@ -768,7 +768,7 @@ public class Janitor_DialogueMgr : DialogueManager
             janitorWhatWereUrDeeds.dialogueId = EDialogueID.JANITORWHATWEREURDEEDS;
             Dictionary<PlayerStates, Action> janitorWhatWereUrDeedsRespMap = new Dictionary<PlayerStates, Action>();
             janitorWhatWereUrDeedsRespMap[PlayerStates.MGRARRESTED] = JanitorWhatWereDeedsAction;
-            janitorWhatWereUrDeeds.rshipToResponseMap = janitorWhatWereUrDeedsRespMap;
+            janitorWhatWereUrDeeds.stateToResponseMap = janitorWhatWereUrDeedsRespMap;
             dialogueList.Add(janitorWhatWereUrDeeds);
         }
     }
