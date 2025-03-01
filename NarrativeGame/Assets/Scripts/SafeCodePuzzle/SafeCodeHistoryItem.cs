@@ -39,7 +39,8 @@ public class SafeCodeHistoryItem : MonoBehaviour
 
             if (ArrContainsDigit(actualCode, codeEntered[i]))
             {
-                inputDigits[i].color = new Color32(255, 138, 101, 255);
+                //inputDigits[i].color = new Color32(255, 138, 101, 255);
+                inputDigits[i].color = Color.yellow;
                 continue;
             }
 
