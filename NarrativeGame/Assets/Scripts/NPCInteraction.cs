@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NPCInteraction : MonoBehaviour, IInteractable
 {
+    [SerializeField] private GameObject npcMarker, interactText;
+
     private UIController uiController;
     private GameController gameController;
 
@@ -11,6 +13,12 @@ public class NPCInteraction : MonoBehaviour, IInteractable
     {
         uiController = FindObjectOfType<UIController>();
         gameController = FindObjectOfType<GameController>();
+    }
+
+    private void Start()
+    {
+        interactText.SetActive(false);
+        npcMarker.SetActive(true);
     }
 
     private void PrintDialogues(List<SDialogue> dialogues)
@@ -47,6 +55,15 @@ public class NPCInteraction : MonoBehaviour, IInteractable
         //PrintDialogues(dialogues);
 
         uiController.DisplayPlayerDialoguePanel(dialogues);
+    }
 
+    public void OnPlayerEnteredToInteract() {
+        npcMarker.SetActive(false);
+        interactText.SetActive(true);
+    }
+
+    public void OnPlayerExited() {
+        npcMarker.SetActive(true);
+        interactText.SetActive(false);
     }
 }

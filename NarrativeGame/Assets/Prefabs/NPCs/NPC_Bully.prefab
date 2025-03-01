@@ -75,7 +75,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278584969
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -215,7 +215,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: -338594111
+  m_SortingLayerID: -620072051
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &4404142876936386535
@@ -366,8 +366,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde5dc65d96234c4686adbf1c84f6476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcMarker: {fileID: 6871216212158489166}
+  interactText: {fileID: 4587113782965029043}
 --- !u!4 &5704626533575048096 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5729106984423265079, guid: daa64d0cf0d5e8f4c815bfc5191e496d, type: 3}
+  m_PrefabInstance: {fileID: 48140918875760791}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6871216212158489166 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6913150035691342553, guid: daa64d0cf0d5e8f4c815bfc5191e496d, type: 3}
   m_PrefabInstance: {fileID: 48140918875760791}
   m_PrefabAsset: {fileID: 0}

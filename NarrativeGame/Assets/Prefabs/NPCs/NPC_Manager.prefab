@@ -370,6 +370,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde5dc65d96234c4686adbf1c84f6476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcMarker: {fileID: 5014773526965596945}
+  interactText: {fileID: 436652027498931565}
+--- !u!1 &5014773526965596945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5271191321362783101, guid: 3b34f70c2f9a7124fb50f71e36f0c3dd, type: 3}
+  m_PrefabInstance: {fileID: 918458759471327340}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6190651591999073023 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6437501711156101779, guid: 3b34f70c2f9a7124fb50f71e36f0c3dd, type: 3}

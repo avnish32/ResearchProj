@@ -59,7 +59,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: -338594111
+  m_SortingLayerID: -620072051
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &1270867983829661265
@@ -410,8 +410,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde5dc65d96234c4686adbf1c84f6476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcMarker: {fileID: 9142417134370968358}
+  interactText: {fileID: 4355244871629422083}
 --- !u!4 &7967416221836430024 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5629694764541159719, guid: 9d47ee0b8b4be9a4e9ec23b8cdf63eac, type: 3}
+  m_PrefabInstance: {fileID: 2355738128186401775}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9142417134370968358 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6796249224389636297, guid: 9d47ee0b8b4be9a4e9ec23b8cdf63eac, type: 3}
   m_PrefabInstance: {fileID: 2355738128186401775}
   m_PrefabAsset: {fileID: 0}
